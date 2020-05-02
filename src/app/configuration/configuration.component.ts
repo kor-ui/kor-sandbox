@@ -15,4 +15,8 @@ export class ConfigurationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public setElementAttribute(name, value): void {
+    this.components.selectedElement?.setAttribute(name, value);
+  }
+
 }

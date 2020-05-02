@@ -1,6 +1,6 @@
 <kor-pane [label]="components.selectedComponent ? components.selectedComponent.name : 'Configuration'">
   <ng-container *ngFor="let attr of components?.selectedComponent?.attributes">
-    <kor-input *ngIf="attr.type == 'String'" [label]="attr.name"></kor-input>
-    <kor-checkbox *ngIf="attr.type == 'Boolean'" [label]="attr.name"></kor-checkbox>
+    <kor-input *ngIf="attr.type == 'String'" [label]="attr.name" (value-changed)="setElementAttribute(attr.name, $event.target.value)"></kor-input>
+    <kor-checkbox *ngIf="attr.type == 'Boolean'" [label]="attr.name" (active-changed)="setElementAttribute(attr.name, $event.target.value)"></kor-checkbox>
   </ng-container>
 </kor-pane>
