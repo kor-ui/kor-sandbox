@@ -28,9 +28,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@kor-ui/kor/kor-styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@kor-ui/kor/index.js"
+            ]
           },
           "configurations": {
             "production": {

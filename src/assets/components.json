@@ -1,0 +1,547 @@
+[
+  {
+    "name": "accordion",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": null
+      },
+      {
+        "name": "Expanded",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": false
+      }
+    ]
+  },
+  {
+    "name": "avatar",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Info",
+        "type": "string",
+        "value": "Information text"
+      },
+      {
+        "name": "Image",
+        "type": "string",
+        "value": "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg"
+      }
+    ]
+  },
+  {
+    "name": "badge",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "number",
+        "value": null
+      },
+      {
+        "name": "Status",
+        "type": "select",
+        "value": null,
+        "options": [null, "success", "warning", "error"]
+      }
+    ]
+  },
+  {
+    "name": "breadcrumbs",
+    "tag": "breadcrumb-item",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Active",
+        "type": "boolean",
+        "value": null
+      }
+    ]
+  },
+  {
+    "name": "card",
+    "properties": [
+      {
+        "name": "Style",
+        "value": "height: 100%"
+      },
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": "train"
+      },
+      {
+        "name": "Image",
+        "type": "string",
+        "value": "https://i.ytimg.com/vi/BfCwN4iy6T8/maxresdefault.jpg"
+      },
+      {
+        "name": "Flat",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "Flex-direction",
+        "type": "select",
+        "value": "Column",
+        "options": ["Column", "Row"]
+      }
+    ]
+  },
+  {
+    "name": "button",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": null
+      },
+      {
+        "name": "Color",
+        "type": "select",
+        "value": "Primary",
+        "options": ["Primary", "Secondary", "Tertiary"]
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": false
+      }
+    ]
+  },
+  {
+    "name": "checkbox",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Active",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": null
+      }
+    ]
+  },
+  {
+    "name": "divider",
+    "properties": [
+      {
+        "name": "spacing",
+        "type": "select",
+        "value": "m",
+        "options": ["s", "m", "l"]
+      },
+      {
+        "name": "orientation",
+        "type": "select",
+        "value": "horizontal",
+        "options": ["horizontal", "vertical"]
+      }
+    ]
+  },
+  {
+    "name": "empty-state",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": "train"
+      }
+    ]
+  },
+  {
+    "name": "icon",
+    "properties": [
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": "favorite"
+      },
+      {
+        "name": "Color",
+        "type": "string",
+        "value": "var(--text-1)"
+      },
+      {
+        "name": "Button",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Size",
+        "type": "select",
+        "value": "m",
+        "options": ["s", "m", "l", "xl"]
+      }
+    ]
+  },
+  {
+    "name": "input",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "value": "Value"
+      },
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": "email"
+      },
+      {
+        "name": "Condensed",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Readonly",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "No-clear",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Type",
+        "type": "select",
+        "value": "text",
+        "options": ["text", "number", "select"]
+      },
+      {
+        "name": "Status",
+        "type": "select",
+        "value": null,
+        "options": [null, "success", "warning", "error"]
+      }
+    ]
+  },
+  {
+    "name": "menu-item",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": "train"
+      },
+      {
+        "name": "Active",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": null
+      }
+    ]
+  },
+  {
+    "name": "progress-bar",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Info",
+        "type": "string",
+        "value": "Info text"
+      },
+      {
+        "name": "Value",
+        "type": "number",
+        "value": 50
+      },
+      {
+        "name": "Color",
+        "type": "string",
+        "value": "rgb(var(--accent-1))"
+      },
+      {
+        "name": "Radial",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Show-progress",
+        "type": "boolean",
+        "value": true
+      },
+      {
+        "name": "Status",
+        "type": "select",
+        "value": null,
+        "options": [null, "success", "warning", "error"]
+      },
+      {
+        "name": "Size",
+        "type": "select",
+        "value": "m",
+        "options": ["s", "m", "l"]
+      }
+    ]
+  },
+  {
+    "name": "radio-button",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Active",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": null
+      }
+    ]
+  },
+  {
+    "name": "spinner",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Size",
+        "type": "select",
+        "value": "m",
+        "options": ["s", "m", "l"]
+      }
+    ]
+  },
+  {
+    "name": "stepper",
+    "tag": "stepper-item",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": "train"
+      },
+      {
+        "name": "Info",
+        "type": "string",
+        "value": "Information text"
+      },
+      {
+        "name": "Active",
+        "type": "boolean",
+        "value": true
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": null
+      }
+    ]
+  },
+  {
+    "name": "switch",
+    "tag": "switch-item",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": "train"
+      },
+      {
+        "name": "Active",
+        "type": "boolean",
+        "value": true
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": null
+      }
+    ]
+  },
+  {
+    "name": "tabs",
+    "tag": "tab-item",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": "train"
+      },
+      {
+        "name": "Active",
+        "type": "boolean",
+        "value": true
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": null
+      }
+    ]
+  },
+  {
+    "name": "tag",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": "train"
+      },
+      {
+        "name": "Button",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Removable",
+        "type": "boolean",
+        "value": true
+      }
+    ]
+  },
+  {
+    "name": "toggle",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Active",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": null
+      }
+    ]
+  },
+  {
+    "name": "tool",
+    "properties": [
+      {
+        "name": "Label",
+        "type": "string",
+        "value": "Label"
+      },
+      {
+        "name": "Icon",
+        "type": "string",
+        "value": "train"
+      },
+      {
+        "name": "Toggle",
+        "type": "boolean",
+        "value": true
+      },
+      {
+        "name": "Active",
+        "type": "boolean",
+        "value": true
+      },
+      {
+        "name": "Disabled",
+        "type": "boolean",
+        "value": null
+      },
+      {
+        "name": "Size",
+        "type": "select",
+        "value": "m",
+        "options": ["s", "m"]
+      }
+    ]
+  }
+]
