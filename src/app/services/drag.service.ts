@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { ComponentsService } from './components.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DragService {
-  constructor() {}
+  constructor(
+    public components: ComponentsService
+  ) {}
 
   // start dragging
   public handleDragStart(e, component): void {
@@ -28,9 +31,18 @@ export class DragService {
     // e.preventDefault();
     const component = JSON.parse(e.dataTransfer.getData('text/plain'));
     const el = document.createElement(`${component.name}`);
-    e.target.appendChild(el.cloneNode(true));
+    // add event listeners
+    el.ondragover = (e) => this.handleDragOver(e);
+    el.ondragleave = (e) => this.handleDragLeave(e);
+    el.ondrop = (e) => this.handleDrop(e);
+    el.onclick = (e) => this.components.selectComponent(e.target);
+    el.classList.add('selected-component');
+    // append child
+    setTimeout(() => { e.target.appendChild(el.cloneNode(true)) }, 0)
+    // cleanup
     el.removeAttribute('id');
     e.dataTransfer.clearData();
     this.handleDragLeave(e);
+    this.components.selectComponent(el);
   }
 }

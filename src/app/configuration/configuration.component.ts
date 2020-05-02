@@ -10,13 +10,21 @@ export class ConfigurationComponent implements OnInit {
 
   constructor(
     public components: ComponentsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
   }
 
-  public setElementAttribute(name, value): void {
-    this.components.selectedElement?.setAttribute(name, value);
+  public setElementAttribute(name, value, type): void {
+    if (type == 'Boolean' && !value) {
+      this.components.selectedElement.removeAttribute(name);
+    } else {
+      this.components.selectedElement?.setAttribute(name, value);
+    }
+  }
+
+  public getAttributeValue(name): any {
+    return this.components.selectedElement.getAttribute(name);
   }
 
 }

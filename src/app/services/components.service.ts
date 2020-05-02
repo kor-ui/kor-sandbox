@@ -11,4 +11,13 @@ export class ComponentsService {
   public selectedComponent: any;
 
   constructor() { }
+
+  public selectComponent(tar): void {
+    console.log(tar);
+    this.selectedElement = tar;
+    this.selectedComponent = this.allComponents.find(el => el.name == tar.tagName.toLowerCase());
+    const selectedComponents = document.querySelectorAll('.selected-component');
+    selectedComponents.forEach(el => el.classList.remove('selected-component'));
+    tar.classList.add('selected-component');
+  }
 }
