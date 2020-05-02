@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-declare const require;
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
