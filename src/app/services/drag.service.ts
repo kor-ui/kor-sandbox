@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DragService {
+  constructor() {}
 
-  constructor() { }
-  
   // start dragging
-  public handleDragStart(e): void {
-    e.target.id = 'dragged';
-    e.dataTransfer.setData('text/plain', e.target.id);
+  public handleDragStart(e, component): void {
+    e.dataTransfer.setData('text/plain', JSON.stringify(component));
   }
 
   // drag over canvas
@@ -28,8 +26,17 @@ export class DragService {
   // drop on canvas
   public handleDrop(e): void {
     // e.preventDefault();
-    const id = e.dataTransfer.getData('text/plain');
-    const el = document.querySelector(`#${id}`);
+    const component = JSON.parse(e.dataTransfer.getData('text/plain'));
+    const el = document.createElement(
+      `kor-${component.tag ? component.tag : component.name}`
+    );
+    component.properties.forEach((prop) => {
+      if (!prop.value) {
+        el.removeAttribute(prop.name);
+      } else {
+        el.setAttribute(prop.name, prop.value);
+      }
+    });
     e.target.appendChild(el.cloneNode(true));
     el.removeAttribute('id');
     e.dataTransfer.clearData();

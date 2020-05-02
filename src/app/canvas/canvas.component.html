@@ -1,0 +1,8 @@
+<kor-page
+  flex-direction="column"
+  theme="dark"
+  (dragover)="drag.handleDragOver($event)"
+  (dragleave)="drag.handleDragLeave($event)"
+  (drop)="drag.handleDrop($event)"
+  (contextmenu)="handleContextMenu($event)"
+></kor-page>

@@ -1,14 +1,7 @@
 <kor-page>
-  <kor-app-bar slot="top"></kor-app-bar>
+  <kor-app-bar slot="top" label="Kor Sandbox"></kor-app-bar>
   <!-- the components menu -->
   <app-menu slot="left"></app-menu>
   <!-- the app canvas -->
-  <kor-page
-    flex-direction="column"
-    theme="dark"
-    (dragover)="drag.handleDragOver($event)"
-    (dragleave)="drag.handleDragLeave($event)"
-    (drop)="drag.handleDrop($event)"
-    (contextmenu)="handleContextMenu($event)"
-  ></kor-page>
+  <app-canvas></app-canvas>
 </kor-page>
