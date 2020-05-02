@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DragService } from '../services/drag.service';
-
-declare const require;
+import { ComponentsService } from '../services/components.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,11 +8,13 @@ declare const require;
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  public components = require('node_modules/@kor-ui/kor/map.json').tags;
 
-  constructor(public drag: DragService) {}
+  constructor(
+    public drag: DragService,
+    public components: ComponentsService
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.components)
+    console.log(this.components.allComponents)
   }
 }

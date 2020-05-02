@@ -1,7 +1,7 @@
 <kor-pane label="Components">
   <kor-menu-item
-    *ngFor="let component of components"
-    [label]="component.tag ? component.tag : component.name"
+    *ngFor="let component of components.allComponents"
+    [label]="component.name"
     draggable="true"
     (dragstart)="drag.handleDragStart($event, component)"
   ></kor-menu-item>

@@ -27,16 +27,7 @@ export class DragService {
   public handleDrop(e): void {
     // e.preventDefault();
     const component = JSON.parse(e.dataTransfer.getData('text/plain'));
-    const el = document.createElement(
-      `kor-${component.tag ? component.tag : component.name}`
-    );
-    component.properties.forEach((prop) => {
-      if (!prop.value) {
-        el.removeAttribute(prop.name);
-      } else {
-        el.setAttribute(prop.name, prop.value);
-      }
-    });
+    const el = document.createElement(`${component.name}`);
     e.target.appendChild(el.cloneNode(true));
     el.removeAttribute('id');
     e.dataTransfer.clearData();
