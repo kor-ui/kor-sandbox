@@ -1,8 +1,26 @@
 <kor-card flat label="Canvas">
+  <!-- scale -->
+  <div class="scale" slot="functions">
+    <kor-icon button icon="remove" (click)="currentScale = currentScale > 0.2 ? currentScale - 0.05 : currentScale"></kor-icon>
+    <kor-text>{{round(currentScale * 100)}}%</kor-text>
+    <kor-icon button icon="add" (click)="currentScale = currentScale < 1.5 ? currentScale + 0.05 : currentScale"></kor-icon>
+  </div>
+  <!-- viewport -->
+  <kor-switch slot="functions">
+    <kor-switch-item 
+      *ngFor="let viewport of viewports"
+      [icon]="viewport.icon"
+      [active]="currentViewport.height == viewport.height && currentViewport.width == viewport.width"
+      (click)="currentViewport.height = viewport.height; currentViewport.width = viewport.width"
+    ></kor-switch-item>
+  </kor-switch>
   <!-- canvas -->
-  <kor-page
+  <kor-page 
+    id="canvas"
+    [style.height]="currentViewport?.height"
+    [style.width]="currentViewport?.width"
+    [style.zoom]="currentScale"
     flex-direction="column"
-    theme="dark"
     (dragover)="drag.handleDragOver($event)"
     (dragleave)="drag.handleDragLeave($event)"
     (drop)="drag.handleDrop($event)"

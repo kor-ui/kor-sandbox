@@ -1,7 +1,21 @@
 :host {
   display: flex;
   width: 100%;
+  .scale {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(var(--neutral-1), .25);
+    padding: 4px 8px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    > * + * {
+      margin-left: 8px;
+    }
+  }
   kor-page {
+    margin: auto;
     perspective: 1px;
     border: 1px solid rgba(var(--neutral-1), 0.6);
   }
