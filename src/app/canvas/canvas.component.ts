@@ -62,7 +62,7 @@ export class CanvasComponent implements OnInit {
   public formatCode(editor): void {
     setTimeout(() => {
       editor.getAction('editor.action.formatDocument').run();
-    }, 0)
+    }, 0);
   }
 
   public round(num: number): number {

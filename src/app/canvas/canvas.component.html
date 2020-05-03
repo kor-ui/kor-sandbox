@@ -75,7 +75,8 @@
   [visible]="code"
   (visible-changed)="!$event.target.visible ? (code = undefined) : ''"
 >
-  <ngx-monaco-editor *ngIf="code"
+  <ngx-monaco-editor
+    *ngIf="code"
     [options]="codeOptions"
     [(ngModel)]="code"
     (onInit)="formatCode($event)"
