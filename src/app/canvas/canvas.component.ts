@@ -8,11 +8,7 @@ import { ComponentsService } from '../services/components.service';
   styleUrls: ['./canvas.component.scss'],
 })
 export class CanvasComponent implements OnInit {
-
-  constructor(
-    public drag: DragService,
-    public components: ComponentsService
-  ) {}
+  constructor(public drag: DragService, public components: ComponentsService) {}
 
   ngOnInit(): void {}
 }

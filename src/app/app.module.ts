@@ -8,7 +8,12 @@ import { CanvasComponent } from './canvas/canvas.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, CanvasComponent, ConfigurationComponent],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    CanvasComponent,
+    ConfigurationComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

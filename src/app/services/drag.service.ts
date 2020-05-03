@@ -5,13 +5,11 @@ import { ComponentsService } from './components.service';
   providedIn: 'root',
 })
 export class DragService {
-  constructor(
-    public components: ComponentsService
-  ) {}
+  constructor(public components: ComponentsService) {}
 
   // start dragging
   public handleDragStart(e, name: string, type: string): void {
-    let data
+    let data;
     if (type == 'copy') {
       data = JSON.stringify(name);
     } else if (type == 'move') {
@@ -39,9 +37,11 @@ export class DragService {
     if (data.includes('kor-')) {
       // create element if dropping from menu
       const name = data.slice(1, data.length - 1);
-      this.createElement(name).then(el => {
+      this.createElement(name).then((el) => {
         e.target.appendChild(el);
-        setTimeout(() => { this.components.selectComponent(el) }, 0);
+        setTimeout(() => {
+          this.components.selectComponent(el);
+        }, 0);
       });
     } else {
       // move element if dropping from canvas
@@ -60,7 +60,8 @@ export class DragService {
       const el = document.createElement(`${name}`);
       el.draggable = true;
       el.removeAttribute('id');
-      el.ondragstart = (e) => this.handleDragStart(e, el.tagName.toLowerCase(), 'move');
+      el.ondragstart = (e) =>
+        this.handleDragStart(e, el.tagName.toLowerCase(), 'move');
       el.onmouseover = (e) => e.stopPropagation();
       resolve(el);
     });

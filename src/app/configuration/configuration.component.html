@@ -1,19 +1,29 @@
 <kor-pane [label]="components.selectedComponent?.name">
   <!-- empty state -->
-  <kor-empty-state *ngIf="!components?.selectedComponent" label="No component selected in the canvas" icon="tune"></kor-empty-state>
+  <kor-empty-state
+    *ngIf="!components?.selectedComponent"
+    label="No component selected in the canvas"
+    icon="tune"
+  ></kor-empty-state>
   <!-- content -->
-  <kor-icon *ngIf="components?.selectedComponent" button icon="delete" slot="functions" (click)="removeSelectedElement()"></kor-icon>
+  <kor-icon
+    *ngIf="components?.selectedComponent"
+    button
+    icon="delete"
+    slot="functions"
+    (click)="removeSelectedElement()"
+  ></kor-icon>
   <ng-container *ngFor="let attr of components?.selectedComponent?.attributes">
-    <kor-input 
-      *ngIf="attr.type == 'String' || attr.type == 'Number'" 
+    <kor-input
+      *ngIf="attr.type == 'String' || attr.type == 'Number'"
       [type]="attr.type == 'String' ? 'text' : 'number'"
-      [label]="attr.name" 
+      [label]="attr.name"
       [value]="getAttributeValue(attr.name)"
       (value-changed)="setElementAttribute(attr.name, $event.target.value)"
     ></kor-input>
-    <kor-checkbox 
-      *ngIf="attr.type == 'Boolean'" 
-      [label]="attr.name" 
+    <kor-checkbox
+      *ngIf="attr.type == 'Boolean'"
+      [label]="attr.name"
       [active]="getAttributeValue(attr.name)"
       (active-changed)="setElementAttribute(attr.name, $event.target.active)"
     ></kor-checkbox>
@@ -21,14 +31,17 @@
   <!-- parent slots -->
   <ng-container *ngIf="getParentSlots()">
     <kor-divider></kor-divider>
-    <kor-input 
-      *ngIf="getParentSlots().length > 1" 
+    <kor-input
+      *ngIf="getParentSlots().length > 1"
       type="select"
-      label="slot" 
+      label="slot"
       [value]="getAttributeValue('slot')"
       (value-changed)="setElementAttribute('slot', $event.target.value)"
     >
-      <kor-menu-item *ngFor="let slot of getParentSlots()" [label]="slot.name !== '' ? slot.name : 'unnamed'"></kor-menu-item>
+      <kor-menu-item
+        *ngFor="let slot of getParentSlots()"
+        [label]="slot.name !== '' ? slot.name : 'unnamed'"
+      ></kor-menu-item>
     </kor-input>
   </ng-container>
 </kor-pane>

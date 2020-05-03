@@ -8,13 +8,9 @@ import { ComponentsService } from '../services/components.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-
-  constructor(
-    public drag: DragService,
-    public components: ComponentsService
-  ) {}
+  constructor(public drag: DragService, public components: ComponentsService) {}
 
   ngOnInit(): void {
-    console.log(this.components.allComponents)
+    console.log(this.components.allComponents);
   }
 }

@@ -4,16 +4,12 @@ import { ComponentsService } from '../services/components.service';
 @Component({
   selector: 'app-configuration',
   templateUrl: './configuration.component.html',
-  styleUrls: ['./configuration.component.scss']
+  styleUrls: ['./configuration.component.scss'],
 })
 export class ConfigurationComponent implements OnInit {
+  constructor(public components: ComponentsService) {}
 
-  constructor(
-    public components: ComponentsService
-  ) {}
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public setElementAttribute(name, value): void {
     if (!value || value == 'unnamed') {
@@ -23,7 +19,7 @@ export class ConfigurationComponent implements OnInit {
     }
   }
 
-  public getAttributeValue(name): string|number|boolean {
+  public getAttributeValue(name): string | number | boolean {
     const value = this.components.selectedElement.getAttribute(name);
     return value !== 'null' ? value : null;
   }
@@ -35,8 +31,9 @@ export class ConfigurationComponent implements OnInit {
 
   public getParentSlots(): any {
     const parentElement = this.components?.selectedElement?.parentElement;
-    const parentComponent = this.components?.allComponents.find(el => el.name == parentElement?.tagName.toLowerCase());
+    const parentComponent = this.components?.allComponents.find(
+      (el) => el.name == parentElement?.tagName.toLowerCase()
+    );
     return parentComponent?.slots;
   }
-  
 }
