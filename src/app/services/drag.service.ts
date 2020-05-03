@@ -5,7 +5,7 @@ import { ComponentsService } from './components.service';
   providedIn: 'root',
 })
 export class DragService {
-  constructor(public components: ComponentsService) {}
+  constructor(public components: ComponentsService) { }
 
   // start dragging
   public handleDragStart(e, name: string, type: string): void {
@@ -24,28 +24,43 @@ export class DragService {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'copy';
     if (this.components.getSlots(e.target)) {
-      e.target.classList.add('drag-over');
+      e.target.classList.add('drop-inside');
+    } else {
+      e.target.classList.add('drop-before');
     }
   }
 
   // drag over canvas
   public handleDragLeave(e): void {
-    e.target.classList.remove('drag-over');
+    e.target.removeAttribute('class');
   }
 
   // drop on canvas
   public handleDrop(e): void {
-    if (this.components.getSlots(e.target)) {
+    this.getDropElement(e).then((el) => {
+      if (this.components.getSlots(e.target)) {
+        e.target.appendChild(el);
+        setTimeout(() => {
+          this.components.selectComponent(el);
+        }, 0);
+      } else {
+        e.target.parentElement.insertBefore(el, e.target)
+      }
+    })
+    // cleanup
+    e.dataTransfer.clearData();
+    this.handleDragLeave(e);
+  }
+
+  public getDropElement(e): Promise<HTMLElement> {
+    return new Promise(resolve => {
       // continue if container has slots
       const data = e.dataTransfer.getData('text/plain');
       if (data.includes('kor-')) {
         // create element if dropping from menu
         const name = data.slice(1, data.length - 1);
         this.createElement(name).then((el) => {
-          e.target.appendChild(el);
-          setTimeout(() => {
-            this.components.selectComponent(el);
-          }, 0);
+          resolve(el)
         });
       } else {
         // move element if dropping from canvas
@@ -53,18 +68,13 @@ export class DragService {
         e.target.appendChild(el);
         el.removeAttribute('id');
         el.removeAttribute('slot');
+        resolve(el)
       }
-      // cleanup
-      e.dataTransfer.clearData();
-      this.handleDragLeave(e);
-    } else {
-      // return if container is a leaf node
-      return;
-    }
+    })
   }
 
   public createElement(name: string): Promise<any> {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       const el = document.createElement(`${name}`);
       el.draggable = true;
       el.removeAttribute('id');
