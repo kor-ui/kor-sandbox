@@ -26,12 +26,7 @@
     icon="screen_rotation"
     (click)="rotateDevice()"
   ></kor-icon>
-  <kor-icon
-    slot="functions"
-    button
-    icon="code"
-    (click)="getCode()"
-  ></kor-icon>
+  <kor-icon slot="functions" button icon="code" (click)="getCode()"></kor-icon>
   <!-- scale -->
   <kor-divider
     slot="functions"
@@ -56,7 +51,7 @@
     ></kor-icon>
   </div>
   <!-- canvas -->
-  <div 
+  <div
     id="canvas"
     [style.height]="currentViewport?.height"
     [style.width]="currentViewport?.width"
@@ -73,12 +68,12 @@
 </kor-card>
 
 <!-- code modal -->
-<kor-modal 
+<kor-modal
   height="800px"
   width="1200px"
-  label="Code" 
-  [visible]="code" 
-  (visible-changed)="!$event.target.visible ? code = undefined : ''"
+  label="Code"
+  [visible]="code"
+  (visible-changed)="!$event.target.visible ? (code = undefined) : ''"
 >
   <ngx-monaco-editor
     [options]="codeOptions"

@@ -40,7 +40,7 @@ export class CanvasComponent implements OnInit {
     language: 'html',
     // readOnly: true,
     formatOnPaste: true,
-    formatOnType: true
+    formatOnType: true,
   };
   public code: any;
 
