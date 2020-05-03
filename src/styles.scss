@@ -18,5 +18,8 @@ app-canvas {
     &.drag-over {
       outline-color: rgb(var(--functional-green));
     }
+    &.drag-over-error {
+      outline-color: rgb(var(--functional-red));
+    }
   }
 }

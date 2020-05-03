@@ -29,17 +29,26 @@
     ></kor-checkbox>
   </ng-container>
   <!-- parent slots -->
-  <ng-container *ngIf="getParentSlots()">
+  <ng-container
+    *ngIf="components.getSlots(components.selectedElement?.parentElement)"
+  >
     <kor-divider></kor-divider>
     <kor-input
-      *ngIf="getParentSlots().length > 1"
+      *ngIf="
+        components.getSlots(components.selectedElement?.parentElement).length >
+        1
+      "
       type="select"
       label="slot"
       [value]="getAttributeValue('slot')"
       (value-changed)="setElementAttribute('slot', $event.target.value)"
     >
       <kor-menu-item
-        *ngFor="let slot of getParentSlots()"
+        *ngFor="
+          let slot of components.getSlots(
+            components.selectedElement?.parentElement
+          )
+        "
         [label]="slot.name !== '' ? slot.name : 'unnamed'"
       ></kor-menu-item>
     </kor-input>

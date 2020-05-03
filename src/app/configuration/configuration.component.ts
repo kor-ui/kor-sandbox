@@ -28,12 +28,4 @@ export class ConfigurationComponent implements OnInit {
     const el = this.components.selectedElement;
     el.parentNode.removeChild(el);
   }
-
-  public getParentSlots(): any {
-    const parentElement = this.components?.selectedElement?.parentElement;
-    const parentComponent = this.components?.allComponents.find(
-      (el) => el.name == parentElement?.tagName.toLowerCase()
-    );
-    return parentComponent?.slots;
-  }
 }

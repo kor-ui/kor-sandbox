@@ -23,7 +23,9 @@ export class DragService {
   public handleDragOver(e): void {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'copy';
-    e.target.classList.add('drag-over');
+    if (this.components.getSlots(e.target)) {
+      e.target.classList.add('drag-over');
+    }
   }
 
   // drag over canvas
@@ -33,26 +35,32 @@ export class DragService {
 
   // drop on canvas
   public handleDrop(e): void {
-    const data = e.dataTransfer.getData('text/plain');
-    if (data.includes('kor-')) {
-      // create element if dropping from menu
-      const name = data.slice(1, data.length - 1);
-      this.createElement(name).then((el) => {
+    if (this.components.getSlots(e.target)) {
+      // continue if container has slots
+      const data = e.dataTransfer.getData('text/plain');
+      if (data.includes('kor-')) {
+        // create element if dropping from menu
+        const name = data.slice(1, data.length - 1);
+        this.createElement(name).then((el) => {
+          e.target.appendChild(el);
+          setTimeout(() => {
+            this.components.selectComponent(el);
+          }, 0);
+        });
+      } else {
+        // move element if dropping from canvas
+        const el = document.getElementById(data);
         e.target.appendChild(el);
-        setTimeout(() => {
-          this.components.selectComponent(el);
-        }, 0);
-      });
+        el.removeAttribute('id');
+        el.removeAttribute('slot');
+      }
+      // cleanup
+      e.dataTransfer.clearData();
+      this.handleDragLeave(e);
     } else {
-      // move element if dropping from canvas
-      const el = document.getElementById(data);
-      e.target.appendChild(el);
-      el.removeAttribute('id');
-      el.removeAttribute('slot');
+      // return if container is a leaf node
+      return;
     }
-    // cleanup
-    e.dataTransfer.clearData();
-    this.handleDragLeave(e);
   }
 
   public createElement(name: string): Promise<any> {
@@ -62,9 +70,15 @@ export class DragService {
       el.removeAttribute('id');
       el.ondragstart = (e) =>
         this.handleDragStart(e, el.tagName.toLowerCase(), 'move');
-      el.onmouseover = (e) => { el.classList.add('hovered-component'); e.stopPropagation() };
+      el.onmouseover = (e) => {
+        el.classList.add('hovered-component');
+        e.stopPropagation();
+      };
       el.onmouseout = () => el.classList.remove('hovered-component');
-      el.onclick = (e) => { this.components.selectComponent(e.target); e.stopPropagation() };
+      el.onclick = (e) => {
+        this.components.selectComponent(e.target);
+        e.stopPropagation();
+      };
       resolve(el);
     });
   }

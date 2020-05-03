@@ -23,4 +23,11 @@ export class ComponentsService {
     );
     tar.classList.add('selected-component');
   }
+
+  public getSlots(el): any {
+    const component = this.allComponents.find(
+      (componentObject) => componentObject.name == el?.tagName.toLowerCase()
+    );
+    return component?.slots;
+  }
 }
