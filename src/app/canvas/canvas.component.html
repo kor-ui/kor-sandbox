@@ -1,10 +1,4 @@
 <kor-card flat label="Canvas">
-  <!-- scale -->
-  <div class="scale" slot="functions">
-    <kor-icon button icon="remove" (click)="currentScale = currentScale > 0.2 ? currentScale - 0.05 : currentScale"></kor-icon>
-    <kor-text>{{round(currentScale * 100)}}%</kor-text>
-    <kor-icon button icon="add" (click)="currentScale = currentScale < 1.5 ? currentScale + 0.05 : currentScale"></kor-icon>
-  </div>
   <!-- viewport -->
   <kor-switch slot="functions">
     <kor-switch-item 
@@ -14,6 +8,14 @@
       (click)="currentViewport.height = viewport.height; currentViewport.width = viewport.width"
     ></kor-switch-item>
   </kor-switch>
+  <!-- rotate -->
+  <kor-button slot="functions" icon="screen_rotation" color="tertiary" (click)="rotateDevice()"></kor-button>
+  <!-- scale -->
+  <div class="scale" slot="functions">
+    <kor-icon button icon="remove" (click)="currentScale = currentScale > 0.2 ? currentScale - 0.05 : currentScale"></kor-icon>
+    <kor-text>{{round(currentScale * 100)}}%</kor-text>
+    <kor-icon button icon="add" (click)="currentScale = currentScale < 1.5 ? currentScale + 0.05 : currentScale"></kor-icon>
+  </div>
   <!-- canvas -->
   <kor-page 
     id="canvas"

@@ -27,12 +27,6 @@ export class CanvasComponent implements OnInit {
       icon: "tablet_mac",
       height: "1024px",
       width: "768px"
-    },
-    {
-      name: "tablet_horizontal",
-      icon: "tablet",
-      height: "768px",
-      width: "1024px"
     }
   ];
   public currentViewport: any = {
@@ -44,6 +38,13 @@ export class CanvasComponent implements OnInit {
   constructor(public drag: DragService, public components: ComponentsService) {}
 
   ngOnInit(): void {}
+
+  public rotateDevice(): void {
+    const previousWidth = this.currentViewport.width;
+    const previousHeight = this.currentViewport.height;
+    this.currentViewport.height = previousWidth;
+    this.currentViewport.width = previousHeight;
+  }
 
   public round(num: number): number {
     return Math.round(num);
