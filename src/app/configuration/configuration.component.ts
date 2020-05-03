@@ -7,13 +7,13 @@ import { ComponentsService } from '../services/components.service';
   styleUrls: ['./configuration.component.scss'],
 })
 export class ConfigurationComponent implements OnInit {
-  public styleOptions = { 
-    theme: 'vs-light', 
+  public styleOptions = {
+    theme: 'vs-light',
     language: 'html',
     lineNumbers: 'off',
     minimap: {
-      enabled: false
-    }
+      enabled: false,
+    },
   };
   public style: string;
 
@@ -40,6 +40,6 @@ export class ConfigurationComponent implements OnInit {
   }
 
   public log(val) {
-    console.log(val)
+    console.log(val);
   }
 }

@@ -38,14 +38,21 @@
     >
       <kor-divider></kor-divider>
       <kor-input
-        *ngIf="components.getSlots(components.selectedElement?.parentElement).length > 1"
+        *ngIf="
+          components.getSlots(components.selectedElement?.parentElement)
+            .length > 1
+        "
         type="select"
         label="slot"
         [value]="getAttributeValue('slot')"
         (value-changed)="setElementAttribute('slot', $event.target.value)"
       >
         <kor-menu-item
-          *ngFor="let slot of components.getSlots(components.selectedElement?.parentElement)"
+          *ngFor="
+            let slot of components.getSlots(
+              components.selectedElement?.parentElement
+            )
+          "
           [label]="slot.name !== '' ? slot.name : 'unnamed'"
         ></kor-menu-item>
       </kor-input>
