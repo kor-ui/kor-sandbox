@@ -11,29 +11,31 @@ export class CanvasComponent implements OnInit {
 
   public viewports: any[] = [
     {
-      name: "desktop",
       icon: "desktop_windows",
-      height: "1080px",
-      width: "1920px"
+      width: "1920px",
+      height: "1080px"
     },
     {
-      name: "phone_vertical",
-      icon: "smartphone",
-      height: "667px",
-      width: "375px"
+      icon: "laptop",
+      width: "1366px",
+      height: "768px"
     },
     {
-      name: "tablet_vertical",
       icon: "tablet_mac",
       height: "1024px",
       width: "768px"
+    },
+    {
+      icon: "smartphone",
+      width: "375px",
+      height: "667px"
     }
   ];
   public currentViewport: any = {
-    height: this.viewports[0]?.height,
-    width: this.viewports[0]?.width
+    height: this.viewports[1]?.height,
+    width: this.viewports[1]?.width
   };
-  public currentScale: number = 0.5;
+  public currentScale: number = 0.75;
 
   constructor(public drag: DragService, public components: ComponentsService) {}
 
