@@ -10,15 +10,22 @@ export class DragService {
   ) {}
 
   // start dragging
-  public handleDragStart(e, component): void {
-    e.dataTransfer.setData('text/plain', JSON.stringify(component));
+  public handleDragStart(e, name: string, type: string): void {
+    let data
+    if (type == 'copy') {
+      data = JSON.stringify(name);
+    } else if (type == 'move') {
+      e.target.id = 'drag-copy';
+      data = e.target.id;
+    }
+    e.dataTransfer.setData('text/plain', data);
   }
 
   // drag over canvas
   public handleDragOver(e): void {
+    e.preventDefault();
     e.dataTransfer.dropEffect = 'copy';
     e.target.classList.add('drag-over');
-    e.preventDefault();
   }
 
   // drag over canvas
@@ -28,21 +35,34 @@ export class DragService {
 
   // drop on canvas
   public handleDrop(e): void {
-    // e.preventDefault();
-    const component = JSON.parse(e.dataTransfer.getData('text/plain'));
-    const el = document.createElement(`${component.name}`);
-    // add event listeners
-    el.ondragover = (e) => this.handleDragOver(e);
-    el.ondragleave = (e) => this.handleDragLeave(e);
-    el.ondrop = (e) => this.handleDrop(e);
-    el.onclick = (e) => this.components.selectComponent(e.target);
-    el.classList.add('selected-component');
-    // append child
-    setTimeout(() => { e.target.appendChild(el.cloneNode(true)) }, 0)
+    const data = e.dataTransfer.getData('text/plain');
+    if (data.includes('kor-')) {
+      // create element if dropping from menu
+      const name = data.slice(1, data.length - 1);
+      this.createElement(name).then(el => {
+        e.target.appendChild(el);
+        setTimeout(() => { this.components.selectComponent(el) }, 0);
+      });
+    } else {
+      // move element if dropping from canvas
+      const el = document.getElementById(data);
+      e.target.appendChild(el);
+      el.removeAttribute('id');
+      el.removeAttribute('slot');
+    }
     // cleanup
-    el.removeAttribute('id');
     e.dataTransfer.clearData();
     this.handleDragLeave(e);
-    this.components.selectComponent(el);
+  }
+
+  public createElement(name: string): Promise<any> {
+    return new Promise((resolve) => {
+      const el = document.createElement(`${name}`);
+      el.draggable = true;
+      el.removeAttribute('id');
+      el.ondragstart = (e) => this.handleDragStart(e, el.tagName.toLowerCase(), 'move');
+      el.onmouseover = (e) => e.stopPropagation();
+      resolve(el);
+    });
   }
 }

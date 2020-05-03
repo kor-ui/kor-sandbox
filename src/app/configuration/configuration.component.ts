@@ -15,16 +15,28 @@ export class ConfigurationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public setElementAttribute(name, value, type): void {
-    if (type == 'Boolean' && !value) {
+  public setElementAttribute(name, value): void {
+    if (!value || value == 'unnamed') {
       this.components.selectedElement.removeAttribute(name);
     } else {
       this.components.selectedElement?.setAttribute(name, value);
     }
   }
 
-  public getAttributeValue(name): any {
-    return this.components.selectedElement.getAttribute(name);
+  public getAttributeValue(name): string|number|boolean {
+    const value = this.components.selectedElement.getAttribute(name);
+    return value !== 'null' ? value : null;
   }
 
+  public removeSelectedElement(): void {
+    const el = this.components.selectedElement;
+    el.parentNode.removeChild(el);
+  }
+
+  public getParentSlots(): any {
+    const parentElement = this.components?.selectedElement?.parentElement;
+    const parentComponent = this.components?.allComponents.find(el => el.name == parentElement?.tagName.toLowerCase());
+    return parentComponent?.slots;
+  }
+  
 }

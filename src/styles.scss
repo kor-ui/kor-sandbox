@@ -1,10 +1,19 @@
-.drag-over,
-.selected-component {
-  outline-offset: 2px;
-}
-.drag-over {
-  outline: 1px solid rgb(var(--functional-yellow));
-}
-.selected-component {
-  outline: 1px solid rgb(var(--functional-blue));
+
+app-canvas {
+  * {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: -2px;
+    pointer-events: all !important;
+    outline-color: transparent;
+    &:hover:not(.selected-component) {
+      outline-color: rgba(var(--neutral-1), .4);
+    }
+    &.selected-component {
+      outline-color: rgb(var(--functional-blue));
+    }
+    &.drag-over {
+      outline-color: rgb(var(--functional-green));
+    }
+  }
 }

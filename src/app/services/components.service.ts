@@ -13,7 +13,6 @@ export class ComponentsService {
   constructor() { }
 
   public selectComponent(tar): void {
-    console.log(tar);
     this.selectedElement = tar;
     this.selectedComponent = this.allComponents.find(el => el.name == tar.tagName.toLowerCase());
     const selectedComponents = document.querySelectorAll('.selected-component');

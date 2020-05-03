@@ -3,6 +3,6 @@
     *ngFor="let component of components.allComponents"
     [label]="component.name"
     draggable="true"
-    (dragstart)="drag.handleDragStart($event, component)"
+    (dragstart)="drag.handleDragStart($event, component.name, 'copy')"
   ></kor-menu-item>
 </kor-pane>
