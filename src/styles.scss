@@ -1,12 +1,15 @@
 
 app-canvas {
-  * {
+  display: flex;
+  flex-direction: column;
+  kor-page, 
+  kor-page * {
     outline-width: 2px;
     outline-style: solid;
     outline-offset: -2px;
     pointer-events: all !important;
     outline-color: transparent;
-    &:hover:not(.selected-component) {
+    &.hovered-component {
       outline-color: rgba(var(--neutral-1), .4);
     }
     &.selected-component {

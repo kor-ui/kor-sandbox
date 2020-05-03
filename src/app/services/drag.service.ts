@@ -62,7 +62,9 @@ export class DragService {
       el.removeAttribute('id');
       el.ondragstart = (e) =>
         this.handleDragStart(e, el.tagName.toLowerCase(), 'move');
-      el.onmouseover = (e) => e.stopPropagation();
+      el.onmouseover = (e) => { el.classList.add('hovered-component'); e.stopPropagation() };
+      el.onmouseout = () => el.classList.remove('hovered-component');
+      el.onclick = (e) => { this.components.selectComponent(e.target); e.stopPropagation() };
       resolve(el);
     });
   }

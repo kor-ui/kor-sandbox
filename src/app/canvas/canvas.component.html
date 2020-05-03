@@ -1,8 +1,11 @@
-<kor-page
-  flex-direction="column"
-  theme="dark"
-  (dragover)="drag.handleDragOver($event)"
-  (dragleave)="drag.handleDragLeave($event)"
-  (drop)="drag.handleDrop($event)"
-  (click)="components.selectComponent($event.target)"
-></kor-page>
+<kor-card flat label="Canvas">
+  <!-- canvas -->
+  <kor-page
+    flex-direction="column"
+    theme="dark"
+    (dragover)="drag.handleDragOver($event)"
+    (dragleave)="drag.handleDragLeave($event)"
+    (drop)="drag.handleDrop($event)"
+    (click)="components.selectComponent($event.target);"
+  ></kor-page>
+</kor-card>
