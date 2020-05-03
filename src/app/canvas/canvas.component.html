@@ -24,8 +24,13 @@
     slot="functions"
     button
     icon="screen_rotation"
-    color="tertiary"
     (click)="rotateDevice()"
+  ></kor-icon>
+  <kor-icon
+    slot="functions"
+    button
+    icon="code"
+    (click)="getCode()"
   ></kor-icon>
   <!-- scale -->
   <kor-divider
@@ -51,15 +56,33 @@
     ></kor-icon>
   </div>
   <!-- canvas -->
-  <kor-page
+  <div 
     id="canvas"
     [style.height]="currentViewport?.height"
     [style.width]="currentViewport?.width"
     [style.zoom]="currentScale"
-    flex-direction="column"
-    (dragover)="drag.handleDragOver($event)"
-    (dragleave)="drag.handleDragLeave($event)"
-    (drop)="drag.handleDrop($event)"
-    (click)="components.selectComponent($event.target)"
-  ></kor-page>
+  >
+    <kor-page
+      flex-direction="column"
+      (dragover)="drag.handleDragOver($event)"
+      (dragleave)="drag.handleDragLeave($event)"
+      (drop)="drag.handleDrop($event)"
+      (click)="components.selectComponent($event.target)"
+    ></kor-page>
+  </div>
 </kor-card>
+
+<!-- code modal -->
+<kor-modal 
+  height="800px"
+  width="1200px"
+  label="Code" 
+  [visible]="code" 
+  (visible-changed)="!$event.target.visible ? code = undefined : ''"
+>
+  <ngx-monaco-editor
+    [options]="codeOptions"
+    [(ngModel)]="code"
+    (change)="$event.target.getAction('editor.action.format').run()"
+  ></ngx-monaco-editor>
+</kor-modal>

@@ -35,6 +35,14 @@ export class CanvasComponent implements OnInit {
     width: this.viewports[1]?.width,
   };
   public currentScale: number = 0.75;
+  public codeOptions = {
+    theme: 'vs-light',
+    language: 'html',
+    // readOnly: true,
+    formatOnPaste: true,
+    formatOnType: true
+  };
+  public code: any;
 
   constructor(public drag: DragService, public components: ComponentsService) {}
 
@@ -45,6 +53,10 @@ export class CanvasComponent implements OnInit {
     const previousHeight = this.currentViewport.height;
     this.currentViewport.height = previousWidth;
     this.currentViewport.width = previousHeight;
+  }
+
+  public getCode(): void {
+    this.code = document.querySelector('#canvas').innerHTML;
   }
 
   public round(num: number): number {
