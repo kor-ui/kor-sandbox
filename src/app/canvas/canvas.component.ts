@@ -42,7 +42,7 @@ export class CanvasComponent implements OnInit {
     formatOnPaste: true,
     formatOnType: true,
   };
-  public code: any;
+  public code: string;
 
   constructor(public drag: DragService, public components: ComponentsService) {}
 
@@ -57,6 +57,12 @@ export class CanvasComponent implements OnInit {
 
   public getCode(): void {
     this.code = document.querySelector('#canvas').innerHTML;
+  }
+
+  public formatCode(editor): void {
+    setTimeout(() => {
+      editor.getAction('editor.action.formatDocument').run();
+    }, 0)
   }
 
   public round(num: number): number {

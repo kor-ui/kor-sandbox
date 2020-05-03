@@ -38,8 +38,4 @@ export class ConfigurationComponent implements OnInit {
     const el = this.components.selectedElement;
     el.parentNode.removeChild(el);
   }
-
-  public log(val) {
-    console.log(val);
-  }
 }
