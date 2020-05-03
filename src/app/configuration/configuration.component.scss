@@ -1,4 +1,7 @@
 :host {
   display: flex;
   z-index: 1;
+  ngx-monaco-editor {
+    height: 160px;
+  }
 }
