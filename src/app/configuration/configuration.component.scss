@@ -1,7 +1,11 @@
 :host {
   display: flex;
   z-index: 1;
+  kor-card {
+    max-height: 200px;
+  }
   ngx-monaco-editor {
-    height: 160px;
+    height: 100%;
+    overflow: hidden;
   }
 }

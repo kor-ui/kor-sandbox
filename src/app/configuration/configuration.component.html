@@ -57,12 +57,21 @@
         ></kor-menu-item>
       </kor-input>
     </ng-container>
+    <!-- inner text -->
+    <kor-card label="Inner Text" style="margin-top: auto">
+      <ngx-monaco-editor
+        [options]="editorOptions"
+        [(ngModel)]="this.components.elementInnerText"
+        (keyup)="this.components.selectedElement.innerText = this.components.elementInnerText"
+      ></ngx-monaco-editor>
+    </kor-card>
     <!-- styles -->
-    <kor-text size="header-2" style="margin-top: auto;">Styles</kor-text>
-    <ngx-monaco-editor
-      [options]="styleOptions"
-      [(ngModel)]="style"
-      (keydown)="setElementAttribute('style', style)"
-    ></ngx-monaco-editor>
+    <kor-card label="Styles">
+      <ngx-monaco-editor
+        [options]="editorOptions"
+        [(ngModel)]="this.components.elementStyles"
+        (keyup)="this.components.selectedElement.setAttribute('style', this.components.elementStyles)"
+      ></ngx-monaco-editor>
+    </kor-card>
   </ng-container>
 </kor-pane>

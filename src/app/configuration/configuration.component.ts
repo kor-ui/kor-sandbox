@@ -7,15 +7,14 @@ import { ComponentsService } from '../services/components.service';
   styleUrls: ['./configuration.component.scss'],
 })
 export class ConfigurationComponent implements OnInit {
-  public styleOptions = {
+  public editorOptions = {
     theme: 'vs-light',
-    language: 'html',
+    language: 'text',
     lineNumbers: 'off',
     minimap: {
       enabled: false,
-    },
+    }
   };
-  public style: string;
 
   constructor(public components: ComponentsService) {}
 

@@ -9,11 +9,15 @@ export class ComponentsService {
   public allComponents = require('node_modules/@kor-ui/kor/map.json').tags;
   public selectedElement: HTMLElement;
   public selectedComponent: any;
+  public elementStyles: string;
+  public elementInnerText: string;
 
   constructor() {}
 
   public selectComponent(tar: any): void {
     this.selectedElement = tar;
+    this.elementStyles = this.selectedElement.getAttribute('style');
+    this.elementInnerText = this.selectedElement.innerText;
     this.selectedComponent = this.allComponents.find(
       (el) => el.name == tar.tagName.toLowerCase()
     );
