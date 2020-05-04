@@ -22,14 +22,14 @@
         *ngIf="attr.type == 'String' || attr.type == 'Number'"
         [type]="attr.type == 'String' ? 'text' : 'number'"
         [label]="attr.name"
-        [value]="getAttributeValue(attr.name)"
-        (value-changed)="setElementAttribute(attr.name, $event.target.value)"
+        [value]="components.selectedElement.getAttribute(attr.name)"
+        (value-changed)="components.selectedElement.setAttribute(attr.name, $event.target.value)"
       ></kor-input>
       <kor-checkbox
         *ngIf="attr.type == 'Boolean'"
         [label]="attr.name"
-        [active]="getAttributeValue(attr.name)"
-        (active-changed)="setElementAttribute(attr.name, $event.target.active)"
+        [active]="components.selectedElement.getAttribute(attr.name)"
+        (active-changed)="components.selectedElement.setAttribute(attr.name, $event.target.active)"
       ></kor-checkbox>
     </ng-container>
     <!-- parent slots -->
@@ -44,8 +44,8 @@
         "
         type="select"
         label="slot"
-        [value]="getAttributeValue('slot')"
-        (value-changed)="setElementAttribute('slot', $event.target.value)"
+        [value]="components.selectedElement.getAttribute('slot')"
+        (value-changed)="setElementSlot($event.target.value)"
       >
         <kor-menu-item
           *ngFor="
@@ -54,11 +54,13 @@
             )
           "
           [label]="slot.name !== '' ? slot.name : 'unnamed'"
+          [active]="components.selectedElement.getAttribute('slot') == slot.name"
         ></kor-menu-item>
       </kor-input>
     </ng-container>
     <!-- inner text -->
-    <kor-card label="Inner Text" style="margin-top: auto">
+    <kor-divider></kor-divider>
+    <kor-card label="Inner Text" [style.display]="components?.selectedComponent.slots ? 'flex' : 'none'">
       <ngx-monaco-editor
         [options]="editorOptions"
         [(ngModel)]="this.components.elementInnerText"

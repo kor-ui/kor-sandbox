@@ -2,6 +2,7 @@
   display: flex;
   z-index: 1;
   kor-card {
+    min-height: 200px;
     max-height: 200px;
   }
   ngx-monaco-editor {

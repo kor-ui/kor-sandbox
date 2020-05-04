@@ -20,17 +20,12 @@ export class ConfigurationComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public setElementAttribute(name, value): void {
-    if (!value || value == 'unnamed') {
-      this.components.selectedElement.removeAttribute(name);
-    } else {
-      this.components.selectedElement?.setAttribute(name, value);
+  public setElementSlot(val): void {
+    if (val !== null && val !== 'unnamed') {
+      this.components.selectedElement.setAttribute('slot', val);
+    }  else {
+      this.components.selectedElement.removeAttribute('slot')
     }
-  }
-
-  public getAttributeValue(name): string | number | boolean {
-    const value = this.components.selectedElement.getAttribute(name);
-    return value !== 'null' ? value : null;
   }
 
   public removeSelectedElement(): void {

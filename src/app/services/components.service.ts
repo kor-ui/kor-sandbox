@@ -23,7 +23,7 @@ export class ComponentsService {
     );
     const selectedComponents = document.querySelectorAll('.selected-component');
     selectedComponents.forEach((el) =>
-      el.classList.remove('selected-component')
+      el.removeAttribute('class')
     );
     tar.classList.add('selected-component');
   }
