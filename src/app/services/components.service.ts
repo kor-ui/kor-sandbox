@@ -22,9 +22,7 @@ export class ComponentsService {
       (el) => el.name == tar.tagName.toLowerCase()
     );
     const selectedComponents = document.querySelectorAll('.selected-component');
-    selectedComponents.forEach((el) =>
-      el.removeAttribute('class')
-    );
+    selectedComponents.forEach((el) => el.removeAttribute('class'));
     tar.classList.add('selected-component');
   }
 

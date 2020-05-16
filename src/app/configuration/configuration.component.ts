@@ -13,23 +13,36 @@ export class ConfigurationComponent implements OnInit {
     lineNumbers: 'off',
     minimap: {
       enabled: false,
-    }
+    },
   };
 
   constructor(public components: ComponentsService) {}
 
   ngOnInit(): void {}
 
-  public setElementSlot(val): void {
-    if (val !== null && val !== 'unnamed') {
-      this.components.selectedElement.setAttribute('slot', val);
-    }  else {
-      this.components.selectedElement.removeAttribute('slot')
-    }
-  }
-
   public removeSelectedElement(): void {
     const el = this.components.selectedElement;
     el.parentNode.removeChild(el);
+  }
+
+  public setElementAttribute(type: string, name: string, value: any): void {
+    const el = this.components.selectedElement;
+    if (type == 'boolean') {
+      // boolean handler
+      if (value) {
+        el.setAttribute(name, value);
+      } else {
+        el.removeAttribute(name);
+      }
+    } else if (type == 'string' && name !== 'slot') {
+      // string / number handler
+      el.setAttribute(name, value);
+    } else {
+      if (value !== null && value !== 'unnamed') {
+        el.setAttribute(name, value);
+      } else {
+        el.removeAttribute(name);
+      }
+    }
   }
 }
