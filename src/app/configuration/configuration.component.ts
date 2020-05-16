@@ -34,9 +34,6 @@ export class ConfigurationComponent implements OnInit {
       } else {
         el.removeAttribute(name);
       }
-    } else if (type == 'string' && name !== 'slot') {
-      // string / number handler
-      el.setAttribute(name, value);
     } else {
       if (value !== null && value !== 'unnamed') {
         el.setAttribute(name, value);
