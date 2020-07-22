@@ -6,7 +6,9 @@ declare const require;
   providedIn: 'root',
 })
 export class ComponentsService {
-  public allComponents = require('node_modules/@kor-ui/kor/map.json').tags;
+  public allComponents = require('node_modules/@kor-ui/kor/map.json').tags.sort((a, b) => {
+    return a.name > b.name ? 1 : -1;
+  });
   public selectedElement: HTMLElement;
   public selectedComponent: any;
   public elementStyles: string;
