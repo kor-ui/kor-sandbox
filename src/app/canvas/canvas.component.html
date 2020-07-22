@@ -69,13 +69,25 @@
 </kor-card>
 
 <!-- context menu -->
-<kor-popover 
+<kor-popover
   [visible]="showContextMenu"
   [style.left]="popoverCoords.x"
   [style.top]="popoverCoords.y"
 >
-  <kor-menu-item label="Delete" (click)="removeElement(components.selectedElement); $event.stopImmediatePropagation()"></kor-menu-item>
-  <kor-menu-item label="Duplicate" (click)="duplicateElement(components.selectedElement); $event.stopImmediatePropagation()"></kor-menu-item>
+  <kor-menu-item
+    label="Delete"
+    (click)="
+      removeElement(components.selectedElement);
+      $event.stopImmediatePropagation()
+    "
+  ></kor-menu-item>
+  <kor-menu-item
+    label="Duplicate"
+    (click)="
+      duplicateElement(components.selectedElement);
+      $event.stopImmediatePropagation()
+    "
+  ></kor-menu-item>
 </kor-popover>
 
 <!-- code modal -->

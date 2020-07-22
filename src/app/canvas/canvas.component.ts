@@ -46,8 +46,8 @@ export class CanvasComponent implements OnInit {
   public showContextMenu: boolean;
   public popoverCoords: any = {
     x: null,
-    y: null
-  }
+    y: null,
+  };
 
   constructor(public drag: DragService, public components: ComponentsService) {}
 
@@ -85,7 +85,7 @@ export class CanvasComponent implements OnInit {
     const hide = () => {
       this.showContextMenu = false;
       document.body.removeEventListener('click', hide);
-    }
+    };
     document.body.addEventListener('click', hide);
   }
 
