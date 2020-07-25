@@ -1,0 +1,16 @@
+<!-- code modal -->
+<kor-modal
+  height="800px"
+  width="1200px"
+  label="Code"
+  [visible]="visible"
+  (visible-changed)="!$event.target.visible ? closeModal() : ''"
+>
+  <ngx-monaco-editor
+    *ngIf="code"
+    [options]="codeOptions"
+    [(ngModel)]="code"
+    (onInit)="formatCode($event)"
+  >
+  </ngx-monaco-editor>
+</kor-modal>

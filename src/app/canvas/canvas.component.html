@@ -56,15 +56,14 @@
     [style.height]="currentViewport?.height"
     [style.width]="currentViewport?.width"
     [style.zoom]="currentScale"
+    (dragover)="drag.handleDragOver($event)"
+    (dragleave)="drag.handleDragLeave($event)"
+    (drop)="drag.handleDrop($event)"
+    (click)="components.selectComponent($event.target)"
+    (mousedown)="drag.addComponentListeners($event.target)"
+    (contextmenu)="handleContextMenu($event)"
   >
-    <kor-page
-      flex-direction="column"
-      (dragover)="drag.handleDragOver($event)"
-      (dragleave)="drag.handleDragLeave($event)"
-      (drop)="drag.handleDrop($event)"
-      (click)="components.selectComponent($event.target)"
-      (contextmenu)="handleContextMenu($event)"
-    ></kor-page>
+    <kor-page></kor-page>
   </div>
 </kor-card>
 
@@ -90,18 +89,4 @@
   ></kor-menu-item>
 </kor-popover>
 
-<!-- code modal -->
-<kor-modal
-  height="800px"
-  width="1200px"
-  label="Code"
-  [visible]="code"
-  (visible-changed)="!$event.target.visible ? (code = undefined) : ''"
->
-  <ngx-monaco-editor
-    *ngIf="code"
-    [options]="codeOptions"
-    [(ngModel)]="code"
-    (onInit)="formatCode($event)"
-  ></ngx-monaco-editor>
-</kor-modal>
+<app-code *ngIf="code" [code]="code" (close)="setCode($event)"></app-code>

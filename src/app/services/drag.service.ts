@@ -76,20 +76,22 @@ export class DragService {
   public createElement(name: string): Promise<any> {
     return new Promise((resolve) => {
       const el = document.createElement(`${name}`);
-      el.draggable = true;
       el.removeAttribute('id');
-      el.ondragstart = (e) =>
-        this.handleDragStart(e, el.tagName.toLowerCase(), 'move');
-      el.onmouseover = (e) => {
-        el.classList.add('hovered-component');
-        e.stopPropagation();
-      };
-      el.onmouseout = () => el.classList.remove('hovered-component');
-      el.onclick = (e) => {
-        this.components.selectComponent(e.target);
-        e.stopPropagation();
-      };
       resolve(el);
     });
+  }
+
+  public addComponentListeners(tar: any): void {
+    tar.draggable = true;
+    tar.ondragstart = (e) =>
+      this.handleDragStart(e, tar.tagName.toLowerCase(), 'move');
+    tar.onmouseover = (e) => {
+      tar.classList.add('hovered-component');
+      e.stopPropagation();
+    };
+    tar.onmouseout = () => {
+      tar.classList.remove('hovered-component');
+      tar.removeAttribute('draggable');
+    };
   }
 }

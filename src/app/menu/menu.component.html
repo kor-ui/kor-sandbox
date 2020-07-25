@@ -2,6 +2,7 @@
   <kor-menu-item
     *ngFor="let component of components.allComponents"
     [label]="component.name"
+    [toggle]="false"
     draggable="true"
     (dragstart)="drag.handleDragStart($event, component.name, 'copy')"
   ></kor-menu-item>

@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { CodeComponent } from './code/code.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     MenuComponent,
     CanvasComponent,
     ConfigurationComponent,
+    CodeComponent,
   ],
   imports: [
     BrowserModule,

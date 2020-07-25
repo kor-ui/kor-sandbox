@@ -35,13 +35,6 @@ export class CanvasComponent implements OnInit {
     width: this.viewports[1]?.width,
   };
   public currentScale: number = 0.75;
-  public codeOptions = {
-    theme: 'vs-light',
-    language: 'html',
-    // readOnly: true,
-    formatOnPaste: true,
-    formatOnType: true,
-  };
   public code: string;
   public showContextMenu: boolean;
   public popoverCoords: any = {
@@ -64,10 +57,9 @@ export class CanvasComponent implements OnInit {
     this.code = document.querySelector('#canvas').innerHTML;
   }
 
-  public formatCode(editor): void {
-    setTimeout(() => {
-      editor.getAction('editor.action.formatDocument').run();
-    }, 100);
+  public setCode(code: string): void {
+    this.code = undefined;
+    document.querySelector('#canvas').innerHTML = code;
   }
 
   public round(num: number): number {
@@ -78,10 +70,8 @@ export class CanvasComponent implements OnInit {
     e.preventDefault();
     this.popoverCoords.x = `${e.pageX}px`;
     this.popoverCoords.y = `${e.pageY}px`;
-    console.log(this.popoverCoords);
     this.components.selectComponent(e.target);
     this.showContextMenu = true;
-    console.log(e.target);
     const hide = () => {
       this.showContextMenu = false;
       document.body.removeEventListener('click', hide);
