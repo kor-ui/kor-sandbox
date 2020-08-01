@@ -63,7 +63,7 @@
     (mousedown)="drag.addComponentListeners($event.target)"
     (contextmenu)="handleContextMenu($event)"
   >
-    <kor-page></kor-page>
+    <kor-page flex-direction="column"></kor-page>
   </div>
 </kor-card>
 
@@ -73,17 +73,18 @@
   [style.left]="popoverCoords.x"
   [style.top]="popoverCoords.y"
 >
-  <kor-menu-item
-    label="Delete"
-    (click)="
-      removeElement(components.selectedElement);
-      $event.stopImmediatePropagation()
-    "
-  ></kor-menu-item>
+  <kor-text size="header-2">{{components.selectedComponent?.name}}</kor-text>
   <kor-menu-item
     label="Duplicate"
     (click)="
       duplicateElement(components.selectedElement);
+      $event.stopImmediatePropagation()
+    "
+  ></kor-menu-item>
+  <kor-menu-item
+    label="Delete"
+    (click)="
+      removeElement(components.selectedElement);
       $event.stopImmediatePropagation()
     "
   ></kor-menu-item>

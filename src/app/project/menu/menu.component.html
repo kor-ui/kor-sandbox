@@ -5,5 +5,7 @@
     [toggle]="false"
     draggable="true"
     (dragstart)="drag.handleDragStart($event, component.name, 'copy')"
-  ></kor-menu-item>
+  >
+    <kor-icon slot="functions" icon="drag_handle" button></kor-icon>
+  </kor-menu-item>
 </kor-pane>

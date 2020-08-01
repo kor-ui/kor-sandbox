@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DragService } from '../services/drag.service';
-import { ComponentsService } from '../services/components.service';
+import { DragService } from '../../services/drag.service';
+import { ComponentsService } from '../../services/components.service';
 
 @Component({
   selector: 'app-canvas',

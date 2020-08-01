@@ -30,7 +30,7 @@ export class CodeComponent implements OnInit {
     setTimeout(() => {
       editor.getAction('editor.action.formatDocument').run();
       editor.layout();
-    }, 100);
+    }, 500);
   }
 
   // closes modal after animation completes

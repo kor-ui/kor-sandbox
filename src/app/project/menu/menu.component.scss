@@ -2,6 +2,10 @@
   display: flex;
   z-index: 1;
   kor-menu-item {
+    cursor: move;
     margin-bottom: 0;
+    &:not(:hover) kor-icon {
+      opacity: 0;
+    }
   }
 }

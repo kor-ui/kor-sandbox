@@ -26,4 +26,7 @@
     width: 100%;
     overflow: hidden;
   }
+  > kor-popover > kor-menu-item {
+    margin-bottom: 0;
+  }
 }

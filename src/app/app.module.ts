@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/menu.component';
-import { CanvasComponent } from './canvas/canvas.component';
-import { ConfigurationComponent } from './configuration/configuration.component';
-import { CodeComponent } from './code/code.component';
+import { MenuComponent } from './project/menu/menu.component';
+import { CanvasComponent } from './project/canvas/canvas.component';
+import { ConfigurationComponent } from './project/configuration/configuration.component';
+import { CodeComponent } from './project/code/code.component';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CodeComponent } from './code/code.component';
     CanvasComponent,
     ConfigurationComponent,
     CodeComponent,
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,
