@@ -1,7 +1,16 @@
-<kor-button
-  label="New Project"
-  (click)="newProjectModalVisible = true"
-></kor-button>
+<div class="header">
+  <kor-text size="header-1">Projects</kor-text>
+  <kor-button
+    label="New Project"
+    (click)="userService.user ? newProjectModalVisible = true : userService.signInModalVisible = true"
+  ></kor-button>
+</div>
+<!-- project list -->
+<kor-table>
+  <!-- <kor-table-row *ngFor="let project of projects">
+    <kor-table-cell grid-cols="24">{{project.name}}</kor-table-cell>
+  </kor-table-row> -->
+</kor-table>
 <!-- new project modal -->
 <app-new-project-modal
   *ngIf="newProjectModalVisible"

@@ -1,4 +1,7 @@
-<kor-page scrollable>
+<kor-page
+  scrollable
+  flat
+>
   <kor-app-bar
     slot="top"
     label="Kor Sandbox"
@@ -6,10 +9,10 @@
   >
     <kor-avatar
       slot="functions"
-      (click)="!userService.user ? signInModalVisible = true : ''"
-      [label]="userService.user?.displayName"
+      (click)="!userService.user ? userService.signInModalVisible = true : ''"
+      [label]="userService.user?.name"
       [info]="userService.user?.email"
-      [image]="userService.user?.photoURL"
+      [image]="userService.user?.image"
     >
     </kor-avatar>
   </kor-app-bar>
@@ -17,6 +20,6 @@
 </kor-page>
 <!-- sign in -->
 <app-sign-in
-  *ngIf="signInModalVisible"
-  (close)="signInModalVisible = false"
+  *ngIf="userService.signInModalVisible"
+  (close)="userService.signInModalVisible = false"
 ></app-sign-in>

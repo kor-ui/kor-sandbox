@@ -7,7 +7,5 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  signInModalVisible: boolean;
-
   constructor(public userService: UserService) { }
 }
