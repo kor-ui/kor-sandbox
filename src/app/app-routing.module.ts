@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProjectComponent } from './project/project.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'project',
+    redirectTo: 'projects',
     pathMatch: 'full'
+  },
+  {
+    path: 'projects',
+    component: ProjectsComponent
   },
   {
     path: 'project',
@@ -18,4 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

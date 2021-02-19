@@ -1,0 +1,9 @@
+<kor-button
+  label="New Project"
+  (click)="newProjectModalVisible = true"
+></kor-button>
+<!-- new project modal -->
+<app-new-project-modal
+  *ngIf="newProjectModalVisible"
+  (close)="newProjectModalVisible = false"
+></app-new-project-modal>

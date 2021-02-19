@@ -20,7 +20,7 @@ export class SignInComponent implements OnInit {
     }, 0);
   }
 
-  close(): void {
+  closeModal(): void {
     this.visible = false;
     // wait for animation and remove component
     setTimeout(() => (this.userService.signInModalVisible = false), 100);
@@ -37,7 +37,7 @@ export class SignInComponent implements OnInit {
             : undefined
       )
       .then(() => {
-        this.close();
+        this.closeModal();
       });
   }
 }

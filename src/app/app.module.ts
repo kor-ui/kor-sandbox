@@ -15,6 +15,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { ProjectsComponent } from './projects/projects.component';
+import { NewProjectModalComponent } from './projects/new-project-modal/new-project-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { environment } from 'src/environments/environment';
     CodeComponent,
     ProjectComponent,
     SignInComponent,
+    ProjectsComponent,
+    NewProjectModalComponent,
   ],
   imports: [
     BrowserModule,

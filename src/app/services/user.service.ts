@@ -13,6 +13,7 @@ export class UserService {
     // listen to auth state change and update user
     this.auth.onAuthStateChanged((authUser: firebase.User) => {
       this.user = authUser;
+      console.log(this.user)
     });
   }
 }

@@ -1,4 +1,12 @@
-<kor-modal label="Sign In" [visible]="visible" (visible-changed)="!$event.target.visible ? close() : ''">
-  <kor-menu-item label="Sign in with Google" icon="url(https://i.dlpng.com/static/png/6909571_preview.png)"
-    [toggle]="false" (click)="signIn('google')"></kor-menu-item>
+<kor-modal
+  label="Sign In"
+  [visible]="visible"
+  (visible-changed)="!$event.target.visible ? closeModal() : ''"
+>
+  <kor-menu-item
+    label="Sign in with Google"
+    icon="url(https://i.dlpng.com/static/png/6909571_preview.png)"
+    [toggle]="false"
+    (click)="signIn('google')"
+  ></kor-menu-item>
 </kor-modal>
