@@ -28,6 +28,7 @@ export class ProjectComponent implements OnInit {
         .valueChanges()
         .subscribe((res: Project) => {
           this.project = res;
+          console.log(res);
         });
     });
   }
