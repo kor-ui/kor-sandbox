@@ -8,7 +8,7 @@ export class DragService {
   constructor(public components: ComponentsService) {}
 
   // start dragging
-  public handleDragStart(e, name: string, type: string): void {
+  handleDragStart(e, name: string, type: string): void {
     let data;
     if (type == 'copy') {
       data = JSON.stringify(name);
@@ -20,7 +20,7 @@ export class DragService {
   }
 
   // drag over canvas
-  public handleDragOver(e): void {
+  handleDragOver(e): void {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'copy';
     if (this.components.getSlots(e.target)) {
@@ -31,12 +31,12 @@ export class DragService {
   }
 
   // drag over canvas
-  public handleDragLeave(e): void {
+  handleDragLeave(e): void {
     e.target.removeAttribute('class');
   }
 
   // drop on canvas
-  public handleDrop(e): void {
+  handleDrop(e): void {
     this.getDropElement(e).then((el) => {
       if (this.components.getSlots(e.target)) {
         e.target.appendChild(el);
@@ -52,7 +52,7 @@ export class DragService {
     this.handleDragLeave(e);
   }
 
-  public getDropElement(e): Promise<HTMLElement> {
+  getDropElement(e): Promise<HTMLElement> {
     return new Promise((resolve) => {
       // continue if container has slots
       const data = e.dataTransfer.getData('text/plain');
@@ -73,7 +73,7 @@ export class DragService {
     });
   }
 
-  public createElement(name: string): Promise<any> {
+  createElement(name: string): Promise<any> {
     return new Promise((resolve) => {
       const el = document.createElement(`${name}`);
       el.removeAttribute('id');
@@ -81,7 +81,7 @@ export class DragService {
     });
   }
 
-  public addComponentListeners(tar: any): void {
+  addComponentListeners(tar: any): void {
     tar.draggable = true;
     tar.ondragstart = (e) =>
       this.handleDragStart(e, tar.tagName.toLowerCase(), 'move');

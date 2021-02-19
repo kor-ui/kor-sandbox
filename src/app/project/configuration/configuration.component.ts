@@ -7,7 +7,7 @@ import { ComponentsService } from '../../services/components.service';
   styleUrls: ['./configuration.component.scss'],
 })
 export class ConfigurationComponent implements OnInit {
-  public editorOptions = {
+  editorOptions = {
     theme: 'vs-light',
     language: 'text',
     lineNumbers: 'off',
@@ -20,12 +20,12 @@ export class ConfigurationComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public removeSelectedElement(): void {
+  removeSelectedElement(): void {
     const el = this.components.selectedElement;
     el.parentNode.removeChild(el);
   }
 
-  public setElementAttribute(type: string, name: string, value: any): void {
+  setElementAttribute(type: string, name: string, value: any): void {
     const el = this.components.selectedElement;
     if (type == 'boolean') {
       // boolean handler

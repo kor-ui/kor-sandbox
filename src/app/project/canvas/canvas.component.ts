@@ -8,7 +8,7 @@ import { ComponentsService } from '../../services/components.service';
   styleUrls: ['./canvas.component.scss'],
 })
 export class CanvasComponent implements OnInit {
-  public viewports: any[] = [
+  viewports: any[] = [
     {
       icon: 'desktop_windows',
       width: '1920px',
@@ -30,14 +30,14 @@ export class CanvasComponent implements OnInit {
       height: '667px',
     },
   ];
-  public currentViewport: any = {
+  currentViewport: any = {
     height: this.viewports[1]?.height,
     width: this.viewports[1]?.width,
   };
-  public currentScale: number = 0.75;
-  public code: string;
-  public showContextMenu: boolean;
-  public popoverCoords: any = {
+  currentScale: number = 0.75;
+  code: string;
+  showContextMenu: boolean;
+  popoverCoords: any = {
     x: null,
     y: null,
   };
@@ -46,27 +46,27 @@ export class CanvasComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public rotateDevice(): void {
+  rotateDevice(): void {
     const previousWidth = this.currentViewport.width;
     const previousHeight = this.currentViewport.height;
     this.currentViewport.height = previousWidth;
     this.currentViewport.width = previousHeight;
   }
 
-  public getCode(): void {
+  getCode(): void {
     this.code = document.querySelector('#canvas').innerHTML;
   }
 
-  public setCode(code: string): void {
+  setCode(code: string): void {
     this.code = undefined;
     document.querySelector('#canvas').innerHTML = code;
   }
 
-  public round(num: number): number {
+  round(num: number): number {
     return Math.round(num);
   }
 
-  public handleContextMenu(e): void {
+  handleContextMenu(e): void {
     e.preventDefault();
     this.popoverCoords.x = `${e.pageX}px`;
     this.popoverCoords.y = `${e.pageY}px`;
@@ -79,11 +79,11 @@ export class CanvasComponent implements OnInit {
     document.body.addEventListener('click', hide);
   }
 
-  public removeElement(el: HTMLElement): void {
+  removeElement(el: HTMLElement): void {
     el.parentNode.removeChild(el);
   }
 
-  public duplicateElement(el: HTMLElement): void {
+  duplicateElement(el: HTMLElement): void {
     const clone = el.cloneNode(true);
     el.parentNode.appendChild(clone);
   }

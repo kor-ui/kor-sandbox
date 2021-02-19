@@ -6,8 +6,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./code.component.scss'],
 })
 export class CodeComponent implements OnInit {
-  public visible: boolean = false;
-  public codeOptions = {
+  visible: boolean = false;
+  codeOptions = {
     theme: 'vs-light',
     language: 'html',
     // readOnly: true,
@@ -26,7 +26,7 @@ export class CodeComponent implements OnInit {
     }, 0);
   }
 
-  public formatCode(editor): void {
+  formatCode(editor): void {
     setTimeout(() => {
       editor.getAction('editor.action.formatDocument').run();
       editor.layout();
@@ -34,7 +34,7 @@ export class CodeComponent implements OnInit {
   }
 
   // closes modal after animation completes
-  public closeModal(): void {
+  closeModal(): void {
     this.visible = false;
     setTimeout(() => {
       this.close.emit(this.code);

@@ -6,19 +6,19 @@ declare const require;
   providedIn: 'root',
 })
 export class ComponentsService {
-  public allComponents = require('node_modules/@kor-ui/kor/map.json').tags.sort(
+  allComponents = require('../../assets/custom-elements.json').tags.sort(
     (a, b) => {
       return a.name > b.name ? 1 : -1;
     }
   );
-  public selectedElement: HTMLElement;
-  public selectedComponent: any;
-  public elementStyles: string;
-  public elementInnerText: string;
+  selectedElement: HTMLElement;
+  selectedComponent: any;
+  elementStyles: string;
+  elementInnerText: string;
 
   constructor() {}
 
-  public selectComponent(tar: any): void {
+  selectComponent(tar: any): void {
     this.selectedElement = tar;
     this.elementStyles = this.selectedElement.getAttribute('style');
     this.elementInnerText = this.selectedElement.innerText;
@@ -30,7 +30,7 @@ export class ComponentsService {
     tar.classList.add('selected-component');
   }
 
-  public getSlots(el): any {
+  getSlots(el): any {
     const component = this.allComponents.find(
       (componentObject) => componentObject.name == el?.tagName.toLowerCase()
     );
