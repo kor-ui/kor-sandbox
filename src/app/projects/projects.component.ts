@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Project } from '../interfaces';
 import { UserService } from '../services/user.service';
 
@@ -12,7 +11,7 @@ import { UserService } from '../services/user.service';
 })
 export class ProjectsComponent implements OnInit {
   newProjectModalVisible: boolean;
-  projects: Observable<Project[]>;;
+  projects: Project[];;
 
   constructor(
     public firestore: AngularFirestore,
@@ -26,9 +25,12 @@ export class ProjectsComponent implements OnInit {
 
   // get all projects
   getProjects(): void {
-    this.projects = this.firestore
+    this.firestore
       .collection<Project>('projects')
-      .valueChanges();
+      .valueChanges()
+      .subscribe((res: Project[]) => {
+        this.projects = res;
+      });
   }
 
   // create new project

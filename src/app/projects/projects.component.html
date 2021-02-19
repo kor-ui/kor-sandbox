@@ -18,7 +18,7 @@
     >Updated date</kor-table-cell>
   </kor-table-row>
   <kor-table-row
-    *ngFor="let project of projects | async"
+    *ngFor="let project of projects"
     (click)="router.navigateByUrl('/project/' + project.uid)"
   >
     <kor-table-cell grid-cols="18">{{project.name}}</kor-table-cell>
