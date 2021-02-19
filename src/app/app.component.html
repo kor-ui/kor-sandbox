@@ -6,7 +6,7 @@
   >
     <kor-avatar
       slot="functions"
-      (click)="!userService.user ? userService.signInModalVisible = true : ''"
+      (click)="!userService.user ? signInModalVisible = true : ''"
       [label]="userService.user?.displayName"
       [info]="userService.user?.email"
       [image]="userService.user?.photoURL"
@@ -16,4 +16,7 @@
   <router-outlet></router-outlet>
 </kor-page>
 <!-- sign in -->
-<app-sign-in *ngIf="userService.signInModalVisible"></app-sign-in>
+<app-sign-in
+  *ngIf="signInModalVisible"
+  (close)="signInModalVisible = false"
+></app-sign-in>

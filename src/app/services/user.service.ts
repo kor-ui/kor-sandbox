@@ -7,7 +7,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class UserService {
   user: firebase.User;
-  signInModalVisible: boolean;
 
   constructor(public auth: AngularFireAuth) {
     // listen to auth state change and update user

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from '../services/user.service';
 import firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -10,6 +10,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class SignInComponent implements OnInit {
   visible: boolean;
+  @Output() close = new EventEmitter();
 
   constructor(public userService: UserService, public auth: AngularFireAuth) { }
 
@@ -23,7 +24,7 @@ export class SignInComponent implements OnInit {
   closeModal(): void {
     this.visible = false;
     // wait for animation and remove component
-    setTimeout(() => (this.userService.signInModalVisible = false), 100);
+    setTimeout(() => (this.close.emit()), 100);
   }
 
   // triggers firebase auth
