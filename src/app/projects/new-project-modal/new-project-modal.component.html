@@ -1,6 +1,25 @@
 <kor-modal
+  sticky
+  height="auto"
+  width="400px"
   label="New Project"
   [visible]="visible"
-  (visible-changed)="!$event.target.visible ? closeModal() : ''"
 >
+  <kor-input
+    label="Project name"
+    [value]="projectData?.name"
+    (value-changed)="projectData ? projectData.name = $event.target.value : ''"
+  ></kor-input>
+  <!-- footer actions -->
+  <kor-button
+    slot="footer"
+    color="tertiary"
+    label="Cancel"
+    (click)="projectData = null; closeModal()"
+  ></kor-button>
+  <kor-button
+    slot="footer"
+    label="Confirm"
+    (click)="closeModal()"
+  ></kor-button>
 </kor-modal>

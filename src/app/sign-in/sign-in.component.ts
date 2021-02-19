@@ -14,8 +14,8 @@ export class SignInComponent implements OnInit {
   constructor(public userService: UserService, public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
+    // start animation
     setTimeout(() => {
-      // start animation
       this.visible = true;
     }, 0);
   }
