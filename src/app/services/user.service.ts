@@ -44,7 +44,7 @@ export class UserService {
       uid: authUser.uid
     };
     this.firestore
-      .collection('users')
+      .collection<User>('users')
       .doc(authUser.uid)
       .set(userData).then(() => {
         this.subscribeToUser(userData);
@@ -54,7 +54,7 @@ export class UserService {
   // subscribe to user document
   subscribeToUser(user: User): void {
     this.firestore
-      .collection('users')
+      .collection<User>('users')
       .doc(user.uid)
       .valueChanges()
       .subscribe((res: User) => {

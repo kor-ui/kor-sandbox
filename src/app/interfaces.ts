@@ -1,4 +1,5 @@
 export interface Project {
+  uid: string,
   name: string,
   owner: string,
   editors: string[],

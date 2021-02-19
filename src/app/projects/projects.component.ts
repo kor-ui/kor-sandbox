@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Project } from '../interfaces';
 import { UserService } from '../services/user.service';
 
@@ -11,28 +12,31 @@ import { UserService } from '../services/user.service';
 })
 export class ProjectsComponent implements OnInit {
   newProjectModalVisible: boolean;
-  projects: any;
+  projects: Observable<Project[]>;;
 
-  constructor(public firestore: AngularFirestore, public userService: UserService) { }
+  constructor(
+    public firestore: AngularFirestore,
+    public userService: UserService,
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
     this.getProjects();
   }
 
+  // get all projects
   getProjects(): void {
     this.projects = this.firestore
-      .collection('projects')
-      .valueChanges()
-      .subscribe((res: Project[]) => {
-        this.projects = res;
-        console.log('projects', res);
-      });
+      .collection<Project>('projects')
+      .valueChanges();
   }
 
-  setProjectData(project: Project) {
+  // create new project
+  setProject(project: Project) {
+    project.uid = this.firestore.createId();
     this.firestore
-      .collection('projects')
-      .doc()
+      .collection<Project>('projects')
+      .doc(project.uid)
       .set(project);
   }
 

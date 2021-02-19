@@ -16,6 +16,7 @@ export class NewProjectModalComponent implements OnInit {
     'thumbnail': null,
     'updatedDate': new Date(),
     'createdDate': new Date(),
+    'uid': null
   };
   @Output() close = new EventEmitter();
 
@@ -32,7 +33,7 @@ export class NewProjectModalComponent implements OnInit {
     this.visible = false;
     // wait for animation and remove component
     setTimeout(() => {
-      this.close.emit(this.projectData)
+      this.close.emit(this.projectData);
     }, 100);
   }
 }

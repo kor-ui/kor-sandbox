@@ -7,12 +7,26 @@
 </div>
 <!-- project list -->
 <kor-table>
-  <!-- <kor-table-row *ngFor="let project of projects">
-    <kor-table-cell grid-cols="24">{{project.name}}</kor-table-cell>
-  </kor-table-row> -->
+  <kor-table-row slot="header">
+    <kor-table-cell
+      head
+      grid-cols="18"
+    >Project name</kor-table-cell>
+    <kor-table-cell
+      head
+      grid-cols="6"
+    >Updated date</kor-table-cell>
+  </kor-table-row>
+  <kor-table-row
+    *ngFor="let project of projects | async"
+    (click)="router.navigateByUrl('/project/' + project.uid)"
+  >
+    <kor-table-cell grid-cols="18">{{project.name}}</kor-table-cell>
+    <kor-table-cell grid-cols="6">{{project.updatedDate.toDate() | date}}</kor-table-cell>
+  </kor-table-row>
 </kor-table>
 <!-- new project modal -->
 <app-new-project-modal
   *ngIf="newProjectModalVisible"
-  (close)="newProjectModalVisible = false; $event ? setProjectData($event) : ''"
+  (close)="newProjectModalVisible = false; $event ? setProject($event) : ''"
 ></app-new-project-modal>
