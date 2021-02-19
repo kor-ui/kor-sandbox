@@ -23,7 +23,7 @@ export class ComponentsService {
     this.elementStyles = this.selectedElement.getAttribute('style');
     this.elementInnerText = this.selectedElement.innerText;
     this.selectedComponent = this.allComponents.find(
-      (el) => el.name == tar.tagName.toLowerCase()
+      (el) => el.name === tar.tagName.toLowerCase()
     );
     const selectedComponents = document.querySelectorAll('.selected-component');
     selectedComponents.forEach((el) => el.removeAttribute('class'));
@@ -32,7 +32,7 @@ export class ComponentsService {
 
   getSlots(el): any {
     const component = this.allComponents.find(
-      (componentObject) => componentObject.name == el?.tagName.toLowerCase()
+      (componentObject) => componentObject.name === el?.tagName.toLowerCase()
     );
     return component?.slots;
   }

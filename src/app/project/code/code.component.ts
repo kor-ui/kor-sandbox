@@ -6,7 +6,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./code.component.scss'],
 })
 export class CodeComponent implements OnInit {
-  visible: boolean = false;
+  visible = false;
   codeOptions = {
     theme: 'vs-light',
     language: 'html',

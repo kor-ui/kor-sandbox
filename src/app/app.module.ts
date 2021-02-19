@@ -10,6 +10,11 @@ import { CanvasComponent } from './project/canvas/canvas.component';
 import { ConfigurationComponent } from './project/configuration/configuration.component';
 import { CodeComponent } from './project/code/code.component';
 import { ProjectComponent } from './project/project.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,12 +24,16 @@ import { ProjectComponent } from './project/project.component';
     ConfigurationComponent,
     CodeComponent,
     ProjectComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     MonacoEditorModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

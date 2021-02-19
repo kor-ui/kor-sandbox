@@ -10,9 +10,9 @@ export class DragService {
   // start dragging
   handleDragStart(e, name: string, type: string): void {
     let data;
-    if (type == 'copy') {
+    if (type === 'copy') {
       data = JSON.stringify(name);
-    } else if (type == 'move') {
+    } else if (type === 'move') {
       e.target.id = 'drag-copy';
       data = e.target.id;
     }

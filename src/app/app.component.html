@@ -1,8 +1,8 @@
 <kor-page>
-  <kor-app-bar
-    slot="top"
-    label="Kor Sandbox"
-    logo="assets/favicon.png"
-  ></kor-app-bar>
+  <kor-app-bar slot="top" label="Kor Sandbox" logo="assets/favicon.png">
+    <kor-avatar slot="functions" (click)="userService.signInModalVisible = true"></kor-avatar>
+  </kor-app-bar>
   <router-outlet></router-outlet>
 </kor-page>
+<!-- sign in -->
+<app-sign-in *ngIf="userService.signInModalVisible"></app-sign-in>

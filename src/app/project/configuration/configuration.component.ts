@@ -27,7 +27,7 @@ export class ConfigurationComponent implements OnInit {
 
   setElementAttribute(type: string, name: string, value: any): void {
     const el = this.components.selectedElement;
-    if (type == 'boolean') {
+    if (type === 'boolean') {
       // boolean handler
       if (value) {
         el.setAttribute(name, value);

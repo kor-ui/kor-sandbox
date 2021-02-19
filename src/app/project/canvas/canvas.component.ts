@@ -34,7 +34,7 @@ export class CanvasComponent implements OnInit {
     height: this.viewports[1]?.height,
     width: this.viewports[1]?.width,
   };
-  currentScale: number = 0.75;
+  currentScale = 0.75;
   code: string;
   showContextMenu: boolean;
   popoverCoords: any = {
