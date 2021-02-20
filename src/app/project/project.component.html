@@ -2,7 +2,7 @@
   <!-- the components menu -->
   <app-menu slot="left"></app-menu>
   <!-- the app canvas -->
-  <app-canvas [label]="project.name"></app-canvas>
+  <app-canvas [label]="project?.name + ' – ' + currentPage?.name"></app-canvas>
   <!-- the configuration menu -->
   <app-configuration slot="right"></app-configuration>
 </kor-page>

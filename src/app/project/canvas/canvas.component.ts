@@ -34,7 +34,7 @@ export class CanvasComponent implements OnInit {
       height: '667px',
     },
   ];
-  currentViewport = this.viewports[1];
+  currentViewport = this.viewports[3];
   currentScale = 0.75;
   code: string;
   showContextMenu: boolean;

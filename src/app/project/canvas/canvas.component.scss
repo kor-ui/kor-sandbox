@@ -16,7 +16,11 @@
       padding: 3px;
       border: 1px solid rgba(var(--neutral-1), 0.25);
       > * + * {
-        margin-left: 8px;
+        margin-left: 4px;
+      }
+      kor-text {
+        width: 36px;
+        text-align: center;
       }
     }
   }
