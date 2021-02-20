@@ -2,7 +2,11 @@
   <!-- the components menu -->
   <app-menu slot="left"></app-menu>
   <!-- the app canvas -->
-  <app-canvas [label]="project?.name + ' – ' + currentPage?.name"></app-canvas>
+  <app-canvas
+    [label]="project?.name + ' – ' + currentPage?.name"
+    [content]="currentPage?.content"
+    (save)="setCurrentPageContent($event)"
+  ></app-canvas>
   <!-- the configuration menu -->
   <app-configuration slot="right"></app-configuration>
 </kor-page>

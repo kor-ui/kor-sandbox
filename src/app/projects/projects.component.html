@@ -10,19 +10,19 @@
   <kor-table-row slot="header">
     <kor-table-cell
       head
-      grid-cols="18"
+      grid-cols="12"
     >Project name</kor-table-cell>
     <kor-table-cell
       head
-      grid-cols="6"
+      grid-cols="12"
     >Updated date</kor-table-cell>
   </kor-table-row>
   <kor-table-row
     *ngFor="let project of projects"
     (click)="router.navigateByUrl('/project/' + project.uid)"
   >
-    <kor-table-cell grid-cols="18">{{project.name}}</kor-table-cell>
-    <kor-table-cell grid-cols="6">{{project.updatedDate.toDate() | date}}</kor-table-cell>
+    <kor-table-cell grid-cols="12">{{project.name}}</kor-table-cell>
+    <kor-table-cell grid-cols="12">{{project.updatedDate.toDate() | date}}</kor-table-cell>
   </kor-table-row>
 </kor-table>
 <!-- new project modal -->

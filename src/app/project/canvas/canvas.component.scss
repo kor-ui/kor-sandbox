@@ -26,7 +26,8 @@
   }
   #canvas {
     margin: auto;
-    kor-page {
+    > kor-page {
+      pointer-events: none;
       perspective: 1px;
       border: 1px solid rgba(var(--neutral-1), 0.6);
     }

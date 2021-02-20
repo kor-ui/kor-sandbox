@@ -53,9 +53,13 @@
     <kor-button
       color="secondary"
       icon="code"
-      (click)="getCode()"
+      (click)="codeModalVisible = true"
     >
     </kor-button>
+    <kor-button
+      icon="save"
+      (click)="save.emit(content)"
+    ></kor-button>
   </div>
   <!-- canvas -->
   <div
@@ -69,9 +73,7 @@
     (click)="components.selectComponent($event.target)"
     (mousedown)="drag.addComponentListeners($event.target)"
     (contextmenu)="handleContextMenu($event)"
-  >
-    <kor-page flex-direction="column"></kor-page>
-  </div>
+  ></div>
 </kor-card>
 
 <!-- context menu -->
@@ -98,7 +100,7 @@
 </kor-popover>
 
 <app-code
-  *ngIf="code"
-  [code]="code"
-  (close)="setCode($event)"
+  *ngIf="codeModalVisible"
+  [code]="content"
+  (close)="content = $event; setCanvasInnerHTML(); codeModalVisible = false;"
 ></app-code>

@@ -5,7 +5,7 @@ import { ComponentsService } from './components.service';
   providedIn: 'root',
 })
 export class DragService {
-  constructor(public components: ComponentsService) {}
+  constructor(public components: ComponentsService) { }
 
   // start dragging
   handleDragStart(e, name: string, type: string): void {
@@ -36,20 +36,24 @@ export class DragService {
   }
 
   // drop on canvas
-  handleDrop(e): void {
-    this.getDropElement(e).then((el) => {
-      if (this.components.getSlots(e.target)) {
-        e.target.appendChild(el);
-        setTimeout(() => {
-          this.components.selectComponent(el);
-        }, 0);
-      } else {
-        e.target.parentElement.insertBefore(el, e.target);
-      }
+  handleDrop(e): Promise<string> {
+    return new Promise((resolve) => {
+      this.getDropElement(e).then((el) => {
+        if (this.components.getSlots(e.target)) {
+          e.target.appendChild(el);
+          setTimeout(() => {
+            this.components.selectComponent(el);
+          }, 0);
+        } else {
+          e.target.parentElement.insertBefore(el, e.target);
+        }
+      }).then(() => {
+        // cleanup
+        e.dataTransfer.clearData();
+        this.handleDragLeave(e);
+        resolve('');
+      });
     });
-    // cleanup
-    e.dataTransfer.clearData();
-    this.handleDragLeave(e);
   }
 
   getDropElement(e): Promise<HTMLElement> {

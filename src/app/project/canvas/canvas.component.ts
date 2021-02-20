@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { DragService } from '../../services/drag.service';
 import { ComponentsService } from '../../services/components.service';
 
@@ -36,17 +36,35 @@ export class CanvasComponent implements OnInit {
   ];
   currentViewport = this.viewports[3];
   currentScale = 1;
-  code: string;
   showContextMenu: boolean;
+  codeModalVisible: boolean;
   popoverCoords: any = {
     x: null,
     y: null,
   };
+  @Input() content: string;
   @Input() label: string;
+  @Output() save = new EventEmitter<string>();
 
   constructor(public drag: DragService, public components: ComponentsService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    // observe canvas innerHTML change and update content prop
+    const canvas = document.querySelector('#canvas');
+    new MutationObserver(() => {
+      this.content = canvas.innerHTML;
+    }).observe(
+      canvas,
+      {
+        subtree: true,
+        attributes: true
+      });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.content = changes.content?.currentValue;
+    this.setCanvasInnerHTML();
+  }
 
   rotateDevice(): void {
     const previousWidth = this.currentViewport.width;
@@ -55,13 +73,12 @@ export class CanvasComponent implements OnInit {
     this.currentViewport.width = previousHeight;
   }
 
-  getCode(): void {
-    this.code = document.querySelector('#canvas').innerHTML;
-  }
-
-  setCode(code: string): void {
-    this.code = undefined;
-    document.querySelector('#canvas').innerHTML = code;
+  // update canvas html to match content property
+  setCanvasInnerHTML(): void {
+    if (this.content) {
+      // TODO: replace with element ref
+      document.querySelector('#canvas').innerHTML = this.content;
+    }
   }
 
   round(num: number): number {

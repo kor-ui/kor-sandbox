@@ -64,4 +64,13 @@ export class ProjectComponent implements OnInit {
     });
   }
 
+  // set the content of current page
+  setCurrentPageContent(content: string): void {
+    this.firestore
+      .collection<Project>('projects')
+      .doc(this.project.uid)
+      .collection<Page>('pages')
+      .doc(this.currentPage.uid).update({ 'content': content });
+  }
+
 }
