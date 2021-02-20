@@ -1,17 +1,23 @@
 :host {
   display: flex;
   width: 100%;
-  kor-divider[slot='functions'] {
-    height: 32px;
-  }
-  .scale {
+  .functions {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    border-radius: 4px;
     > * + * {
       margin-left: 8px;
+    }
+    .scale {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      border-radius: 4px;
+      padding: 3px;
+      border: 1px solid rgba(var(--neutral-1), 0.25);
+      > * + * {
+        margin-left: 8px;
+      }
     }
   }
   #canvas {

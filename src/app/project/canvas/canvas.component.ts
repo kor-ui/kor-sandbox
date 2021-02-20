@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DragService } from '../../services/drag.service';
 import { ComponentsService } from '../../services/components.service';
 
@@ -10,30 +10,31 @@ import { ComponentsService } from '../../services/components.service';
 export class CanvasComponent implements OnInit {
   viewports: any[] = [
     {
+      label: 'Desktop (1920x1080)',
       icon: 'desktop_windows',
       width: '1920px',
       height: '1080px',
     },
     {
+      label: 'Laptop (1366x768)',
       icon: 'laptop',
       width: '1366px',
       height: '768px',
     },
     {
+      label: 'Tablet (1024x768)',
       icon: 'tablet_mac',
       height: '1024px',
       width: '768px',
     },
     {
+      label: 'Phone (375x667)',
       icon: 'smartphone',
       width: '375px',
       height: '667px',
     },
   ];
-  currentViewport: any = {
-    height: this.viewports[1]?.height,
-    width: this.viewports[1]?.width,
-  };
+  currentViewport = this.viewports[1];
   currentScale = 0.75;
   code: string;
   showContextMenu: boolean;
@@ -41,10 +42,11 @@ export class CanvasComponent implements OnInit {
     x: null,
     y: null,
   };
+  @Input() label: string;
 
-  constructor(public drag: DragService, public components: ComponentsService) {}
+  constructor(public drag: DragService, public components: ComponentsService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   rotateDevice(): void {
     const previousWidth = this.currentViewport.width;

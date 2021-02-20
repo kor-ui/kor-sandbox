@@ -1,60 +1,67 @@
-<kor-card flat label="Canvas">
-  <!-- viewport -->
-  <kor-switch slot="functions">
-    <kor-switch-item
-      *ngFor="let viewport of viewports"
-      [icon]="viewport.icon"
-      [active]="
-        currentViewport.height == viewport.height &&
-        currentViewport.width == viewport.width
-      "
-      (click)="
-        currentViewport.height = viewport.height;
-        currentViewport.width = viewport.width
-      "
-    ></kor-switch-item>
-  </kor-switch>
-  <!-- rotate -->
-  <kor-divider
+<kor-card
+  flat
+  [label]="label"
+>
+  <div
+    class="functions"
     slot="functions"
-    orientation="vertical"
-    spacing="s"
-  ></kor-divider>
-  <kor-icon
-    slot="functions"
-    button
-    icon="screen_rotation"
-    (click)="rotateDevice()"
-  ></kor-icon>
-  <kor-icon slot="functions" button icon="code" (click)="getCode()"></kor-icon>
-  <!-- scale -->
-  <kor-divider
-    slot="functions"
-    orientation="vertical"
-    spacing="s"
-  ></kor-divider>
-  <div class="scale" slot="functions">
-    <kor-icon
-      button
-      icon="remove"
-      (click)="
-        currentScale = currentScale > 0.2 ? currentScale - 0.05 : currentScale
-      "
-    ></kor-icon>
-    <kor-text>{{ round(currentScale * 100) }}%</kor-text>
-    <kor-icon
-      button
-      icon="add"
-      (click)="
-        currentScale = currentScale < 1.5 ? currentScale + 0.05 : currentScale
-      "
-    ></kor-icon>
+  >
+    <!-- scale -->
+    <div class="scale">
+      <kor-icon
+        button
+        icon="remove"
+        (click)="
+      currentScale = currentScale > 0.2 ? currentScale - 0.05 : currentScale
+    "
+      ></kor-icon>
+      <kor-text>{{ round(currentScale * 100) }}%</kor-text>
+      <kor-icon
+        button
+        icon="add"
+        (click)="
+      currentScale = currentScale < 1.5 ? currentScale + 0.05 : currentScale
+    "
+      ></kor-icon>
+    </div>
+    <!-- viewport -->
+    <kor-button
+      id="viewport"
+      color="tertiary"
+      [icon]="currentViewport.icon"
+    ></kor-button>
+    <kor-popover
+      [target]="'#viewport'"
+      position="bottom"
+    >
+      <kor-menu-item
+        *ngFor="let viewport of viewports"
+        [toggle]="false"
+        [label]="viewport.label"
+        [icon]="viewport.icon"
+        [active]="currentViewport == viewport"
+        (click)="currentViewport = viewport"
+      ></kor-menu-item>
+    </kor-popover>
+    <!-- rotate -->
+    <kor-button
+      color="tertiary"
+      icon="screen_rotation"
+      (click)="rotateDevice()"
+    >
+    </kor-button>
+    <kor-button
+      color="secondary"
+      icon="code"
+      (click)="getCode()"
+    >
+    </kor-button>
   </div>
   <!-- canvas -->
   <div
     id="canvas"
-    [style.height]="currentViewport?.height"
-    [style.width]="currentViewport?.width"
+    [style.minHeight]="currentViewport?.height"
+    [style.minWidth]="currentViewport?.width"
     [style.zoom]="currentScale"
     (dragover)="drag.handleDragOver($event)"
     (dragleave)="drag.handleDragLeave($event)"
@@ -90,4 +97,8 @@
   ></kor-menu-item>
 </kor-popover>
 
-<app-code *ngIf="code" [code]="code" (close)="setCode($event)"></app-code>
+<app-code
+  *ngIf="code"
+  [code]="code"
+  (close)="setCode($event)"
+></app-code>

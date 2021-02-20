@@ -1,6 +1,6 @@
 <kor-pane
   [label]="expanded ? components.selectedComponent?.name : null"
-  [ngClass]="{'expanded': expanded}"
+  [ngClass]="{'condensed': !expanded}"
 >
   <!-- collapsed content -->
   <kor-icon
@@ -14,7 +14,7 @@
     <!-- empty state -->
     <kor-empty-state
       *ngIf="!components?.selectedComponent"
-      label="No component selected in the canvas"
+      label="No component selected"
       icon="tune"
     >
     </kor-empty-state>

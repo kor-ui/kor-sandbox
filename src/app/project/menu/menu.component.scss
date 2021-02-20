@@ -2,9 +2,12 @@
   display: flex;
   z-index: 1;
   kor-pane {
+    background: var(--base-3);
+    box-shadow: none;
+    border-right: 1px solid rgba(var(--neutral-1), .25);
     transition: .1s all ease-in-out;
     max-width: 320px;
-    &:not(.expanded) {
+    &.condensed {
       max-width: 56px;
     }
     kor-menu-item {
