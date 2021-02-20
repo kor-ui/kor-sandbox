@@ -26,29 +26,27 @@ export class ProjectComponent implements OnInit {
   subscribeToRoute(): void {
     this.route.params.subscribe((params) => {
       // extract projectId from route, if projectId is new, get and assign project
-      if (params.projectId && this.project?.uid !== params.projectId) {
-        this.firestore
-          .collection<Project>('projects')
-          .doc(params.projectId)
-          .valueChanges()
-          .subscribe((res: Project) => {
-            // assign project data
-            this.project = res;
-            this.getPages(this.project.uid).then(res => {
-              // assign pages gotten from promise
-              this.pages = res;
-              if (this.pages.length > 0) {
-                if (params.pageId) {
-                  // if a pageId param exists, assign page to currentPage
-                  this.currentPage = this.pages?.find(({ uid }) => uid === params.pageId);
-                } else {
-                  // else, assign first page of project to currentPage
-                  this.router.navigate([`project/${this.project?.uid}`, { pageId: this.pages[0].uid }]);
-                }
+      this.firestore
+        .collection<Project>('projects')
+        .doc(params.projectId)
+        .valueChanges()
+        .subscribe((res: Project) => {
+          // assign project data
+          this.project = res;
+          this.getPages(this.project.uid).then(res => {
+            // assign pages gotten from promise
+            this.pages = res;
+            if (this.pages?.length > 0) {
+              if (params.pageId) {
+                // if a pageId param exists, assign page to currentPage
+                this.currentPage = this.pages?.find(({ uid }) => uid === params.pageId);
+              } else {
+                // else, assign first page of project to currentPage
+                this.router.navigate([`project/${this.project?.uid}`, { pageId: this.pages[0].uid }]);
               }
-            });
+            }
           });
-      }
+        });
     });
   }
 
