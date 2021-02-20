@@ -1,6 +1,13 @@
 :host {
   display: flex;
   z-index: 1;
+  kor-pane {
+    transition: .1s all ease-in-out;
+    max-width: 320px;
+    &:not(.expanded) {
+      max-width: 56px;
+    }
+  }
   kor-card {
     min-height: 200px;
     max-height: 200px;

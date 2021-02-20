@@ -7,6 +7,7 @@ import { ComponentsService } from '../../services/components.service';
   styleUrls: ['./configuration.component.scss'],
 })
 export class ConfigurationComponent implements OnInit {
+  expanded = true;
   editorOptions = {
     theme: 'vs-light',
     language: 'text',
@@ -16,9 +17,9 @@ export class ConfigurationComponent implements OnInit {
     },
   };
 
-  constructor(public components: ComponentsService) {}
+  constructor(public components: ComponentsService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   removeSelectedElement(): void {
     const el = this.components.selectedElement;

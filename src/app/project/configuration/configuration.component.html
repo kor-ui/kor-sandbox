@@ -1,94 +1,96 @@
-<kor-pane [label]="components.selectedComponent?.name">
-  <!-- empty state -->
-  <kor-empty-state
-    *ngIf="!components?.selectedComponent"
-    label="No component selected in the canvas"
-    icon="tune"
-  >
-  </kor-empty-state>
-  <!-- content -->
-  <ng-container *ngIf="components?.selectedComponent">
-    <kor-icon
-      *ngIf="components?.selectedComponent"
-      button
-      icon="delete"
-      slot="functions"
-      (click)="removeSelectedElement()"
-    ></kor-icon>
-    <ng-container
-      *ngFor="let attr of components?.selectedComponent?.attributes"
+<kor-pane
+  [label]="expanded ? components.selectedComponent?.name : null"
+  [ngClass]="{'expanded': expanded}"
+>
+  <!-- collapsed content -->
+  <kor-icon
+    [icon]="expanded ? 'keyboard_arrow_right' : 'tune'"
+    button
+    (click)="expanded = !expanded"
+    [slot]="expanded ? 'functions' : ''"
+  ></kor-icon>
+  <!-- expanded content -->
+  <ng-container *ngIf="expanded">
+    <!-- empty state -->
+    <kor-empty-state
+      *ngIf="!components?.selectedComponent"
+      label="No component selected in the canvas"
+      icon="tune"
     >
-      <kor-input
-        *ngIf="attr.type == 'String' || attr.type == 'Number'"
-        [type]="attr.type == 'String' ? 'text' : 'number'"
-        [label]="attr.name"
-        [value]="components.selectedElement.getAttribute(attr.name)"
-        (value-changed)="
+    </kor-empty-state>
+    <!-- content -->
+    <ng-container *ngIf="components?.selectedComponent">
+      <ng-container *ngFor="let attr of components?.selectedComponent?.attributes">
+        <kor-input
+          *ngIf="attr.type == 'String' || attr.type == 'Number'"
+          [type]="attr.type == 'String' ? 'text' : 'number'"
+          [label]="attr.name"
+          [value]="components.selectedElement.getAttribute(attr.name)"
+          (value-changed)="
           setElementAttribute('string', attr.name, $event.target.value)
         "
-      ></kor-input>
-      <kor-checkbox
-        *ngIf="attr.type == 'Boolean'"
-        [label]="attr.name"
-        [active]="components.selectedElement.getAttribute(attr.name)"
-        (active-changed)="
+        ></kor-input>
+        <kor-checkbox
+          *ngIf="attr.type == 'Boolean'"
+          [label]="attr.name"
+          [active]="components.selectedElement.getAttribute(attr.name)"
+          (active-changed)="
           setElementAttribute('boolean', attr.name, $event.target.active)
         "
-      ></kor-checkbox>
-    </ng-container>
-    <!-- parent slots -->
-    <ng-container
-      *ngIf="components.getSlots(components.selectedElement?.parentElement)"
-    >
-      <kor-divider></kor-divider>
-      <kor-input
-        *ngIf="
+        ></kor-checkbox>
+      </ng-container>
+      <!-- parent slots -->
+      <ng-container *ngIf="components.getSlots(components.selectedElement?.parentElement)">
+        <kor-divider></kor-divider>
+        <kor-input
+          *ngIf="
           components.getSlots(components.selectedElement?.parentElement)
             .length > 1
         "
-        type="select"
-        label="slot"
-        [value]="components.selectedElement.getAttribute('slot')"
-        (value-changed)="
+          type="select"
+          label="slot"
+          [value]="components.selectedElement.getAttribute('slot')"
+          (value-changed)="
           setElementAttribute('string', 'slot', $event.target.value)
         "
-      >
-        <kor-menu-item
-          *ngFor="
+        >
+          <kor-menu-item
+            *ngFor="
             let slot of components.getSlots(
               components.selectedElement?.parentElement
             )
           "
-          [label]="slot.name !== '' ? slot.name : 'unnamed'"
-          [active]="
+            [label]="slot.name !== '' ? slot.name : 'unnamed'"
+            [active]="
             components.selectedElement.getAttribute('slot') == slot.name
           "
-        ></kor-menu-item>
-      </kor-input>
-    </ng-container>
-    <!-- inner text -->
-    <kor-divider></kor-divider>
-    <kor-card
-      label="Inner Text"
-      [style.display]="components?.selectedComponent.slots ? 'flex' : 'none'"
-    >
-      <ngx-monaco-editor
-        [options]="editorOptions"
-        [(ngModel)]="this.components.elementInnerText"
-        (keyup)="
+          ></kor-menu-item>
+        </kor-input>
+      </ng-container>
+      <!-- inner text -->
+      <kor-divider></kor-divider>
+      <kor-card
+        label="Inner Text"
+        [style.display]="components?.selectedComponent.slots ? 'flex' : 'none'"
+      >
+        <ngx-monaco-editor
+          [options]="editorOptions"
+          [(ngModel)]="this.components.elementInnerText"
+          (keyup)="
           components.selectedElement.innerText = this.components.elementInnerText
         "
-      ></ngx-monaco-editor>
-    </kor-card>
-    <!-- styles -->
-    <kor-card label="Styles">
-      <ngx-monaco-editor
-        [options]="editorOptions"
-        [(ngModel)]="this.components.elementStyles"
-        (keyup)="
+        ></ngx-monaco-editor>
+      </kor-card>
+      <!-- styles -->
+      <kor-card label="Styles">
+        <ngx-monaco-editor
+          [options]="editorOptions"
+          [(ngModel)]="this.components.elementStyles"
+          (keyup)="
           setElementAttribute('string', 'style', components.elementStyles)
         "
-      ></ngx-monaco-editor>
-    </kor-card>
+        ></ngx-monaco-editor>
+      </kor-card>
+    </ng-container>
   </ng-container>
 </kor-pane>
