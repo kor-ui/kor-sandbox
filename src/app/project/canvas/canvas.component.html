@@ -62,8 +62,8 @@
   <!-- canvas -->
   <div
     id="canvas"
-    [style.minHeight]="currentViewport?.height"
-    [style.minWidth]="currentViewport?.width"
+    [style.height]="currentViewport?.height"
+    [style.width]="currentViewport?.width"
     [style.zoom]="currentScale"
     (dragover)="drag.handleDragOver($event)"
     (dragleave)="drag.handleDragLeave($event)"

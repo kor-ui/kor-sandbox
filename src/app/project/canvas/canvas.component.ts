@@ -66,10 +66,7 @@ export class CanvasComponent implements OnInit {
   }
 
   rotateDevice(): void {
-    const previousWidth = this.currentViewport.width;
-    const previousHeight = this.currentViewport.height;
-    this.currentViewport.height = previousWidth;
-    this.currentViewport.width = previousHeight;
+    [this.currentViewport.height, this.currentViewport.width] = [this.currentViewport.width, this.currentViewport.height];
   }
 
   // update canvas html to match content property

@@ -6,25 +6,27 @@
   ></kor-button>
 </div>
 <!-- project list -->
-<kor-table>
-  <kor-table-row slot="header">
-    <kor-table-cell
-      head
-      grid-cols="12"
-    >Project name</kor-table-cell>
-    <kor-table-cell
-      head
-      grid-cols="12"
-    >Updated date</kor-table-cell>
-  </kor-table-row>
-  <kor-table-row
-    *ngFor="let project of projects"
-    (click)="router.navigateByUrl('/project/' + project.uid)"
-  >
-    <kor-table-cell grid-cols="12">{{project.name}}</kor-table-cell>
-    <kor-table-cell grid-cols="12">{{project.updatedDate.toDate() | date}}</kor-table-cell>
-  </kor-table-row>
-</kor-table>
+<kor-card>
+  <kor-table>
+    <kor-table-row slot="header">
+      <kor-table-cell
+        head
+        grid-cols="16"
+      >Project name</kor-table-cell>
+      <kor-table-cell
+        head
+        grid-cols="8"
+      >Updated date</kor-table-cell>
+    </kor-table-row>
+    <kor-table-row
+      *ngFor="let project of projects"
+      (click)="router.navigateByUrl('/project/' + project.uid)"
+    >
+      <kor-table-cell grid-cols="16">{{project.name}}</kor-table-cell>
+      <kor-table-cell grid-cols="8">{{project.updatedDate.toDate() | date}}</kor-table-cell>
+    </kor-table-row>
+  </kor-table>
+</kor-card>
 <!-- new project modal -->
 <app-new-project-modal
   *ngIf="newProjectModalVisible"

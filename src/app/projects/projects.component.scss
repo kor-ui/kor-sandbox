@@ -1,5 +1,5 @@
 :host {
-  width: 960px;
+  width: 1200px;
   max-width: 100%;
   margin: 0 auto;
   display: flex;
@@ -10,6 +10,15 @@
     kor-text {
       flex: 1;
       font-size: 24px;
+    }
+  }
+  kor-card {
+    height: fit-content;
+    overflow: unset;
+    box-shadow: unset;
+    border: 1px solid rgba(var(--neutral-1), .25);
+    kor-table {
+      max-height: unset;
     }
   }
 }
