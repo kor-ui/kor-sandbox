@@ -3,10 +3,26 @@
   <app-menu slot="left"></app-menu>
   <!-- the app canvas -->
   <app-canvas
-    [label]="project?.name + ' – ' + currentPage?.name"
     [content]="currentPage?.content"
     (save)="setCurrentPageContent($event)"
-  ></app-canvas>
+  >
+    <div
+      class="canvas-label"
+      slot="header"
+    >{{project?.name}} – {{currentPage?.name}}
+    </div>
+  </app-canvas>
   <!-- the configuration menu -->
   <app-configuration slot="right"></app-configuration>
 </kor-page>
+
+
+<kor-popover [target]="'.canvas-label'">
+  <kor-menu-item
+    *ngFor="let page of pages"
+    [label]="page.name"
+    [active]="currentPage.uid === page.uid"
+    [toggle]="false"
+    (click)="openPage(page.uid)"
+  ></kor-menu-item>
+</kor-popover>

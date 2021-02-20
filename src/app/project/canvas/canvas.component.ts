@@ -43,7 +43,6 @@ export class CanvasComponent implements OnInit {
     y: null,
   };
   @Input() content: string;
-  @Input() label: string;
   @Output() save = new EventEmitter<string>();
 
   constructor(public drag: DragService, public components: ComponentsService) { }

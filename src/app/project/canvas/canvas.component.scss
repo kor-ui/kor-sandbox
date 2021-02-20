@@ -4,6 +4,7 @@
   .functions {
     display: flex;
     align-items: center;
+    margin: auto;
     > * + * {
       margin-left: 8px;
     }
@@ -27,7 +28,6 @@
   #canvas {
     margin: auto;
     > kor-page {
-      pointer-events: none;
       perspective: 1px;
       border: 1px solid rgba(var(--neutral-1), 0.6);
     }

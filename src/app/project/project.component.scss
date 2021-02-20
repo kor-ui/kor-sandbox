@@ -2,4 +2,18 @@
   width: calc(100% + 32px);
   height: calc(100% + 32px);
   margin: -16px;
+  .canvas-label {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: .1s all ease-in-out;
+    font: var(--header-1);
+    color: var(--text-1);
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(var(--neutral-1), .1);
+    }
+  }
 }

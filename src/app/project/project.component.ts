@@ -42,7 +42,7 @@ export class ProjectComponent implements OnInit {
                 this.currentPage = this.pages?.find(({ uid }) => uid === params.pageId);
               } else {
                 // else, assign first page of project to currentPage
-                this.router.navigate([`project/${this.project?.uid}`, { pageId: this.pages[0].uid }]);
+                this.openPage(this.pages[0].uid);
               }
             }
           });
@@ -71,6 +71,11 @@ export class ProjectComponent implements OnInit {
       .doc(this.project.uid)
       .collection<Page>('pages')
       .doc(this.currentPage.uid).update({ 'content': content });
+  }
+
+  // open a page given the id
+  openPage(pageId: string): void {
+    this.router.navigate([`project/${this.project?.uid}`, { pageId: pageId }]);
   }
 
 }
