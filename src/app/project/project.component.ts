@@ -68,9 +68,10 @@ export class ProjectComponent implements OnInit {
   setCurrentPageContent(content: string): void {
     this.firestore
       .collection<Project>('projects')
-      .doc(this.project.uid)
+      .doc(this.project?.uid)
       .collection<Page>('pages')
-      .doc(this.currentPage.uid).update({ 'content': content });
+      .doc(this.currentPage?.uid)
+      .update({ 'content': content });
   }
 
   // open a page given the id

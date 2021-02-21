@@ -28,10 +28,7 @@
   #canvas {
     margin: auto;
     perspective: 1px;
-    > kor-page {
-      perspective: 1px;
-      border: 1px solid rgba(var(--neutral-1), 0.6);
-    }
+    border: 2px solid rgba(var(--neutral-1), .25);
   }
   kor-modal > ngx-monaco-editor {
     height: 100%;
