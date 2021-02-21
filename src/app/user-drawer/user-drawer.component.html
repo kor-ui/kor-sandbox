@@ -1,0 +1,16 @@
+<kor-drawer
+  [visible]="visible"
+  (visible-changed)="!$event.target.visible ? closeDrawer() : ''"
+  position="right"
+>
+  <kor-avatar
+    slot="header"
+    [label]="userService.user?.name"
+    [info]="userService.user?.email"
+    [image]="userService.user?.image"
+  ></kor-avatar>
+  <kor-menu-item
+    label="Sign Out"
+    (click)="userService.signOut(); close.emit()"
+  ></kor-menu-item>
+</kor-drawer>

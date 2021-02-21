@@ -17,6 +17,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { ProjectsComponent } from './projects/projects.component';
 import { NewProjectModalComponent } from './projects/new-project-modal/new-project-modal.component';
+import { UserDrawerComponent } from './user-drawer/user-drawer.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NewProjectModalComponent } from './projects/new-project-modal/new-proje
     SignInComponent,
     ProjectsComponent,
     NewProjectModalComponent,
+    UserDrawerComponent,
   ],
   imports: [
     BrowserModule,

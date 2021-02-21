@@ -7,7 +7,7 @@
   >
     <kor-avatar
       slot="functions"
-      (click)="!userService.user ? userService.signInModalVisible = true : ''"
+      (click)="!userService.user ? userService.signInModalVisible = true : userService.userDrawerVisible = true"
       [label]="userService.user?.name"
       [info]="userService.user?.email"
       [image]="userService.user?.image"
@@ -21,3 +21,8 @@
   *ngIf="userService.signInModalVisible"
   (close)="userService.signInModalVisible = false"
 ></app-sign-in>
+<!-- user drawer -->
+<app-user-drawer
+  *ngIf="userService.userDrawerVisible"
+  (close)="userService.userDrawerVisible = false"
+></app-user-drawer>

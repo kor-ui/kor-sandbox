@@ -9,6 +9,7 @@ import { AngularFirestore, DocumentSnapshot } from '@angular/fire/firestore';
 })
 export class UserService {
   signInModalVisible: boolean;
+  userDrawerVisible: boolean;
   user: User;
 
   constructor(public auth: AngularFireAuth, public firestore: AngularFirestore) {
@@ -37,18 +38,22 @@ export class UserService {
 
   // set a new user
   setUser(authUser: firebase.User) {
-    const userData: User = {
-      name: authUser.displayName,
-      image: authUser.photoURL,
-      email: authUser.email,
-      uid: authUser.uid
-    };
-    this.firestore
-      .collection<User>('users')
-      .doc(authUser.uid)
-      .set(userData).then(() => {
-        this.subscribeToUser(userData);
-      });
+    if (authUser) {
+      const userData: User = {
+        name: authUser.displayName,
+        image: authUser.photoURL,
+        email: authUser.email,
+        uid: authUser.uid
+      };
+      this.firestore
+        .collection<User>('users')
+        .doc(authUser.uid)
+        .set(userData).then(() => {
+          this.subscribeToUser(userData);
+        });
+    } else {
+      this.user = null;
+    }
   }
 
   // subscribe to user document
@@ -60,5 +65,10 @@ export class UserService {
       .subscribe((res: User) => {
         this.user = res;
       });
+  }
+
+  // sign user out
+  signOut(): void {
+    this.auth.signOut();
   }
 }
