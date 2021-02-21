@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentSnapshot } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { Page, Project } from '../interfaces';
+import { Page, Project, User } from '../interfaces';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -57,5 +57,4 @@ export class ProjectsComponent implements OnInit {
       .doc(newPage.uid)
       .set(newPage);
   }
-
 }

@@ -7,19 +7,26 @@
     <kor-table-row slot="header">
       <kor-table-cell
         head
-        grid-cols="16"
+        grid-cols="12"
       >Project name</kor-table-cell>
       <kor-table-cell
         head
-        grid-cols="8"
+        grid-cols="6"
       >Updated date</kor-table-cell>
+      <kor-table-cell
+        head
+        grid-cols="6"
+      >Owner</kor-table-cell>
     </kor-table-row>
     <kor-table-row
       *ngFor="let project of projects"
       (click)="router.navigateByUrl('/project/' + project.uid)"
     >
-      <kor-table-cell grid-cols="16">{{project.name}}</kor-table-cell>
-      <kor-table-cell grid-cols="8">{{project.updatedDate.toDate() | date}}</kor-table-cell>
+      <kor-table-cell grid-cols="12">{{project.name}}</kor-table-cell>
+      <kor-table-cell grid-cols="6">{{project.updatedDate.toDate() | date}}</kor-table-cell>
+      <kor-table-cell grid-cols="6">
+        <app-user-avatar [userId]="project.owner"></app-user-avatar>
+      </kor-table-cell>
     </kor-table-row>
   </kor-table>
   <kor-button

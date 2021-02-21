@@ -15,25 +15,25 @@ export class UserService {
   constructor(public auth: AngularFireAuth, public firestore: AngularFirestore) {
     // listen to auth state change and update user
     this.auth.onAuthStateChanged((authUser: firebase.User) => {
-      this.getUser(authUser);
+      this.getUser(authUser?.uid)
+        .then((res: DocumentSnapshot<User>) => {
+          // if user exists, subscribe to it, if not, set a new user
+          if (res.exists) {
+            this.subscribeToUser(res.data());
+          } else {
+            this.setUser(authUser);
+          }
+        });
     });
   }
 
   // search user database for authUser uid
-  getUser(authUser: firebase.User): void {
-    this.firestore
-      .collection('users')
-      .doc(authUser?.uid)
+  getUser(userId: string): Promise<any> {
+    return this.firestore
+      .collection<User>('users')
+      .doc(userId)
       .get()
-      .toPromise()
-      .then((res: DocumentSnapshot<User>) => {
-        // if user exists, subscribe to it, if not, set a new user
-        if (res.exists) {
-          this.subscribeToUser(res.data());
-        } else {
-          this.setUser(authUser);
-        }
-      });
+      .toPromise();
   }
 
   // set a new user

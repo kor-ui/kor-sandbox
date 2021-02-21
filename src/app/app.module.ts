@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment';
 import { ProjectsComponent } from './projects/projects.component';
 import { NewProjectModalComponent } from './projects/new-project-modal/new-project-modal.component';
 import { UserDrawerComponent } from './user-drawer/user-drawer.component';
+import { UserAvatarComponent } from './user-avatar/user-avatar.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { UserDrawerComponent } from './user-drawer/user-drawer.component';
     ProjectsComponent,
     NewProjectModalComponent,
     UserDrawerComponent,
+    UserAvatarComponent,
   ],
   imports: [
     BrowserModule,
