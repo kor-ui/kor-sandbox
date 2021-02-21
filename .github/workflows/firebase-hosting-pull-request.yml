@@ -13,6 +13,7 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KOR_SANDBOX }}'
+          channelId: live
           projectId: kor-ui
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
