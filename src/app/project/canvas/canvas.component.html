@@ -55,6 +55,7 @@
     >
     </kor-button>
     <kor-button
+      *ngIf="!readonly"
       label="Save"
       (click)="save.emit(content)"
     ></kor-button>

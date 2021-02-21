@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Page, Project } from '../interfaces';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-project',
@@ -16,7 +17,8 @@ export class ProjectComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     public firestore: AngularFirestore,
-    public router: Router
+    public router: Router,
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -71,7 +73,16 @@ export class ProjectComponent implements OnInit {
       .doc(this.project?.uid)
       .collection<Page>('pages')
       .doc(this.currentPage?.uid)
-      .update({ 'content': content });
+      .update({ 'content': content })
+      .then(() => this.setProjectUpdatedDate());
+  }
+
+  // set project's updated date
+  setProjectUpdatedDate(): void {
+    this.firestore
+      .collection<Project>('projects')
+      .doc(this.project?.uid)
+      .update({ 'updatedDate': new Date() });
   }
 
   // open a page given the id

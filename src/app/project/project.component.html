@@ -3,6 +3,7 @@
   <app-menu slot="left"></app-menu>
   <!-- the app canvas -->
   <app-canvas
+    [readonly]="project?.owner !== userService.user?.uid"
     [content]="currentPage?.content"
     (save)="setCurrentPageContent($event)"
   >
@@ -15,8 +16,7 @@
   <!-- the configuration menu -->
   <app-configuration slot="right"></app-configuration>
 </kor-page>
-
-
+<!-- change page popover -->
 <kor-popover [target]="'.canvas-label'">
   <kor-menu-item
     *ngFor="let page of pages"
