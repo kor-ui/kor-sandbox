@@ -12,13 +12,4 @@
       font-size: 24px;
     }
   }
-  kor-card {
-    height: fit-content;
-    overflow: unset;
-    box-shadow: unset;
-    border: 1px solid rgba(var(--neutral-1), .25);
-    kor-table {
-      max-height: unset;
-    }
-  }
 }
