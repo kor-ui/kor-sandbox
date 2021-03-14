@@ -36,8 +36,5 @@ app-canvas {
     &.drop-inside {
       outline-color: rgb(var(--functional-green));
     }
-    &.drop-inside-error {
-      outline-color: rgb(var(--functional-red));
-    }
   }
 }
