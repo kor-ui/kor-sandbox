@@ -17,8 +17,15 @@ export class ComponentsService {
   }
 
   getAllComponents(): void {
-    require('../../assets/custom-elements.json').tags.forEach(el => this.allComponents.push(el));
-    require('../../assets/native-elements.json').tags.forEach(el => this.allComponents.push(el));
+    // get custom and native elements
+    require('../../assets/custom-elements.json').tags.forEach(el => {
+      this.allComponents.push(el);
+    });
+    require('../../assets/native-elements.json').tags.forEach(el => {
+      this.allComponents.push(el);
+    });
+    // then sort alphabetically by component name
+    this.allComponents.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   selectComponent(tar: any): void {
