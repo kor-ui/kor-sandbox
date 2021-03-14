@@ -39,13 +39,18 @@ export class DragService {
   handleDrop(e): Promise<string> {
     return new Promise((resolve) => {
       this.getDropElement(e).then((el) => {
+        // check if target parent has slots
         if (this.components.getSlots(e.target)) {
+          // append if so
           e.target.appendChild(el);
-          setTimeout(() => {
-            this.components.selectComponent(el);
-          }, 0);
         } else {
+          // insert before if not
           e.target.parentElement.insertBefore(el, e.target);
+          // if target el has slot, set drop el slot to match it
+          const targetSlot = e.target.getAttribute('slot');
+          if (targetSlot) {
+            el.setAttribute('slot', targetSlot);
+          }
         }
       }).then(() => {
         // cleanup
@@ -60,19 +65,17 @@ export class DragService {
     return new Promise((resolve) => {
       // continue if container has slots
       const data = e.dataTransfer.getData('text/plain');
-      if (data.includes('kor-')) {
-        // create element if dropping from menu
-        const name = data.slice(1, data.length - 1);
-        this.createElement(name).then((el) => {
-          resolve(el);
-        });
-      } else {
+      if (data === 'drag-copy') {
         // move element if dropping from canvas
         const el = document.getElementById(data);
-        e.target.appendChild(el);
         el.removeAttribute('id');
         el.removeAttribute('slot');
         resolve(el);
+      } else {
+        // create element if dropping from menu
+        this.createElement(data.slice(1, -1)).then((el) => {
+          resolve(el);
+        });
       }
     });
   }

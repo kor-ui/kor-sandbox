@@ -20,22 +20,22 @@
     </kor-empty-state>
     <!-- content -->
     <ng-container *ngIf="components?.selectedComponent">
-      <ng-container *ngFor="let attr of components?.selectedComponent?.attributes">
+      <ng-container *ngFor="let prop of components?.selectedComponent?.properties">
         <kor-input
-          *ngIf="attr.type == 'String' || attr.type == 'Number'"
-          [type]="attr.type == 'String' ? 'text' : 'number'"
-          [label]="attr.name"
-          [value]="components.selectedElement.getAttribute(attr.name)"
+          *ngIf="prop.type == 'String' || prop.type == 'Number'"
+          [type]="prop.type == 'String' ? 'text' : 'number'"
+          [label]="prop.name"
+          [value]="components.selectedElement.getAttribute(prop.name)"
           (value-changed)="
-          setElementAttribute('string', attr.name, $event.target.value)
+          setElementAttribute('string', prop.name, $event.target.value)
         "
         ></kor-input>
         <kor-checkbox
-          *ngIf="attr.type == 'Boolean'"
-          [label]="attr.name"
-          [active]="components.selectedElement.getAttribute(attr.name)"
+          *ngIf="prop.type == 'Boolean'"
+          [label]="prop.name"
+          [active]="components.selectedElement.getAttribute(prop.name)"
           (active-changed)="
-          setElementAttribute('boolean', attr.name, $event.target.active)
+          setElementAttribute('boolean', prop.name, $event.target.active)
         "
         ></kor-checkbox>
       </ng-container>

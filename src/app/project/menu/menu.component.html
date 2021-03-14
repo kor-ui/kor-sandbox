@@ -11,18 +11,38 @@
   ></kor-icon>
   <!-- expanded content -->
   <ng-container *ngIf="expanded">
-    <kor-menu-item
-      *ngFor="let component of components.allComponents"
-      [label]="component.name"
-      [toggle]="false"
-      draggable="true"
-      (dragstart)="drag.handleDragStart($event, component.name, 'copy')"
-    >
-      <kor-icon
-        slot="functions"
-        icon="drag_handle"
-        button
-      ></kor-icon>
-    </kor-menu-item>
+    <!-- kor components -->
+    <ng-container *ngFor="let component of components.allComponents">
+      <kor-menu-item
+        *ngIf="component.name.startsWith('kor-')"
+        [label]="component.name"
+        [toggle]="false"
+        draggable="true"
+        (dragstart)="drag.handleDragStart($event, component.name, 'copy')"
+      >
+        <kor-icon
+          slot="functions"
+          icon="drag_handle"
+          button
+        ></kor-icon>
+      </kor-menu-item>
+    </ng-container>
+    <kor-divider></kor-divider>
+    <!-- native elements -->
+    <ng-container *ngFor="let component of components.allComponents">
+      <kor-menu-item
+        *ngIf="!component.name.startsWith('kor-')"
+        [label]="component.name"
+        [toggle]="false"
+        draggable="true"
+        (dragstart)="drag.handleDragStart($event, component.name, 'copy')"
+      >
+        <kor-icon
+          slot="functions"
+          icon="drag_handle"
+          button
+        ></kor-icon>
+      </kor-menu-item>
+    </ng-container>
   </ng-container>
 </kor-pane>

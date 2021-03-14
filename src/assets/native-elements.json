@@ -1,0 +1,16 @@
+{
+  "tags": [
+    {
+      "name": "div",
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Defines the tooltip shown on hover.",
+          "type": "String",
+          "default": "\"Title\""
+        }
+      ]
+    }
+  ]
+}

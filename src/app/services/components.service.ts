@@ -6,17 +6,20 @@ declare const require;
   providedIn: 'root',
 })
 export class ComponentsService {
-  allComponents = require('../../assets/custom-elements.json').tags.sort(
-    (a, b) => {
-      return a.name > b.name ? 1 : -1;
-    }
-  );
+  allComponents = [];
   selectedElement: HTMLElement;
   selectedComponent: any;
   elementStyles: string;
   elementInnerText: string;
 
-  constructor() {}
+  constructor() {
+    this.getAllComponents();
+  }
+
+  getAllComponents(): void {
+    require('../../assets/custom-elements.json').tags.forEach(el => this.allComponents.push(el));
+    require('../../assets/native-elements.json').tags.forEach(el => this.allComponents.push(el));
+  }
 
   selectComponent(tar: any): void {
     this.selectedElement = tar;
