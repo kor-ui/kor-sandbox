@@ -52,6 +52,8 @@ export class DragService {
             el.setAttribute('slot', targetSlot);
           }
         }
+        // then select the element
+        this.components.selectComponent(el);
       }).then(() => {
         // cleanup
         e.dataTransfer.clearData();
