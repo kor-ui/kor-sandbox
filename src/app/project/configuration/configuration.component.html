@@ -69,28 +69,20 @@
       </ng-container>
       <!-- inner text -->
       <kor-divider></kor-divider>
-      <kor-card
+      <kor-textarea
+        *ngIf="components?.selectedComponent.slots"
         label="Inner Text"
-        [style.display]="components?.selectedComponent.slots ? 'flex' : 'none'"
-      >
-        <ngx-monaco-editor
-          [options]="editorOptions"
-          [(ngModel)]="this.components.elementInnerText"
-          (keyup)="
-          components.selectedElement.innerText = this.components.elementInnerText
-        "
-        ></ngx-monaco-editor>
-      </kor-card>
+        rows="4"
+        [value]="components.elementInnerText"
+        (change)="components.elementInnerText = $event.target.value; components.selectedElement.innerText = components.elementInnerText"
+      ></kor-textarea>
       <!-- styles -->
-      <kor-card label="Styles">
-        <ngx-monaco-editor
-          [options]="editorOptions"
-          [(ngModel)]="this.components.elementStyles"
-          (keyup)="
-          setElementAttribute('string', 'style', components.elementStyles)
-        "
-        ></ngx-monaco-editor>
-      </kor-card>
+      <kor-textarea
+        label="Style"
+        rows="4"
+        [value]="components.elementStyles"
+        (change)="components.elementStyles = $event.target.value; setElementAttribute('string', 'style', components.elementStyles)"
+      ></kor-textarea>
     </ng-container>
   </ng-container>
 </kor-pane>
