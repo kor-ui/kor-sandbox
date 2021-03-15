@@ -2,7 +2,7 @@
   "tags": [
     {
       "name": "div",
-      "properties": [
+      "attributes": [
         {
           "name": "title",
           "attribute": "title",
