@@ -40,13 +40,9 @@
         ></kor-checkbox>
       </ng-container>
       <!-- parent slots -->
-      <ng-container *ngIf="components.getSlots(components.selectedElement?.parentElement)">
+      <ng-container *ngIf="components.getSlots(components.selectedElement?.parentElement).length > 1">
         <kor-divider></kor-divider>
         <kor-input
-          *ngIf="
-          components.getSlots(components.selectedElement?.parentElement)
-            .length > 1
-        "
           type="select"
           label="slot"
           [value]="components.selectedElement.getAttribute('slot')"

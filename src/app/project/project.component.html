@@ -21,7 +21,7 @@
   <kor-menu-item
     *ngFor="let page of pages"
     [label]="page.name"
-    [active]="currentPage.uid === page.uid"
+    [active]="currentPage?.uid === page.uid"
     [toggle]="false"
     (click)="openPage(page.uid)"
   ></kor-menu-item>
