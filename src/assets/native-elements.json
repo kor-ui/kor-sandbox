@@ -10,6 +10,12 @@
           "type": "String",
           "default": "\"Title\""
         }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "description": ""
+        }
       ]
     }
   ]
