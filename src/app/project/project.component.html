@@ -7,10 +7,7 @@
     [content]="currentPage?.content"
     (save)="setCurrentPageContent($event)"
   >
-    <div
-      class="canvas-label"
-      slot="header"
-    >{{project?.name}} – {{currentPage?.name}}
+    <div class="canvas-label">{{project?.name}} – {{currentPage?.name}}
     </div>
   </app-canvas>
   <!-- the configuration menu -->

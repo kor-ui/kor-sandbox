@@ -1,5 +1,6 @@
 :host {
   display: flex;
+  flex-direction: column;
   width: 100%;
   .functions {
     width: 100%;
@@ -27,10 +28,18 @@
       }
     }
   }
-  #canvas {
-    margin: auto;
-    perspective: 1px;
-    border: 2px solid rgba(var(--neutral-1), .25);
+  .body {
+    overflow: auto;
+    margin: 16px auto;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    #canvas {
+      margin: auto;
+      perspective: 1px;
+      border: 2px solid rgba(var(--neutral-1), .25);
+    }
   }
   kor-modal > ngx-monaco-editor {
     height: 100%;
