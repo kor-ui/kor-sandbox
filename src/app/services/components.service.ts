@@ -35,9 +35,29 @@ export class ComponentsService {
     this.selectedComponent = this.allComponents.find(
       (el: any) => el.name === tar.tagName.toLowerCase()
     );
-    const selectedComponents = document.querySelectorAll('.selected-component');
-    selectedComponents.forEach((el) => el.removeAttribute('class'));
-    tar.classList.add('selected-component');
+    this.unselectAllComponents().then(() => {
+      tar.classList.add('selected-component');
+    });
+  }
+
+  unselectAllComponents(): Promise<void> {
+    const selectedClass = 'selected-component';
+    const selectedComponents = document.querySelectorAll(`.${selectedClass}`);
+    return new Promise((resolve) => {
+      if (selectedComponents.length > 0) {
+        selectedComponents.forEach((el) => {
+          if (el.classList.length === 1) {
+            el.removeAttribute('class');
+            resolve();
+          } else {
+            el.classList.remove(selectedClass);
+            resolve();
+          }
+        });
+      } else {
+        resolve();
+      }
+    });
   }
 
   getSlots(el: HTMLElement): any {

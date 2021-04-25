@@ -99,13 +99,19 @@ export class CanvasComponent implements OnInit {
   }
 
   removeElement(el: HTMLElement | undefined): void {
+    this.showContextMenu = false;
     el?.parentNode?.removeChild(el);
+    this.components.selectedComponent = undefined;
   }
 
   duplicateElement(el: HTMLElement | undefined): void {
-    const clone = el?.cloneNode(true);
-    if (clone) {
-      el?.parentNode?.appendChild(clone);
-    }
+    this.showContextMenu = false;
+    this.components.unselectAllComponents().then(() => {
+      const clone = el?.cloneNode(true);
+      if (clone) {
+        this.components.selectedComponent = undefined;
+        el?.parentNode?.appendChild(clone);
+      }
+    });
   }
 }
