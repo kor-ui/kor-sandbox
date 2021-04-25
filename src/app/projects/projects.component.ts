@@ -26,7 +26,7 @@ export class ProjectsComponent implements OnInit {
   // get all projects
   getProjects(): void {
     this.firestore
-      .collection<Project>('projects')
+      .collection<Project>('projects', ref => ref.orderBy('updatedDate', 'desc'))
       .valueChanges()
       .subscribe((res: Project[]) => {
         this.projects = res;
