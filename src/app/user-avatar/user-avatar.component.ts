@@ -9,16 +9,18 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./user-avatar.component.scss']
 })
 export class UserAvatarComponent implements OnInit {
-  @Input() userId: string;
-  user: User;
+  @Input() userId: string | undefined;
+  user: User | undefined;
 
   constructor(public userService: UserService) { }
 
   ngOnInit(): void {
     // get user document on load
-    this.userService.getUser(this.userId).then((res: DocumentSnapshot<User>) => {
-      this.user = res.data();
-    });
+    if (this.userId) {
+      this.userService.getUser(this.userId).then((res: DocumentSnapshot<User>) => {
+        this.user = res.data();
+      });
+    }
   }
 
 }

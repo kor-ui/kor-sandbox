@@ -25,7 +25,7 @@
           *ngIf="attr.type == 'String' || attr.type == 'Number'"
           [type]="attr.type == 'String' ? 'text' : 'number'"
           [label]="attr.name"
-          [value]="components.selectedElement.getAttribute(attr.name)"
+          [value]="components.selectedElement?.getAttribute(attr.name)"
           (value-changed)="
           setElementAttribute('string', attr.name, $event.target.value)
         "
@@ -33,19 +33,19 @@
         <kor-checkbox
           *ngIf="attr.type == 'Boolean'"
           [label]="attr.name"
-          [active]="components.selectedElement.getAttribute(attr.name)"
+          [active]="components.selectedElement?.getAttribute(attr.name)"
           (active-changed)="
           setElementAttribute('boolean', attr.name, $event.target.active)
         "
         ></kor-checkbox>
       </ng-container>
       <!-- parent slots -->
-      <ng-container *ngIf="components.getSlots(components.selectedElement?.parentElement).length > 1">
+      <ng-container *ngIf="components.getSlots(components.selectedElement?.parentElement)?.length > 1">
         <kor-divider></kor-divider>
         <kor-input
           type="select"
           label="slot"
-          [value]="components.selectedElement.getAttribute('slot')"
+          [value]="components.selectedElement?.getAttribute('slot')"
           (value-changed)="
           setElementAttribute('string', 'slot', $event.target.value)
         "
@@ -58,19 +58,20 @@
           "
             [label]="slot.name !== '' ? slot.name : 'unnamed'"
             [active]="
-            components.selectedElement.getAttribute('slot') == slot.name
+            components.selectedElement?.getAttribute('slot') == slot.name
           "
           ></kor-menu-item>
         </kor-input>
       </ng-container>
       <kor-divider></kor-divider>
       <!-- inner text -->
+      <!-- TODO: move change logic to its own function -->
       <kor-textarea
         *ngIf="components?.selectedComponent.slots"
         label="Inner Text"
         rows="4"
         [value]="components.elementInnerText"
-        (change)="components.elementInnerText = $event.target.value; components.selectedElement.innerText = components.elementInnerText"
+        (change)="components.elementInnerText = $event.target.value; components.elementInnerText ? components.selectedElement!.innerText = components.elementInnerText : ''"
       ></kor-textarea>
       <!-- styles -->
       <kor-textarea

@@ -89,10 +89,11 @@
       $event.stopImmediatePropagation()
     "
   ></kor-menu-item>
+  <!-- TODO: move delete logic to function -->
   <kor-menu-item
     label="Delete"
     (click)="
-      removeElement(components.selectedElement);
+      removeElement(components?.selectedElement);
       $event.stopImmediatePropagation()
     "
   ></kor-menu-item>

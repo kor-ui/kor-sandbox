@@ -10,9 +10,9 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./project.component.scss']
 })
 export class ProjectComponent implements OnInit {
-  project: Project;
-  pages: Page[];
-  currentPage: Page;
+  project: Project | undefined;
+  pages: Page[] | undefined;
+  currentPage: Page | undefined;
 
   constructor(
     public route: ActivatedRoute,
@@ -32,22 +32,24 @@ export class ProjectComponent implements OnInit {
         .collection<Project>('projects')
         .doc(params.projectId)
         .valueChanges()
-        .subscribe((res: Project) => {
+        .subscribe((res: Project | undefined) => {
           // assign project data
           this.project = res;
-          this.getPages(this.project.uid).then(res => {
-            // assign pages gotten from promise
-            this.pages = res;
-            if (this.pages?.length > 0) {
-              if (params.pageId) {
-                // if a pageId param exists, assign page to currentPage
-                this.currentPage = this.pages?.find(({ uid }) => uid === params.pageId);
-              } else {
-                // else, assign first page of project to currentPage
-                this.openPage(this.pages[0].uid);
+          if (this.project) {
+            this.getPages(this.project.uid!).then(res => {
+              // assign pages gotten from promise
+              this.pages = res;
+              if (this.pages?.length > 0) {
+                if (params.pageId) {
+                  // if a pageId param exists, assign page to currentPage
+                  this.currentPage = this.pages?.find(({ uid }) => uid === params.pageId);
+                } else {
+                  // else, assign first page of project to currentPage
+                  this.openPage(this.pages[0].uid);
+                }
               }
-            }
-          });
+            });
+          }
         });
     });
   }

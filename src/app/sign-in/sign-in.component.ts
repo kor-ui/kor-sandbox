@@ -9,7 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
-  visible: boolean;
+  visible: boolean | undefined;
   @Output() close = new EventEmitter();
 
   constructor(public userService: UserService, public auth: AngularFireAuth) { }
@@ -29,16 +29,12 @@ export class SignInComponent implements OnInit {
 
   // triggers firebase auth
   signIn(provider: string): void {
-    this.auth
-      .signInWithPopup(
-        provider === 'google'
-          ? new firebase.auth.GoogleAuthProvider()
-          : provider === 'facebook'
-            ? new firebase.auth.FacebookAuthProvider()
-            : undefined
-      )
-      .then(() => {
-        this.closeModal();
-      });
+    const providers: { [key: string]: any; } = {
+      google: new firebase.auth.GoogleAuthProvider(),
+      facebook: new firebase.auth.FacebookAuthProvider()
+    };
+    this.auth.signInWithPopup(providers[provider]).then(() => {
+      this.closeModal();
+    });
   }
 }

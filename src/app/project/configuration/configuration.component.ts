@@ -23,7 +23,7 @@ export class ConfigurationComponent implements OnInit {
 
   removeSelectedElement(): void {
     const el = this.components.selectedElement;
-    el.parentNode.removeChild(el);
+    el?.parentNode?.removeChild(el);
   }
 
   setElementAttribute(type: string, name: string, value: any): void {
@@ -31,15 +31,15 @@ export class ConfigurationComponent implements OnInit {
     if (type === 'boolean') {
       // boolean handler
       if (value) {
-        el.setAttribute(name, value);
+        el?.setAttribute(name, value);
       } else {
-        el.removeAttribute(name);
+        el?.removeAttribute(name);
       }
     } else {
       if (value !== null && value !== 'unnamed') {
-        el.setAttribute(name, value);
+        el?.setAttribute(name, value);
       } else {
-        el.removeAttribute(name);
+        el?.removeAttribute(name);
       }
     }
   }

@@ -7,7 +7,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./user-drawer.component.scss']
 })
 export class UserDrawerComponent implements OnInit {
-  visible: boolean;
+  visible: boolean | undefined;
   @Output() close = new EventEmitter();
 
   constructor(public userService: UserService) { }

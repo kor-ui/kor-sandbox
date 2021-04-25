@@ -8,7 +8,7 @@ export class DragService {
   constructor(public components: ComponentsService) { }
 
   // start dragging
-  handleDragStart(e, name: string, type: string): void {
+  handleDragStart(e: any, name: string, type: string): void {
     let data;
     if (type === 'copy') {
       data = JSON.stringify(name);
@@ -20,7 +20,7 @@ export class DragService {
   }
 
   // drag over canvas
-  handleDragOver(e): void {
+  handleDragOver(e: any): void {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'copy';
     if (this.components.getSlots(e.target)) {
@@ -31,12 +31,12 @@ export class DragService {
   }
 
   // drag over canvas
-  handleDragLeave(e): void {
+  handleDragLeave(e: any): void {
     e.target.removeAttribute('class');
   }
 
   // drop on canvas
-  handleDrop(e): Promise<string> {
+  handleDrop(e: any): Promise<string> {
     return new Promise((resolve) => {
       this.getDropElement(e).then((el) => {
         // check if target parent has slots
@@ -49,7 +49,7 @@ export class DragService {
           // if target el has slot, set drop el slot to match it
           const targetSlot = e.target.getAttribute('slot');
           if (targetSlot) {
-            el.setAttribute('slot', targetSlot);
+            el?.setAttribute('slot', targetSlot);
           }
         }
         // then select the element
@@ -63,15 +63,15 @@ export class DragService {
     });
   }
 
-  getDropElement(e): Promise<HTMLElement> {
+  getDropElement(e: any): Promise<HTMLElement | null> {
     return new Promise((resolve) => {
       // continue if container has slots
       const data = e.dataTransfer.getData('text/plain');
       if (data === 'drag-copy') {
         // move element if dropping from canvas
         const el = document.getElementById(data);
-        el.removeAttribute('id');
-        el.removeAttribute('slot');
+        el?.removeAttribute('id');
+        el?.removeAttribute('slot');
         resolve(el);
       } else {
         // create element if dropping from menu
@@ -92,9 +92,9 @@ export class DragService {
 
   addComponentListeners(tar: any): void {
     tar.draggable = true;
-    tar.ondragstart = (e) =>
+    tar.ondragstart = (e: Event) =>
       this.handleDragStart(e, tar.tagName.toLowerCase(), 'move');
-    tar.onmouseover = (e) => {
+    tar.onmouseover = (e: Event) => {
       tar.classList.add('hovered-component');
       e.stopPropagation();
     };

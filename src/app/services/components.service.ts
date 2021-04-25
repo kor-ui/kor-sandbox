@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 
-declare const require;
+declare const require: any;
 
 @Injectable({
   providedIn: 'root',
 })
 export class ComponentsService {
-  allComponents = [];
-  selectedElement: HTMLElement;
+  allComponents: any[] = [];
+  selectedElement: HTMLElement | undefined;
   selectedComponent: any;
-  elementStyles: string;
-  elementInnerText: string;
+  elementStyles: string | undefined | null;
+  elementInnerText: string | undefined;
 
   constructor() {
     this.getAllComponents();
@@ -18,31 +18,31 @@ export class ComponentsService {
 
   getAllComponents(): void {
     // get custom and native elements
-    require('../../assets/custom-elements.json').tags.forEach(el => {
+    require('../../assets/custom-elements.json').tags.forEach((el: any) => {
       this.allComponents.push(el);
     });
-    require('../../assets/native-elements.json').tags.forEach(el => {
+    require('../../assets/native-elements.json').tags.forEach((el: any) => {
       this.allComponents.push(el);
     });
     // then sort alphabetically by component name
-    this.allComponents.sort((a, b) => a.name.localeCompare(b.name));
+    this.allComponents.sort((a: any, b: any) => a.name.localeCompare(b.name));
   }
 
   selectComponent(tar: any): void {
     this.selectedElement = tar;
-    this.elementStyles = this.selectedElement.getAttribute('style');
-    this.elementInnerText = this.selectedElement.innerText;
+    this.elementStyles = this.selectedElement?.getAttribute('style');
+    this.elementInnerText = this.selectedElement?.innerText;
     this.selectedComponent = this.allComponents.find(
-      (el) => el.name === tar.tagName.toLowerCase()
+      (el: any) => el.name === tar.tagName.toLowerCase()
     );
     const selectedComponents = document.querySelectorAll('.selected-component');
     selectedComponents.forEach((el) => el.removeAttribute('class'));
     tar.classList.add('selected-component');
   }
 
-  getSlots(el): any {
-    const component = this.allComponents.find(
-      (componentObject) => componentObject.name === el?.tagName.toLowerCase()
+  getSlots(el: HTMLElement): any {
+    const component: any = this.allComponents.find(
+      (componentObject: any) => componentObject.name === el?.tagName.toLowerCase()
     );
     return component?.slots;
   }

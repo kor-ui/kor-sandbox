@@ -8,15 +8,15 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./new-project-modal.component.scss']
 })
 export class NewProjectModalComponent implements OnInit {
-  visible: boolean;
-  projectData: Project = {
-    'name': null,
-    'owner': this.userService.user.uid,
-    'editors': [this.userService.user.uid],
-    'thumbnail': null,
+  visible: boolean | undefined;
+  projectData: Project | undefined = {
+    'name': undefined,
+    'owner': this.userService.user?.uid,
+    'editors': [this.userService.user?.uid],
+    'thumbnail': undefined,
     'updatedDate': new Date(),
     'createdDate': new Date(),
-    'uid': null
+    'uid': undefined
   };
   @Output() close = new EventEmitter();
 

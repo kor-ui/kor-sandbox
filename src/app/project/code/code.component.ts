@@ -15,10 +15,10 @@ export class CodeComponent implements OnInit {
     formatOnType: true,
     automaticLayout: true,
   };
-  @Input() code: string;
+  @Input() code: string | undefined;
   @Output() close = new EventEmitter();
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -26,7 +26,7 @@ export class CodeComponent implements OnInit {
     }, 0);
   }
 
-  formatCode(editor): void {
+  formatCode(editor: any): void {
     setTimeout(() => {
       editor.getAction('editor.action.formatDocument').run();
       editor.layout();

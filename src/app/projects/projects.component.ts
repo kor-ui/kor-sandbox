@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, DocumentSnapshot } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { Page, Project, User } from '../interfaces';
+import { Page, Project } from '../interfaces';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  newProjectModalVisible: boolean;
-  projects: Project[];;
+  newProjectModalVisible: boolean | undefined;
+  projects: Project[] | undefined;
 
   constructor(
     public firestore: AngularFirestore,
@@ -40,7 +40,7 @@ export class ProjectsComponent implements OnInit {
       .collection<Project>('projects')
       .doc(project.uid)
       .set(project)
-      .then(() => this.createFirstPage(project.uid));
+      .then(() => this.createFirstPage(project.uid!));
   }
 
   // create first empty page of new project

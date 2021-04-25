@@ -36,29 +36,31 @@ export class CanvasComponent implements OnInit {
   ];
   currentViewport = this.viewports[3];
   currentScale = 1;
-  showContextMenu: boolean;
-  codeModalVisible: boolean;
+  showContextMenu: boolean | undefined;
+  codeModalVisible: boolean | undefined;
   popoverCoords: any = {
     x: null,
     y: null,
   };
-  @Input() content: string;
-  @Input() readonly: boolean;
+  @Input() content: string | undefined;
+  @Input() readonly: boolean | undefined;
   @Output() save = new EventEmitter<string>();
 
   constructor(public drag: DragService, public components: ComponentsService) { }
 
   ngOnInit(): void {
     // observe canvas innerHTML change and update content prop
-    const canvas = document.querySelector('#canvas');
-    new MutationObserver(() => {
-      this.content = canvas.innerHTML;
-    }).observe(
-      canvas,
-      {
-        subtree: true,
-        attributes: true
-      });
+    const canvas: HTMLCanvasElement | null = document.querySelector('#canvas');
+    if (canvas) {
+      new MutationObserver(() => {
+        this.content = canvas?.innerHTML;
+      }).observe(
+        canvas,
+        {
+          subtree: true,
+          attributes: true
+        });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -72,9 +74,10 @@ export class CanvasComponent implements OnInit {
 
   // update canvas html to match content property
   setCanvasInnerHTML(): void {
-    if (this.content) {
+    const canvas = document.querySelector('#canvas');
+    if (this.content && canvas) {
       // TODO: replace with element ref
-      document.querySelector('#canvas').innerHTML = this.content;
+      canvas.innerHTML = this.content;
     }
   }
 
@@ -82,7 +85,7 @@ export class CanvasComponent implements OnInit {
     return Math.round(num);
   }
 
-  handleContextMenu(e): void {
+  handleContextMenu(e: MouseEvent): void {
     e.preventDefault();
     this.popoverCoords.x = `${e.pageX}px`;
     this.popoverCoords.y = `${e.pageY}px`;
@@ -95,12 +98,14 @@ export class CanvasComponent implements OnInit {
     document.body.addEventListener('click', hide);
   }
 
-  removeElement(el: HTMLElement): void {
-    el.parentNode.removeChild(el);
+  removeElement(el: HTMLElement | undefined): void {
+    el?.parentNode?.removeChild(el);
   }
 
-  duplicateElement(el: HTMLElement): void {
-    const clone = el.cloneNode(true);
-    el.parentNode.appendChild(clone);
+  duplicateElement(el: HTMLElement | undefined): void {
+    const clone = el?.cloneNode(true);
+    if (clone) {
+      el?.parentNode?.appendChild(clone);
+    }
   }
 }
