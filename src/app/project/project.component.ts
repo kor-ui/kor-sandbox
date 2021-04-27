@@ -79,6 +79,15 @@ export class ProjectComponent implements OnInit {
       .then(() => this.setProjectUpdatedDate());
   }
 
+  // set the content of current page
+  setViewport(viewport: any): void {
+    this.firestore
+      .collection<Project>('projects')
+      .doc(this.project?.uid)
+      .update({ 'viewport': { width: viewport.width, height: viewport.height } })
+      .then(() => this.setProjectUpdatedDate());
+  }
+
   // set project's updated date
   setProjectUpdatedDate(): void {
     this.firestore

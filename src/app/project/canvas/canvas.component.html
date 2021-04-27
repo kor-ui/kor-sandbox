@@ -3,8 +3,8 @@
 <div class="body">
   <div
     id="canvas"
-    [style.height]="currentViewport?.height"
-    [style.width]="currentViewport?.width"
+    [style.min-height]="viewport?.height"
+    [style.min-width]="viewport?.width"
     [style.zoom]="currentScale"
     (dragover)="drag.handleDragOver($event)"
     (dragleave)="drag.handleDragLeave($event)"
@@ -37,26 +37,26 @@
   <kor-button
     id="viewport"
     color="tertiary"
-    [icon]="currentViewport.icon"
+    icon="devices"
   ></kor-button>
   <kor-popover
     [target]="'#viewport'"
     position="top"
   >
     <kor-menu-item
-      *ngFor="let viewport of viewports"
+      *ngFor="let item of viewports"
       [toggle]="false"
-      [label]="viewport.label"
-      [icon]="viewport.icon"
-      [active]="currentViewport == viewport"
-      (click)="currentViewport = viewport"
+      [label]="item.label"
+      [icon]="item.icon"
+      [active]="viewport == item"
+      (click)="viewport = item"
     ></kor-menu-item>
   </kor-popover>
   <!-- rotate -->
   <kor-button
     color="tertiary"
     icon="screen_rotation"
-    (click)="rotateDevice()"
+    (click)="rotateViewport()"
   >
   </kor-button>
   <kor-button
@@ -68,13 +68,13 @@
   <kor-button
     *ngIf="!readonly"
     label="Save"
-    (click)="save.emit(content)"
+    (click)="save.emit({'content': content, 'viewport': viewport})"
   ></kor-button>
 </div>
 
 <!-- context menu -->
 <kor-popover
-  [visible]="showContextMenu"
+  [visible]="contextMenuVisible"
   [style.left]="popoverCoords.x"
   [style.top]="popoverCoords.y"
 >

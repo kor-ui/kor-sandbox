@@ -60,7 +60,7 @@ export class ComponentsService {
     });
   }
 
-  getSlots(el: HTMLElement): any {
+  getSlots(el: HTMLElement): any[] {
     const component: any = this.allComponents.find(
       (componentObject: any) => componentObject.name === el?.tagName.toLowerCase()
     );

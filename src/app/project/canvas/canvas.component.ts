@@ -34,17 +34,18 @@ export class CanvasComponent implements OnInit {
       height: '667px',
     },
   ];
-  currentViewport = this.viewports[3];
   currentScale = 1;
-  showContextMenu: boolean | undefined;
+  contextMenuVisible: boolean | undefined;
   codeModalVisible: boolean | undefined;
   popoverCoords: any = {
     x: null,
     y: null,
   };
+  @Input() viewport = this.viewports[3];
   @Input() content: string | undefined;
   @Input() readonly: boolean | undefined;
-  @Output() save = new EventEmitter<string>();
+  @Output() save = new EventEmitter<{ content: string | undefined; viewport: any; }>();
+  @Output() setViewport = new EventEmitter<any>();
 
   constructor(public drag: DragService, public components: ComponentsService) { }
 
@@ -68,8 +69,8 @@ export class CanvasComponent implements OnInit {
     this.setCanvasInnerHTML();
   }
 
-  rotateDevice(): void {
-    [this.currentViewport.height, this.currentViewport.width] = [this.currentViewport.width, this.currentViewport.height];
+  rotateViewport(): void {
+    [this.viewport.height, this.viewport.width] = [this.viewport.width, this.viewport.height];
   }
 
   // update canvas html to match content property
@@ -90,22 +91,22 @@ export class CanvasComponent implements OnInit {
     this.popoverCoords.x = `${e.pageX}px`;
     this.popoverCoords.y = `${e.pageY}px`;
     this.components.selectComponent(e.target);
-    this.showContextMenu = true;
+    this.contextMenuVisible = true;
     const hide = () => {
-      this.showContextMenu = false;
+      this.contextMenuVisible = false;
       document.body.removeEventListener('click', hide);
     };
     document.body.addEventListener('click', hide);
   }
 
   removeElement(el: HTMLElement | undefined): void {
-    this.showContextMenu = false;
+    this.contextMenuVisible = false;
     el?.parentNode?.removeChild(el);
     this.components.selectedComponent = undefined;
   }
 
   duplicateElement(el: HTMLElement | undefined): void {
-    this.showContextMenu = false;
+    this.contextMenuVisible = false;
     this.components.unselectAllComponents().then(() => {
       const clone = el?.cloneNode(true);
       if (clone) {

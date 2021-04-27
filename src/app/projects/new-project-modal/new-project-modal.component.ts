@@ -10,13 +10,17 @@ import { UserService } from 'src/app/services/user.service';
 export class NewProjectModalComponent implements OnInit {
   visible: boolean | undefined;
   projectData: Project | undefined = {
-    'name': undefined,
-    'owner': this.userService.user?.uid,
-    'editors': [this.userService.user?.uid],
-    'thumbnail': undefined,
-    'updatedDate': new Date(),
-    'createdDate': new Date(),
-    'uid': undefined
+    name: undefined,
+    owner: this.userService.user?.uid,
+    editors: [this.userService.user?.uid],
+    thumbnail: undefined,
+    updatedDate: new Date(),
+    createdDate: new Date(),
+    uid: undefined,
+    viewport: {
+      width: 375,
+      height: 667
+    }
   };
   @Output() close = new EventEmitter();
 

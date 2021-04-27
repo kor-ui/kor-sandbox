@@ -17,6 +17,102 @@
           "description": ""
         }
       ]
+    },
+    {
+      "name": "a",
+      "attributes": [
+        [
+          {
+            "attribute": "download",
+            "description": "Specifies that the target will be downloaded when a user clicks on the hyperlink"
+          },
+          {
+            "attribute": "href",
+            "description": "Specifies the URL of the page the link goes to"
+          },
+          {
+            "attribute": "hreflang",
+            "description": "Specifies the language of the linked document"
+          },
+          {
+            "attribute": "media",
+            "description": "Specifies what media/device the linked document is optimized for"
+          },
+          {
+            "attribute": "ping",
+            "description": "Specifies a space-separated list of URLs to which, when the link is      followed, post requests with the body ping will be sent by the browser (in      the background). Typically used for tracking."
+          },
+          {
+            "attribute": "referrerpolicy",
+            "description": "Specifies which referrer information to send with the link"
+          },
+          {
+            "attribute": "rel",
+            "description": "Specifies the relationship between the current document and the linked document"
+          },
+          {
+            "attribute": "target",
+            "description": "Specifies where to open the linked document"
+          },
+          {
+            "attribute": "type",
+            "description": "Specifies the media type of the linked document"
+          }
+        ]
+      ],
+      "slots": [
+        {
+          "name": "",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "video",
+      "attributes": [
+        {
+          "attribute": "autoplay",
+          "description": "Specifies that the video will start playing as soon as it is ready"
+        },
+        {
+          "attribute": "controls",
+          "description": "Specifies that video controls should be displayed (such as a play/pause button etc)."
+        },
+        {
+          "attribute": "height",
+          "description": "Sets the height of the video player"
+        },
+        {
+          "attribute": "loop",
+          "description": "Specifies that the video will start over again, every time it is finished"
+        },
+        {
+          "attribute": "muted",
+          "description": "Specifies that the audio output of the video should be muted"
+        },
+        {
+          "attribute": "poster",
+          "description": "Specifies an image to be shown while the video is downloading, or until the user hits the play button"
+        },
+        {
+          "attribute": "preload",
+          "description": "Specifies if and how the author thinks the video should be loaded when the page loads"
+        },
+        {
+          "attribute": "src",
+          "description": "Specifies the URL of the video file"
+        },
+        {
+          "attribute": "width",
+          "description": "Sets the width of the video player"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "description": ""
+        }
+      ]
     }
   ]
 }

@@ -5,7 +5,8 @@
   <app-canvas
     [readonly]="project?.owner !== userService.user?.uid"
     [content]="currentPage?.content"
-    (save)="setCurrentPageContent($event)"
+    [viewport]="project?.viewport"
+    (save)="setCurrentPageContent($event.content); setViewport($event.viewport)"
   >
     <div class="canvas-label">{{project?.name}} – {{currentPage?.name}}
     </div>

@@ -6,6 +6,10 @@ export interface Project {
   editors: (string | undefined)[] | undefined,
   updatedDate: Date | undefined,
   createdDate: Date | undefined,
+  viewport: {
+    width: number;
+    height: number;
+  },
 }
 
 export interface User {
