@@ -12,6 +12,10 @@ export class CodeComponent implements OnInit {
     language: 'html',
     formatOnPaste: true,
     formatOnType: true,
+    codeLens: false,
+    minimap: {
+      enabled: false
+    }
   };
   @Input() code: string | undefined;
   @Output() close = new EventEmitter();

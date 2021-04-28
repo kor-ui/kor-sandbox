@@ -7,7 +7,7 @@
   (visible-changed)="!$event.target.visible ? closeModal() : ''"
 >
   <ngx-monaco-editor
-    *ngIf="code"
+    *ngIf="code && visible"
     [options]="codeOptions"
     [(ngModel)]="code"
     (onInit)="formatCode($event)"
