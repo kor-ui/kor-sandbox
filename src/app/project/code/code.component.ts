@@ -10,7 +10,6 @@ export class CodeComponent implements OnInit {
   codeOptions = {
     theme: 'vs-light',
     language: 'html',
-    // readOnly: true,
     formatOnPaste: true,
     formatOnType: true,
     automaticLayout: true,
