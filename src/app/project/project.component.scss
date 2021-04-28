@@ -11,9 +11,19 @@
     transition: .1s all ease-in-out;
     font: var(--header-1);
     color: var(--text-1);
+    border: 1px solid rgba(var(--neutral-1), 0.25);
     cursor: pointer;
+    kor-icon {
+      pointer-events: none;
+    }
+    > * + * {
+      margin-left: 8px;
+    }
     &:hover {
       background-color: rgba(var(--neutral-1), .1);
     }
+  }
+  kor-popover > * {
+    margin-bottom: unset;
   }
 }

@@ -4,7 +4,9 @@
   <div
     id="canvas"
     [style.min-height]="viewport?.height"
+    [style.max-height]="viewport?.height"
     [style.min-width]="viewport?.width"
+    [style.max-width]="viewport?.width"
     [style.zoom]="currentScale"
     (dragover)="drag.handleDragOver($event)"
     (dragleave)="drag.handleDragLeave($event)"

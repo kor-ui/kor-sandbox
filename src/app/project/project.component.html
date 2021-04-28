@@ -8,7 +8,13 @@
     [viewport]="project?.viewport"
     (save)="setCurrentPageContent($event.content); setViewport($event.viewport)"
   >
-    <div class="canvas-label">{{project?.name}} – {{currentPage?.name}}
+    <div class="canvas-label">
+      {{project?.name}}
+      <kor-icon
+        icon="keyboard_arrow_right"
+        color="rgba(var(--neutral-1), 0.4)"
+      ></kor-icon>
+      {{currentPage?.name}}
     </div>
   </app-canvas>
   <!-- the configuration menu -->
