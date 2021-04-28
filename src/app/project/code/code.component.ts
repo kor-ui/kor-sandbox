@@ -12,7 +12,6 @@ export class CodeComponent implements OnInit {
     language: 'html',
     formatOnPaste: true,
     formatOnType: true,
-    automaticLayout: true,
   };
   @Input() code: string | undefined;
   @Output() close = new EventEmitter();
