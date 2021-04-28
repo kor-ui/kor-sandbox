@@ -13,16 +13,17 @@ export class NewProjectModalComponent implements OnInit {
     name: undefined,
     owner: this.userService.user?.uid,
     editors: [this.userService.user?.uid],
-    thumbnail: undefined,
+    thumbnail: null,
     updatedDate: new Date(),
     createdDate: new Date(),
     uid: undefined,
     viewport: {
-      width: 375,
-      height: 667
+      width: '375px',
+      height: '667px'
     }
   };
-  @Output() close = new EventEmitter();
+  @Output() confirm = new EventEmitter<Project | undefined>();
+  @Output() close = new EventEmitter<null>();
 
   constructor(public userService: UserService) { }
 
@@ -37,7 +38,7 @@ export class NewProjectModalComponent implements OnInit {
     this.visible = false;
     // wait for animation and remove component
     setTimeout(() => {
-      this.close.emit(this.projectData);
+      this.close.emit();
     }, 100);
   }
 }

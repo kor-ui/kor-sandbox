@@ -1,14 +1,14 @@
 export interface Project {
   uid: string | undefined,
   name: string | undefined,
-  thumbnail: string | undefined,
+  thumbnail: string | null,
   owner: string | undefined,
   editors: (string | undefined)[] | undefined,
   updatedDate: Date | undefined,
   createdDate: Date | undefined,
   viewport: {
-    width: number;
-    height: number;
+    width: string;
+    height: string;
   },
 }
 

@@ -38,5 +38,6 @@
 <!-- new project modal -->
 <app-new-project-modal
   *ngIf="newProjectModalVisible"
-  (close)="newProjectModalVisible = false; $event ? setProject($event) : ''"
+  (confirm)="projectService.setProject($event)"
+  (close)="newProjectModalVisible = false"
 ></app-new-project-modal>

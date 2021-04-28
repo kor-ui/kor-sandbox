@@ -20,6 +20,6 @@
   <kor-button
     slot="footer"
     label="Confirm"
-    (click)="closeModal()"
+    (click)="confirm.emit(projectData); closeModal()"
   ></kor-button>
 </kor-modal>

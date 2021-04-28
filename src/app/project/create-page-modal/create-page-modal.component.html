@@ -1,0 +1,24 @@
+<kor-modal
+  label="Add Page"
+  [visible]="visible"
+  width="400px"
+  height="auto"
+  sticky
+>
+  <kor-input
+    label="Page Name"
+    [value]="pageName"
+    (input)="setNewPageName($event)"
+  ></kor-input>
+  <kor-button
+    slot="footer"
+    label="Cancel"
+    color="secondary"
+    (click)="closeModal()"
+  ></kor-button>
+  <kor-button
+    slot="footer"
+    label="Confirm"
+    (click)="confirm.emit(pageName); closeModal()"
+  ></kor-button>
+</kor-modal>

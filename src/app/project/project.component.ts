@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Page, Project } from '../interfaces';
+import { ProjectService } from '../services/project.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -13,12 +14,14 @@ export class ProjectComponent implements OnInit {
   project: Project | undefined;
   pages: Page[] | undefined;
   currentPage: Page | undefined;
+  createPageModalVisible: boolean | undefined;
 
   constructor(
     public route: ActivatedRoute,
     public firestore: AngularFirestore,
     public router: Router,
-    public userService: UserService
+    public userService: UserService,
+    public projectService: ProjectService
   ) { }
 
   ngOnInit(): void {
@@ -99,6 +102,15 @@ export class ProjectComponent implements OnInit {
   // open a page given the id
   openPage(pageId: string): void {
     this.router.navigate([`project/${this.project?.uid}`, { pageId: pageId }]);
+  }
+
+  // create a new page and navigate to it
+  createPage(pageName: string): void {
+    this.projectService
+      .createPage(this.project?.uid, pageName)
+      .then((pageId: string) => {
+        this.openPage(pageId);
+      });
   }
 
 }
