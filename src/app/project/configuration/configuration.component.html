@@ -22,6 +22,7 @@
     <ng-container *ngIf="components?.selectedComponent">
       <ng-container *ngFor="let attr of components?.selectedComponent?.attributes">
         <kor-input
+          [title]="attr.description"
           *ngIf="attr.type === 'String' || attr.type === 'Number' || attr.type.indexOf('|') > 0"
           [type]="attr.type === 'String' ? 'text' : attr.type === 'Number' ? 'number' : 'select'"
           [label]="attr.name"
@@ -39,6 +40,7 @@
           </ng-container>
         </kor-input>
         <kor-checkbox
+          [title]="attr.description"
           *ngIf="attr.type == 'Boolean'"
           [label]="attr.name"
           [active]="components.selectedElement?.getAttribute(attr.name)"
