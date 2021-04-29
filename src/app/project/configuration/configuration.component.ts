@@ -42,5 +42,16 @@ export class ConfigurationComponent implements OnInit {
         el?.removeAttribute(name);
       }
     }
+    if (value === 'undefined') {
+      el?.removeAttribute(name);
+    }
+  }
+
+  getTypeSelectItems(type: string): string[] {
+    const typeArray: string[] = [];
+    type.split("|").forEach(typeItem => {
+      typeArray.push(typeItem.split("'").join(''));
+    });
+    return typeArray;
   }
 }

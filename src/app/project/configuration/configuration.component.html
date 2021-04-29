@@ -22,14 +22,22 @@
     <ng-container *ngIf="components?.selectedComponent">
       <ng-container *ngFor="let attr of components?.selectedComponent?.attributes">
         <kor-input
-          *ngIf="attr.type == 'String' || attr.type == 'Number'"
-          [type]="attr.type == 'String' ? 'text' : 'number'"
+          *ngIf="attr.type === 'String' || attr.type === 'Number' || attr.type.indexOf('|') > 0"
+          [type]="attr.type === 'String' ? 'text' : attr.type === 'Number' ? 'number' : 'select'"
           [label]="attr.name"
           [value]="components.selectedElement?.getAttribute(attr.name)"
           (value-changed)="
           setElementAttribute('string', attr.name, $event.target.value)
         "
-        ></kor-input>
+        >
+          <!-- select type only -->
+          <ng-container *ngIf="attr.type.indexOf('|') > 0">
+            <kor-menu-item
+              *ngFor="let item of getTypeSelectItems(attr.type)"
+              [label]="item"
+            ></kor-menu-item>
+          </ng-container>
+        </kor-input>
         <kor-checkbox
           *ngIf="attr.type == 'Boolean'"
           [label]="attr.name"

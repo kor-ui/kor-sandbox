@@ -139,6 +139,36 @@
       ]
     },
     {
+      "name": "kor-badge",
+      "path": "./components/badge/kor-badge.ts",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "If set, degines the number shown inside the badge. Numbers bigger than 3 digits are shown as 999+.",
+          "type": "Number"
+        },
+        {
+          "name": "status",
+          "description": "If set, a status icon is shown inside the badge. Accepted values are `error`, `warning`, `success`.",
+          "type": "'error'|'warning'|'success'|undefined"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "If set, degines the number shown inside the badge. Numbers bigger than 3 digits are shown as 999+.",
+          "type": "Number"
+        },
+        {
+          "name": "status",
+          "attribute": "status",
+          "description": "If set, a status icon is shown inside the badge. Accepted values are `error`, `warning`, `success`.",
+          "type": "'error'|'warning'|'success'|undefined"
+        }
+      ]
+    },
+    {
       "name": "kor-avatar",
       "path": "./components/avatar/kor-avatar.ts",
       "attributes": [
@@ -191,177 +221,6 @@
       ]
     },
     {
-      "name": "kor-badge",
-      "path": "./components/badge/kor-badge.ts",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "If set, degines the number shown inside the badge. Numbers bigger than 3 digits are shown as 999+.",
-          "type": "Number"
-        },
-        {
-          "name": "status",
-          "description": "If set, a status icon is shown inside the badge. Accepted values are error, warning, success.",
-          "type": "String"
-        }
-      ],
-      "properties": [
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "If set, degines the number shown inside the badge. Numbers bigger than 3 digits are shown as 999+.",
-          "type": "Number"
-        },
-        {
-          "name": "status",
-          "attribute": "status",
-          "description": "If set, a status icon is shown inside the badge. Accepted values are error, warning, success.",
-          "type": "String"
-        }
-      ]
-    },
-    {
-      "name": "kor-button",
-      "path": "./components/button/kor-button.ts",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "Defines the text label.",
-          "type": "String",
-          "default": "\"Label\""
-        },
-        {
-          "name": "icon",
-          "description": "If set, replaces the text label with a custom icon.",
-          "type": "String"
-        },
-        {
-          "name": "color",
-          "description": "Defines the color. The possible values are primary, secondary and tertiary",
-          "type": "String",
-          "default": "\"primary\""
-        },
-        {
-          "name": "disabled",
-          "description": "If set to true, disables mouse clicks and the style gets updated.",
-          "type": "Boolean"
-        }
-      ],
-      "properties": [
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "Defines the text label.",
-          "type": "String",
-          "default": "\"Label\""
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "If set, replaces the text label with a custom icon.",
-          "type": "String"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Defines the color. The possible values are primary, secondary and tertiary",
-          "type": "String",
-          "default": "\"primary\""
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "If set to true, disables mouse clicks and the style gets updated.",
-          "type": "Boolean"
-        }
-      ]
-    },
-    {
-      "name": "kor-card",
-      "path": "./components/card/kor-card.ts",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "If set, defines the text label.",
-          "type": "String"
-        },
-        {
-          "name": "icon",
-          "description": "If set, defines the icon shown close to the label.",
-          "type": "String"
-        },
-        {
-          "name": "image",
-          "description": "If set, defines the image shown on top of the card.",
-          "type": "String"
-        },
-        {
-          "name": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
-          "default": "\"column\""
-        },
-        {
-          "name": "flat",
-          "description": "If set, background, shadows and external padding are not shown.",
-          "type": "Boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "If set, defines the text label.",
-          "type": "String"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "If set, defines the icon shown close to the label.",
-          "type": "String"
-        },
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "If set, defines the image shown on top of the card.",
-          "type": "String"
-        },
-        {
-          "name": "flexDirection",
-          "attribute": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
-          "default": "\"column\""
-        },
-        {
-          "name": "flat",
-          "attribute": "flat",
-          "description": "If set, background, shadows and external padding are not shown.",
-          "type": "Boolean",
-          "default": "false"
-        }
-      ],
-      "slots": [
-        {
-          "name": "",
-          "description": "Displayed inside the content area."
-        },
-        {
-          "name": "header",
-          "description": "Shown on top of the card, below the label (if any is set)."
-        },
-        {
-          "name": "functions",
-          "description": "Shown on the right side of the label or header slot."
-        },
-        {
-          "name": "footer",
-          "description": "Shown below the content area."
-        }
-      ]
-    },
-    {
       "name": "kor-breadcrumb-item",
       "path": "./components/breadcrumbs/kor-breadcrumb-item.ts",
       "attributes": [
@@ -406,6 +265,147 @@
       ]
     },
     {
+      "name": "kor-button",
+      "path": "./components/button/kor-button.ts",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Defines the text label.",
+          "type": "String",
+          "default": "\"Label\""
+        },
+        {
+          "name": "icon",
+          "description": "If set, replaces the text label with a custom icon.",
+          "type": "String"
+        },
+        {
+          "name": "color",
+          "description": "Defines the color. The possible values are `primary`, `secondary` and `tertiary`",
+          "type": "'primary'|'secondary'|'tertiary'",
+          "default": "\"primary\""
+        },
+        {
+          "name": "disabled",
+          "description": "If set to true, disables mouse clicks and the style gets updated.",
+          "type": "Boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Defines the text label.",
+          "type": "String",
+          "default": "\"Label\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "If set, replaces the text label with a custom icon.",
+          "type": "String"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Defines the color. The possible values are `primary`, `secondary` and `tertiary`",
+          "type": "'primary'|'secondary'|'tertiary'",
+          "default": "\"primary\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "If set to true, disables mouse clicks and the style gets updated.",
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "name": "kor-card",
+      "path": "./components/card/kor-card.ts",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "If set, defines the text label.",
+          "type": "String"
+        },
+        {
+          "name": "icon",
+          "description": "If set, defines the icon shown close to the label.",
+          "type": "String"
+        },
+        {
+          "name": "image",
+          "description": "If set, defines the image shown on top of the card.",
+          "type": "String"
+        },
+        {
+          "name": "flex-direction",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
+          "default": "\"column\""
+        },
+        {
+          "name": "flat",
+          "description": "If set, background, shadows and external padding are not shown.",
+          "type": "Boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "If set, defines the text label.",
+          "type": "String"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "If set, defines the icon shown close to the label.",
+          "type": "String"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "If set, defines the image shown on top of the card.",
+          "type": "String"
+        },
+        {
+          "name": "flexDirection",
+          "attribute": "flex-direction",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
+          "default": "\"column\""
+        },
+        {
+          "name": "flat",
+          "attribute": "flat",
+          "description": "If set, background, shadows and external padding are not shown.",
+          "type": "Boolean",
+          "default": "false"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "description": "Displayed inside the content area."
+        },
+        {
+          "name": "header",
+          "description": "Shown on top of the card, below the label (if any is set)."
+        },
+        {
+          "name": "functions",
+          "description": "Shown on the right side of the label or header slot."
+        },
+        {
+          "name": "footer",
+          "description": "Shown below the content area."
+        }
+      ]
+    },
+    {
       "name": "kor-checkbox",
       "path": "./components/checkbox/kor-checkbox.ts",
       "attributes": [
@@ -444,6 +444,11 @@
           "description": "If set to true, disables mouse clicks and the style gets updated.",
           "type": "Boolean"
         }
+      ],
+      "events": [
+        {
+          "name": "change"
+        }
       ]
     },
     {
@@ -452,14 +457,14 @@
       "attributes": [
         {
           "name": "spacing",
-          "description": "Defines the space around the divider. Possible values are s, n and l.",
-          "type": "String",
+          "description": "Defines the space around the divider. Possible values are `s`, `m` and `l`.",
+          "type": "'s'|'m'|'l'",
           "default": "\"m\""
         },
         {
           "name": "orientation",
-          "description": "Defines the orientation of the divider. Possible values are vertical and horizontal.",
-          "type": "String",
+          "description": "Defines the orientation of the divider. Possible values are `vertical` and `horizontal`.",
+          "type": "'horizontal'|'vertical'",
           "default": "\"horizontal\""
         }
       ],
@@ -467,15 +472,15 @@
         {
           "name": "spacing",
           "attribute": "spacing",
-          "description": "Defines the space around the divider. Possible values are s, n and l.",
-          "type": "String",
+          "description": "Defines the space around the divider. Possible values are `s`, `m` and `l`.",
+          "type": "'s'|'m'|'l'",
           "default": "\"m\""
         },
         {
           "name": "orientation",
           "attribute": "orientation",
-          "description": "Defines the orientation of the divider. Possible values are vertical and horizontal.",
-          "type": "String",
+          "description": "Defines the orientation of the divider. Possible values are `vertical` and `horizontal`.",
+          "type": "'horizontal'|'vertical'",
           "default": "\"horizontal\""
         }
       ]
@@ -497,13 +502,13 @@
         {
           "name": "position",
           "description": "Defines the position of the component in the screen. Possible values are left, right, top and bottom.",
-          "type": "String",
+          "type": "'left'|'right'|'top'|'bottom'",
           "default": "\"left\""
         },
         {
           "name": "flex-direction",
           "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "type": "'row'|'column'",
           "default": "\"column\""
         },
         {
@@ -547,14 +552,14 @@
           "name": "position",
           "attribute": "position",
           "description": "Defines the position of the component in the screen. Possible values are left, right, top and bottom.",
-          "type": "String",
+          "type": "'left'|'right'|'top'|'bottom'",
           "default": "\"left\""
         },
         {
           "name": "flexDirection",
           "attribute": "flex-direction",
           "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "type": "'row'|'column'",
           "default": "\"column\""
         },
         {
@@ -657,8 +662,8 @@
         },
         {
           "name": "spacing",
-          "description": "Defines the gap between the elements in the grid. Possible values are s (8px), m (12px) and l(16px).",
-          "type": "String",
+          "description": "Defines the gap between the elements in the grid. Possible values are `s`(8px), `m`(12px) and `l`(16px).",
+          "type": "'s'|'m'|'l'",
           "default": "\"m\""
         }
       ],
@@ -679,8 +684,8 @@
         {
           "name": "spacing",
           "attribute": "spacing",
-          "description": "Defines the gap between the elements in the grid. Possible values are s (8px), m (12px) and l(16px).",
-          "type": "String",
+          "description": "Defines the gap between the elements in the grid. Possible values are `s`(8px), `m`(12px) and `l`(16px).",
+          "type": "'s'|'m'|'l'",
           "default": "\"m\""
         }
       ],
@@ -702,8 +707,8 @@
         },
         {
           "name": "size",
-          "description": "If set, defines the size of the icon. Possible values are xl (48px) l (32px), m (24px) and s (16px), but css font-size can be used to set custom sizes.",
-          "type": "String",
+          "description": "If set, defines the size of the icon. Possible values are `xl`(48px) `l`(32px), `m`(24px) and `s`(16px), but css font-size can be used to set custom sizes.",
+          "type": "'s'|'m'|'l'|'xl'",
           "default": "\"m\""
         },
         {
@@ -732,8 +737,8 @@
         {
           "name": "size",
           "attribute": "size",
-          "description": "If set, defines the size of the icon. Possible values are xl (48px) l (32px), m (24px) and s (16px), but css font-size can be used to set custom sizes.",
-          "type": "String",
+          "description": "If set, defines the size of the icon. Possible values are `xl`(48px) `l`(32px), `m`(24px) and `s`(16px), but css font-size can be used to set custom sizes.",
+          "type": "'s'|'m'|'l'|'xl'",
           "default": "\"m\""
         },
         {
@@ -784,7 +789,7 @@
         {
           "name": "fit",
           "description": "Defines how the image fits to the component. Possible values are `fill`, `contain`, `cover`, `none` and `scale-down`.",
-          "type": "String",
+          "type": "'fill'|'contain'|'cover'|'none'|'scale-down'",
           "default": "\"contain\""
         },
         {
@@ -794,8 +799,8 @@
         },
         {
           "name": "legend-position",
-          "description": "Defines the position of the legend. Possible values are `inner-top` and `inner bottom`. If left unset, the legend is displayed underneath the image",
-          "type": "String"
+          "description": "Defines the position of the legend. Possible values are `inner-top` and `inner-bottom`. If left unset, the legend is displayed underneath the image",
+          "type": "'inner-top'|'inner-bottom'"
         }
       ],
       "properties": [
@@ -828,7 +833,7 @@
           "name": "fit",
           "attribute": "fit",
           "description": "Defines how the image fits to the component. Possible values are `fill`, `contain`, `cover`, `none` and `scale-down`.",
-          "type": "String",
+          "type": "'fill'|'contain'|'cover'|'none'|'scale-down'",
           "default": "\"contain\""
         },
         {
@@ -840,8 +845,8 @@
         {
           "name": "legendPosition",
           "attribute": "legend-position",
-          "description": "Defines the position of the legend. Possible values are `inner-top` and `inner bottom`. If left unset, the legend is displayed underneath the image",
-          "type": "String"
+          "description": "Defines the position of the legend. Possible values are `inner-top` and `inner-bottom`. If left unset, the legend is displayed underneath the image",
+          "type": "'inner-top'|'inner-bottom'"
         }
       ],
       "slots": [
@@ -876,9 +881,14 @@
         },
         {
           "name": "type",
-          "description": "Defines the type. Possible values are text, number and select.",
-          "type": "String",
+          "description": "Defines the type. Possible values are `text`, `number`, `select` and `date`.",
+          "type": "'text'|'number'|'select'|'name'|undefined",
           "default": "\"text\""
+        },
+        {
+          "name": "name",
+          "description": "Sets the name of the input. Corresponds to the native input's 'name' attribute.",
+          "type": "String"
         },
         {
           "name": "status",
@@ -959,9 +969,15 @@
         {
           "name": "type",
           "attribute": "type",
-          "description": "Defines the type. Possible values are text, number and select.",
-          "type": "String",
+          "description": "Defines the type. Possible values are `text`, `number`, `select` and `date`.",
+          "type": "'text'|'number'|'select'|'name'|undefined",
           "default": "\"text\""
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "Sets the name of the input. Corresponds to the native input's 'name' attribute.",
+          "type": "String"
         },
         {
           "name": "status",
@@ -1029,6 +1045,11 @@
           "attribute": "autofocus",
           "description": "If set to true, the component gets focused as soon as the page loads.",
           "type": "Boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "change"
         }
       ],
       "slots": [
@@ -1135,8 +1156,8 @@
         },
         {
           "name": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
           "default": "\"column\""
         },
         {
@@ -1179,8 +1200,8 @@
         {
           "name": "flexDirection",
           "attribute": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
           "default": "\"column\""
         },
         {
@@ -1260,8 +1281,8 @@
         },
         {
           "name": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
           "default": "\"column\""
         },
         {
@@ -1292,8 +1313,8 @@
         {
           "name": "flexDirection",
           "attribute": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
           "default": "\"column\""
         },
         {
@@ -1335,8 +1356,8 @@
       "attributes": [
         {
           "name": "position",
-          "description": "Defines the corner where the notification is located. Possible values are top-left, top-right, bottom-left and bottom-right.",
-          "type": "String",
+          "description": "Defines the corner where the notification is located. Possible values are `top-left`, `top-right`, `bottom-left` and `bottom-right`.",
+          "type": "'top-left'|'top-right'|'bottom-left'|'bottom-right'",
           "default": "\"top-right\""
         }
       ],
@@ -1344,8 +1365,8 @@
         {
           "name": "position",
           "attribute": "position",
-          "description": "Defines the corner where the notification is located. Possible values are top-left, top-right, bottom-left and bottom-right.",
-          "type": "String",
+          "description": "Defines the corner where the notification is located. Possible values are `top-left`, `top-right`, `bottom-left` and `bottom-right`.",
+          "type": "'top-left'|'top-right'|'bottom-left'|'bottom-right'",
           "default": "\"top-right\""
         }
       ],
@@ -1362,8 +1383,8 @@
       "attributes": [
         {
           "name": "theme",
-          "description": "Defines the color theme of the page. Possible values are dark and light.",
-          "type": "String"
+          "description": "Defines the color theme of the page. Possible values are `dark` and `light`.",
+          "type": "'dark'|'light'|undefined"
         },
         {
           "name": "padding",
@@ -1373,8 +1394,8 @@
         },
         {
           "name": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
           "default": "\"row\""
         },
         {
@@ -1394,8 +1415,8 @@
         {
           "name": "theme",
           "attribute": "theme",
-          "description": "Defines the color theme of the page. Possible values are dark and light.",
-          "type": "String"
+          "description": "Defines the color theme of the page. Possible values are `dark` and `light`.",
+          "type": "'dark'|'light'|undefined"
         },
         {
           "name": "padding",
@@ -1407,8 +1428,8 @@
         {
           "name": "flexDirection",
           "attribute": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
           "default": "\"row\""
         },
         {
@@ -1465,14 +1486,14 @@
         },
         {
           "name": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
           "default": "\"column\""
         },
         {
           "name": "size",
-          "description": "Defines the size (width) of the component. Possible values are s (80px), m (120px) and l(320px).",
-          "type": "String",
+          "description": "Defines the size (width) of the component. Possible values are `s`(80px), `m`(120px) and `l`(320px).",
+          "type": "'s'|'m'|'l'",
           "default": "\"l\""
         }
       ],
@@ -1492,15 +1513,15 @@
         {
           "name": "flexDirection",
           "attribute": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
           "default": "\"column\""
         },
         {
           "name": "size",
           "attribute": "size",
-          "description": "Defines the size (width) of the component. Possible values are s (80px), m (120px) and l(320px).",
-          "type": "String",
+          "description": "Defines the size (width) of the component. Possible values are `s`(80px), `m`(120px) and `l`(320px).",
+          "type": "'s'|'m'|'l'",
           "default": "\"l\""
         }
       ],
@@ -1539,14 +1560,14 @@
         },
         {
           "name": "position",
-          "description": "Defines the position of the component in the screen. Possible values are left, right, top and bottom.",
-          "type": "String",
+          "description": "Defines the position of the component in the screen. Possible values are `left`, `right`, `top` and `bottom`.",
+          "type": "'left'|'right'|'top'|'bottom'",
           "default": "\"bottom\""
         },
         {
           "name": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
           "default": "\"column\""
         },
         {
@@ -1582,15 +1603,15 @@
         {
           "name": "position",
           "attribute": "position",
-          "description": "Defines the position of the component in the screen. Possible values are left, right, top and bottom.",
-          "type": "String",
+          "description": "Defines the position of the component in the screen. Possible values are `left`, `right`, `top` and `bottom`.",
+          "type": "'left'|'right'|'top'|'bottom'",
           "default": "\"bottom\""
         },
         {
           "name": "flexDirection",
           "attribute": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'row'|'column'",
           "default": "\"column\""
         },
         {
@@ -1647,14 +1668,9 @@
           "type": "String"
         },
         {
-          "name": "value",
-          "description": "Defines the value of the bar. Must be a number from 0 to 100.",
-          "type": "String"
-        },
-        {
           "name": "status",
-          "description": "If set, shows a status icon besides the information text. Possible values are success, warning and error.",
-          "type": "String"
+          "description": "If set, shows a status icon besides the information text. Possible values are `success`, `warning` and `error`.",
+          "type": "'success'|'warning'|'error'|undefined"
         },
         {
           "name": "color",
@@ -1663,9 +1679,14 @@
         },
         {
           "name": "size",
-          "description": "(Only if radial is true) Defines the size of the bar.",
-          "type": "Number",
+          "description": "(Only if radial is true) Defines the size of the bar. Possible values are `s`, `m` and `l`.",
+          "type": "'s'|'m'|'l'",
           "default": "\"m\""
+        },
+        {
+          "name": "value",
+          "description": "Defines the value of the bar. Must be a number from 0 to 100.",
+          "type": "Number"
         },
         {
           "name": "radial",
@@ -1694,16 +1715,10 @@
           "type": "String"
         },
         {
-          "name": "value",
-          "attribute": "value",
-          "description": "Defines the value of the bar. Must be a number from 0 to 100.",
-          "type": "String"
-        },
-        {
           "name": "status",
           "attribute": "status",
-          "description": "If set, shows a status icon besides the information text. Possible values are success, warning and error.",
-          "type": "String"
+          "description": "If set, shows a status icon besides the information text. Possible values are `success`, `warning` and `error`.",
+          "type": "'success'|'warning'|'error'|undefined"
         },
         {
           "name": "color",
@@ -1714,9 +1729,15 @@
         {
           "name": "size",
           "attribute": "size",
-          "description": "(Only if radial is true) Defines the size of the bar.",
-          "type": "Number",
+          "description": "(Only if radial is true) Defines the size of the bar. Possible values are `s`, `m` and `l`.",
+          "type": "'s'|'m'|'l'",
           "default": "\"m\""
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "Defines the value of the bar. Must be a number from 0 to 100.",
+          "type": "Number"
         },
         {
           "name": "radial",
@@ -1772,6 +1793,11 @@
           "attribute": "disabled",
           "description": "If set to true, disables mouse clicks and the style gets updated.",
           "type": "Boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "change"
         }
       ]
     },
@@ -1868,8 +1894,8 @@
         },
         {
           "name": "size",
-          "description": "Defines the size of the component. Possible values are s (24px), m (32px) and l (40px).",
-          "type": "String",
+          "description": "Defines the size of the component. Possible values are `s`(24px), `m`(32px) and `l`(40px).",
+          "type": "'s'|'m'|'l'",
           "default": "\"m\""
         }
       ],
@@ -1883,8 +1909,8 @@
         {
           "name": "size",
           "attribute": "size",
-          "description": "Defines the size of the component. Possible values are s (24px), m (32px) and l (40px).",
-          "type": "String",
+          "description": "Defines the size of the component. Possible values are `s`(24px), `m`(32px) and `l`(40px).",
+          "type": "'s'|'m'|'l'",
           "default": "\"m\""
         }
       ]
@@ -1898,11 +1924,6 @@
         },
         {
           "name": "last"
-        },
-        {
-          "name": "orientation",
-          "type": "string",
-          "default": "\"horizontal\""
         },
         {
           "name": "label",
@@ -1933,6 +1954,12 @@
           "name": "disabled",
           "description": "If set to true, disables mouse clicks and the style gets updated.",
           "type": "Boolean"
+        },
+        {
+          "name": "orientation",
+          "description": "Defines the orientation of the component. Possible values are `horizontal` and `vertical`.",
+          "type": "'horizontal'|'vertical'",
+          "default": "\"horizontal\""
         }
       ],
       "properties": [
@@ -1943,12 +1970,6 @@
         {
           "name": "last",
           "attribute": "last"
-        },
-        {
-          "name": "orientation",
-          "attribute": "orientation",
-          "type": "string",
-          "default": "\"horizontal\""
         },
         {
           "name": "label",
@@ -1985,6 +2006,13 @@
           "attribute": "disabled",
           "description": "If set to true, disables mouse clicks and the style gets updated.",
           "type": "Boolean"
+        },
+        {
+          "name": "orientation",
+          "attribute": "orientation",
+          "description": "Defines the orientation of the component. Possible values are `horizontal` and `vertical`.",
+          "type": "'horizontal'|'vertical'",
+          "default": "\"horizontal\""
         }
       ]
     },
@@ -1994,8 +2022,8 @@
       "attributes": [
         {
           "name": "orientation",
-          "description": "Defines the orientation of the component. Possible values are horizontal and vertical.",
-          "type": "String",
+          "description": "Defines the orientation of the component. Possible values are `horizontal` and `vertical`.",
+          "type": "'horizontal'|'vertical'",
           "default": "\"horizontal\""
         }
       ],
@@ -2003,8 +2031,8 @@
         {
           "name": "orientation",
           "attribute": "orientation",
-          "description": "Defines the orientation of the component. Possible values are horizontal and vertical.",
-          "type": "String",
+          "description": "Defines the orientation of the component. Possible values are `horizontal` and `vertical`.",
+          "type": "'horizontal'|'vertical'",
           "default": "\"horizontal\""
         }
       ],
@@ -2242,11 +2270,6 @@
       "path": "./components/tabs/kor-tab-item.ts",
       "attributes": [
         {
-          "name": "orientation",
-          "type": "string",
-          "default": "\"horizontal\""
-        },
-        {
           "name": "label",
           "description": "If set, defines the text label.",
           "type": "String"
@@ -2265,15 +2288,15 @@
           "name": "disabled",
           "description": "If set to true, disables mouse clicks and the style gets updated.",
           "type": "Boolean"
+        },
+        {
+          "name": "orientation",
+          "description": "Defines the orientation of the component. Possible values are `horizontal` and `vertical`.",
+          "type": "'horizontal'|'vertical'",
+          "default": "\"horizontal\""
         }
       ],
       "properties": [
-        {
-          "name": "orientation",
-          "attribute": "orientation",
-          "type": "string",
-          "default": "\"horizontal\""
-        },
         {
           "name": "label",
           "attribute": "label",
@@ -2297,6 +2320,13 @@
           "attribute": "disabled",
           "description": "If set to true, disables mouse clicks and the style gets updated.",
           "type": "Boolean"
+        },
+        {
+          "name": "orientation",
+          "attribute": "orientation",
+          "description": "Defines the orientation of the component. Possible values are `horizontal` and `vertical`.",
+          "type": "'horizontal'|'vertical'",
+          "default": "\"horizontal\""
         }
       ]
     },
@@ -2306,8 +2336,8 @@
       "attributes": [
         {
           "name": "orientation",
-          "description": "Defines the orientation of the component. Possible values are horizontal and vertical.",
-          "type": "String",
+          "description": "Defines the orientation of the component. Possible values are `horizontal` and `vertical`.",
+          "type": "'horizontal'|'vertical'",
           "default": "\"horizontal\""
         }
       ],
@@ -2315,8 +2345,8 @@
         {
           "name": "orientation",
           "attribute": "orientation",
-          "description": "Defines the orientation of the component. Possible values are horizontal and vertical.",
-          "type": "String",
+          "description": "Defines the orientation of the component. Possible values are `horizontal` and `vertical`.",
+          "type": "'horizontal'|'vertical'",
           "default": "\"horizontal\""
         }
       ],
@@ -2393,8 +2423,8 @@
       "attributes": [
         {
           "name": "size",
-          "description": "Defines the size, line height, font family and initial color of the text. Possible values are header-1, header-2, body-1 and body-1, but custom styles can be set through css.",
-          "type": "String",
+          "description": "Defines the size, line height, font family and initial color of the text. Possible values are `header-1`, `header-2`, `body-1` and `body-2`, but custom styles can be set through css.",
+          "type": "'header-1'|'header-2'|'body-1'|'body-2'",
           "default": "\"body-1\""
         },
         {
@@ -2407,8 +2437,8 @@
         {
           "name": "size",
           "attribute": "size",
-          "description": "Defines the size, line height, font family and initial color of the text. Possible values are header-1, header-2, body-1 and body-1, but custom styles can be set through css.",
-          "type": "String",
+          "description": "Defines the size, line height, font family and initial color of the text. Possible values are `header-1`, `header-2`, `body-1` and `body-2`, but custom styles can be set through css.",
+          "type": "'header-1'|'header-2'|'body-1'|'body-2'",
           "default": "\"body-1\""
         },
         {
@@ -2442,12 +2472,6 @@
         {
           "name": "rows",
           "description": "Defines the visible number of lines in a text area.",
-          "type": "Number",
-          "default": "1"
-        },
-        {
-          "name": "max-length",
-          "description": "Defines the maximum number of characters allowed in the text area.",
           "type": "Number",
           "default": "1"
         },
@@ -2493,13 +2517,6 @@
           "default": "1"
         },
         {
-          "name": "maxLength",
-          "attribute": "max-length",
-          "description": "Defines the maximum number of characters allowed in the text area.",
-          "type": "Number",
-          "default": "1"
-        },
-        {
           "name": "active",
           "attribute": "active",
           "description": "If set to true, highlights the label and underline.",
@@ -2522,6 +2539,11 @@
           "attribute": "autofocus",
           "description": "If set to true, the component gets focused as soon as the page loads.",
           "type": "Boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "change"
         }
       ]
     },
@@ -2564,6 +2586,11 @@
           "description": "If set to true, disables mouse clicks and the style gets updated.",
           "type": "Boolean"
         }
+      ],
+      "events": [
+        {
+          "name": "change"
+        }
       ]
     },
     {
@@ -2582,8 +2609,8 @@
         },
         {
           "name": "size",
-          "description": "Defines the size of the component. Possible values are s and m.",
-          "type": "String",
+          "description": "Defines the size of the component. Possible values are `s` and `m`.",
+          "type": "'s'|'m'",
           "default": "\"m\""
         },
         {
@@ -2619,8 +2646,8 @@
         {
           "name": "size",
           "attribute": "size",
-          "description": "Defines the size of the component. Possible values are s and m.",
-          "type": "String",
+          "description": "Defines the size of the component. Possible values are `s` and `m`.",
+          "type": "'s'|'m'",
           "default": "\"m\""
         },
         {
@@ -2660,14 +2687,14 @@
         },
         {
           "name": "position",
-          "description": "Defines the position of the component in the screen. Possible values are left, right, top and bottom.",
-          "type": "String",
+          "description": "Defines the position of the component in the screen. Possible values are `left`, `right`, `top` and `bottom`.",
+          "type": "'left'|'right'|'top'|'bottom'",
           "default": "\"bottom\""
         },
         {
           "name": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'column'|'row'",
           "default": "\"column\""
         },
         {
@@ -2698,15 +2725,15 @@
         {
           "name": "position",
           "attribute": "position",
-          "description": "Defines the position of the component in the screen. Possible values are left, right, top and bottom.",
-          "type": "String",
+          "description": "Defines the position of the component in the screen. Possible values are `left`, `right`, `top` and `bottom`.",
+          "type": "'left'|'right'|'top'|'bottom'",
           "default": "\"bottom\""
         },
         {
           "name": "flexDirection",
           "attribute": "flex-direction",
-          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are column and row.",
-          "type": "String",
+          "description": "Defines the direction in which the slotted content flows (e.g. top to bottom or left to right). Possible values are `column` and `row`.",
+          "type": "'column'|'row'",
           "default": "\"column\""
         },
         {
