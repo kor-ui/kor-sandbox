@@ -29,14 +29,15 @@
     [toggle]="false"
     (click)="openPage(page.uid)"
   ></kor-menu-item>
-  <kor-divider></kor-divider>
-  <kor-menu-item
-    label="Add Page"
-    icon="add"
-    [toggle]="false"
-    (click)="createPageModalVisible = true"
-    *ngIf="project?.owner === userService.user?.uid"
-  ></kor-menu-item>
+  <ng-container *ngIf="project?.owner === userService.user?.uid">
+    <kor-divider></kor-divider>
+    <kor-menu-item
+      label="Add Page"
+      icon="add"
+      [toggle]="false"
+      (click)="createPageModalVisible = true"
+    ></kor-menu-item>
+  </ng-container>
 </kor-popover>
 
 <app-create-page-modal
